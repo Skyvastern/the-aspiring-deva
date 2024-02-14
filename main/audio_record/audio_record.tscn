@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctgeu75p213ew"]
+
+[ext_resource type="Script" path="res://main/audio_record/audio_record.gd" id="1_w3vpf"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_rgdxj"]
+
+[node name="AudioRecord" type="Control" node_paths=PackedStringArray("audio_record", "audio_player", "record_btn", "play_btn")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w3vpf")
+audio_record = NodePath("AudioRecord")
+audio_player = NodePath("AudioPlayer")
+record_btn = NodePath("RecordBtn")
+play_btn = NodePath("PlayBtn")
+
+[node name="AudioRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_rgdxj")
+bus = &"Record"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="RecordBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = -47.0
+offset_right = 120.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Record"
+
+[node name="PlayBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.5
+offset_top = 17.0
+offset_right = 120.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Play"
