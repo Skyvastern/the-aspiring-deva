@@ -2,10 +2,18 @@ import uvicorn
 import ffmpeg
 import os
 import requests
+import base64
 from fastapi import FastAPI, HTTPException, Response
-from models import TextToSpeechInput
+from models import TextToSpeechInput, AudioInput
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
 
 @app.get("/")
@@ -56,6 +64,34 @@ async def text_to_speech(tts_input: TextToSpeechInput):
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+
+@app.post("/speech-to-text/")
+async def speech_to_text(audio_input: AudioInput):
+    try:
+        audio_bytes = base64.b64decode(audio_input.audio_base64)
+        
+        # Save wav to file
+        with open("received_audio.wav", "wb") as save_wav_file:
+            save_wav_file.write(audio_bytes)
+        
+        # Read and send wav file to OpenAI's speech to text API
+        with open("received_audio.wav", "rb") as read_wav_file:
+            transcript = client.audio.translations.create(
+                model="whisper-1",
+                file=read_wav_file
+            )
+        
+        # Remove file
+        os.remove("received_audio.wav")
+
+        # Return the transcript
+        return transcript
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error: {e}")
+
 
 
 if __name__ == "__main__":
