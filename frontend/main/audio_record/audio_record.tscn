@@ -35,6 +35,7 @@ offset_left = -315.0
 offset_top = -93.0
 offset_right = 323.0
 offset_bottom = 101.0
+wrap_mode = 1
 
 [node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 1
