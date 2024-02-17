@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3shry0lb6gwu"]
+
+[ext_resource type="Script" path="res://main/npc/npc_speak/npc_speak.gd" id="1_w7314"]
+[ext_resource type="PackedScene" uid="uid://cksg3viktx8p" path="res://main/api/text_to_speech_api/text_to_speech_api.tscn" id="2_wrdns"]
+
+[node name="NPC Speak" type="Node" node_paths=PackedStringArray("text_to_speech_api", "audio_player")]
+script = ExtResource("1_w7314")
+text_to_speech_api = NodePath("TextToSpeechAPI")
+audio_player = NodePath("AudioPlayer")
+
+[node name="TextToSpeechAPI" parent="." instance=ExtResource("2_wrdns")]
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]

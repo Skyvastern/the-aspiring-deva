@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfawuhapwvy2u"]
+[gd_scene load_steps=4 format=3 uid="uid://bfawuhapwvy2u"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_8mdjw"]
-[ext_resource type="PackedScene" uid="uid://cksg3viktx8p" path="res://main/api/text_to_speech_api/text_to_speech_api.tscn" id="2_5i61n"]
+[ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_rtmqv"]
+[ext_resource type="PackedScene" uid="uid://b3shry0lb6gwu" path="res://main/npc/npc_speak/npc_speak.tscn" id="3_a6lwv"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("text_to_speech_api", "audio_player")]
+[node name="Main" type="Node" node_paths=PackedStringArray("audio_record", "npc_speak")]
 script = ExtResource("1_8mdjw")
-text_to_speech_api = NodePath("TextToSpeechAPI")
-audio_player = NodePath("AudioPlayer")
+audio_record = NodePath("AudioRecord")
+npc_speak = NodePath("NPC Speak")
 
-[node name="TextToSpeechAPI" parent="." instance=ExtResource("2_5i61n")]
+[node name="AudioRecord" parent="." instance=ExtResource("2_rtmqv")]
 
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+[node name="NPC Speak" parent="." instance=ExtResource("3_a6lwv")]
