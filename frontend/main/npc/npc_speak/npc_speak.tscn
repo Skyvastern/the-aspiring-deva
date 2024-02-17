@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3shry0lb6gwu"]
+[gd_scene load_steps=4 format=3 uid="uid://b3shry0lb6gwu"]
 
 [ext_resource type="Script" path="res://main/npc/npc_speak/npc_speak.gd" id="1_w7314"]
+[ext_resource type="PackedScene" uid="uid://xyj3kxdu8csw" path="res://main/api/textgen_api/textgen_api.tscn" id="2_t7ijx"]
 [ext_resource type="PackedScene" uid="uid://cksg3viktx8p" path="res://main/api/text_to_speech_api/text_to_speech_api.tscn" id="2_wrdns"]
 
-[node name="NPC Speak" type="Control" node_paths=PackedStringArray("npc_response", "continue_btn", "text_to_speech_api", "audio_player")]
+[node name="NPC Speak" type="Control" node_paths=PackedStringArray("npc_response", "continue_btn", "audio_player", "textgen_api", "text_to_speech_api")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,10 +15,9 @@ script = ExtResource("1_w7314")
 npc_response = NodePath("ScrollContainer/NPC Response")
 continue_btn = NodePath("ContinueBtn")
 audio_record_scene_path = "res://main/audio_record/audio_record.tscn"
-text_to_speech_api = NodePath("TextToSpeechAPI")
 audio_player = NodePath("AudioPlayer")
-
-[node name="TextToSpeechAPI" parent="." instance=ExtResource("2_wrdns")]
+textgen_api = NodePath("TextgenAPI")
+text_to_speech_api = NodePath("TextToSpeechAPI")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
@@ -58,3 +58,7 @@ size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "Continue"
+
+[node name="TextgenAPI" parent="." instance=ExtResource("2_t7ijx")]
+
+[node name="TextToSpeechAPI" parent="." instance=ExtResource("2_wrdns")]
