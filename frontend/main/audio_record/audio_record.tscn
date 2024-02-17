@@ -5,7 +5,7 @@
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_rgdxj"]
 
-[node name="AudioRecord" type="Control" node_paths=PackedStringArray("audio_record", "audio_player", "text_edit", "record_btn", "speech_to_text_api")]
+[node name="AudioRecord" type="Control" node_paths=PackedStringArray("text_edit", "record_btn", "ask_btn", "audio_record", "audio_player", "speech_to_text_api")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -15,11 +15,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w3vpf")
-audio_record = NodePath("AudioRecord")
-audio_player = NodePath("AudioPlayer")
 text_edit = NodePath("TextEdit")
 record_btn = NodePath("Buttons/RecordBtn")
+ask_btn = NodePath("Buttons/AskBtn")
+audio_record = NodePath("AudioRecord")
+audio_player = NodePath("AudioPlayer")
 speech_to_text_api = NodePath("SpeechToTextAPI")
+npc_speak_scene_path = "res://main/npc/npc_speak/npc_speak.tscn"
 
 [node name="AudioRecord" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_rgdxj")
@@ -41,9 +43,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
+offset_left = -224.0
 offset_top = 122.0
-offset_right = 124.0
+offset_right = 224.0
 offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -55,5 +57,12 @@ size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "Record"
+
+[node name="AskBtn" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Ask"
 
 [node name="SpeechToTextAPI" parent="." instance=ExtResource("2_e1hex")]

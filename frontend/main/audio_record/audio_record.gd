@@ -1,11 +1,16 @@
 extends Control
 class_name AudioRecord
 
-@export var audio_record: AudioStreamPlayer
-@export var audio_player: AudioStreamPlayer
+@export_group("UI")
 @export var text_edit: TextEdit
 @export var record_btn: Button
+@export var ask_btn: Button
+
+@export_group("References")
+@export var audio_record: AudioStreamPlayer
+@export var audio_player: AudioStreamPlayer
 @export var speech_to_text_api: SpeechToTextAPI
+@export_file("*.tscn") var npc_speak_scene_path: String
 
 var effect: AudioEffectRecord
 var recording: AudioStreamWAV
@@ -13,6 +18,7 @@ var recording: AudioStreamWAV
 
 func _ready() -> void:
 	record_btn.pressed.connect(_on_record_btn_pressed)
+	ask_btn.pressed.connect(_on_ask_btn_pressed)
 	speech_to_text_api.processed.connect(_on_speech_to_text_processed)
 	
 	var index: int = AudioServer.get_bus_index("Record")
@@ -70,3 +76,16 @@ func _on_speech_to_text_processed(json: Dictionary) -> void:
 	text_edit.editable = true
 	record_btn.disabled = false
 	record_btn.text = "Record"
+
+
+func _on_ask_btn_pressed() -> void:
+	Global.load_menu(
+		self,
+		npc_speak_scene_path,
+		[
+			{
+				"name": "interpret",
+				"args": [text_edit.text]
+			}
+		]
+	)
