@@ -3,8 +3,8 @@ class_name AudioRecord
 
 @export var audio_record: AudioStreamPlayer
 @export var audio_player: AudioStreamPlayer
+@export var text_edit: TextEdit
 @export var record_btn: Button
-@export var play_btn: Button
 @export var speech_to_text_api: SpeechToTextAPI
 
 var effect: AudioEffectRecord
@@ -13,7 +13,6 @@ var recording: AudioStreamWAV
 
 func _ready() -> void:
 	record_btn.pressed.connect(_on_record_btn_pressed)
-	play_btn.pressed.connect(_on_play_btn_pressed)
 	speech_to_text_api.processed.connect(_on_speech_to_text_processed)
 	
 	var index: int = AudioServer.get_bus_index("Record")
@@ -27,16 +26,17 @@ func _on_record_btn_pressed() -> void:
 		recording = effect.get_recording()
 		effect.set_recording_active(false)
 		
+		record_btn.text = "Processing..."
+		record_btn.disabled = true
+		
 		_save_to_disk()
 		_perform_speech_to_text()
-		
-		record_btn.text = "Record"
-		play_btn.disabled = false
 	else:
 		effect.set_recording_active(true)
 		
+		text_edit.editable = false
+		text_edit.text = "Processing..."
 		record_btn.text = "Stop"
-		play_btn.disabled = true
 
 
 func _on_play_btn_pressed() -> void:
@@ -65,4 +65,8 @@ func _perform_speech_to_text() -> void:
 
 func _on_speech_to_text_processed(json: Dictionary) -> void:
 	var transcript: String = json["text"]
-	print("Transcript: " + transcript)
+	text_edit.text = transcript
+	
+	text_edit.editable = true
+	record_btn.disabled = false
+	record_btn.text = "Record"
