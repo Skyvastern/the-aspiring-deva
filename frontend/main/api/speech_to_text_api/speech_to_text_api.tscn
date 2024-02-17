@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbo40ic8y6d5i"]
+
+[ext_resource type="Script" path="res://main/api/speech_to_text_api/speech_to_text_api.gd" id="1_52tet"]
+
+[node name="SpeechToTextAPI" type="HTTPRequest"]
+script = ExtResource("1_52tet")
