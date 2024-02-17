@@ -4,7 +4,7 @@ import os
 import requests
 import base64
 from fastapi import FastAPI, HTTPException, Response
-from models import TextToSpeechInput, AudioInput
+from models import TextToSpeechInput, AudioInput, QuestionInput
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -88,6 +88,31 @@ async def speech_to_text(audio_input: AudioInput):
 
         # Return the transcript
         return transcript
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error: {e}")
+
+
+
+@app.post("/textgen/")
+async def textgen(question_input: QuestionInput):
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are an NPC in single player game world set in ancient period."
+                },
+                {
+                    "role": "user",
+                    "content": question_input.question
+                }
+            ]
+        )
+
+        response_message = response.choices[0].message
+        return {"message": response_message}
     
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error: {e}")
