@@ -119,5 +119,81 @@ async def textgen(question_input: QuestionInput):
 
 
 
+@app.post("/speech-to-speech/")
+async def speech_to_speech(audio_input: AudioInput):
+    try:
+        input_audio_bytes = base64.b64decode(audio_input.audio_base64)
+
+        # -------------------------SPEECH-TO-TEXT-------------------------
+        # Save wav to file
+        with open("input_audio.wav", "wb") as save_wav_file:
+            save_wav_file.write(input_audio_bytes)
+        
+        # Read and send wav file to OpenAI's speech to text API
+        with open("input_audio.wav", "rb") as read_wav_file:
+            transcript = client.audio.translations.create(
+                model="whisper-1",
+                file=read_wav_file
+            )
+        
+        # Remove file
+        os.remove("input_audio.wav")
+        # ----------------------------------------------------------------
+
+        # -------------------------TEXT-TO-TEXT-------------------------
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a traveller walking in the streets of ancient Patliputra."
+                },
+                {
+                    "role": "user",
+                    "content": transcript.text
+                }
+            ]
+        )
+
+        response_message = response.choices[0].message.content
+        # ----------------------------------------------------------------
+
+        # -------------------------TEXT-TO-SPEECH-------------------------
+        response = client.audio.speech.create(
+            model="tts-1",
+            voice="echo",
+            input=response_message,
+            response_format="mp3"
+        )
+
+        # Save mp3 to a file
+        with open("output_audio.mp3", "wb") as save_mp3_file:
+            save_mp3_file.write(response.content)
+        
+        # Convert mp3 to ogg
+        ffmpeg.input("output_audio.mp3").output("output_audio.ogg", acodec="libvorbis").run()
+
+        # Read ogg file and encode it in base64
+        with open("output_audio.ogg", "rb") as read_ogg_file:
+            ogg_data = read_ogg_file.read()
+        
+        ogg_base64 = base64.b64encode(ogg_data).decode("utf-8")
+
+        # Remove files
+        os.remove("output_audio.mp3")
+        os.remove("output_audio.ogg")
+        
+        # Return the base64 audio data and the subtitle
+        return {
+            "audio_base64": ogg_base64,
+            "subtitle": response_message
+        }
+        # ----------------------------------------------------------------
+    
+    except Exception as e:
+        print("Error: ", e)
+        raise HTTPException(status_code=400, detail=f"Error: {e}")
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, log_level="info", reload=True)
