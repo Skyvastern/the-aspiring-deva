@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://main/main.gd" id="1_8mdjw"]
 [ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_rtmqv"]
 
-[node name="Main" type="Node" node_paths=PackedStringArray("audio_record", "npc_speak")]
+[node name="Main" type="Node" node_paths=PackedStringArray("audio_record")]
 script = ExtResource("1_8mdjw")
 audio_record = NodePath("AudioRecord")
-npc_speak = NodePath("")
 
 [node name="AudioRecord" parent="." instance=ExtResource("2_rtmqv")]
