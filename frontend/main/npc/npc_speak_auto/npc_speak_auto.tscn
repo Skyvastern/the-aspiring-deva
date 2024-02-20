@@ -1,6 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://df3uq6eo0a66j"]
+[gd_scene load_steps=3 format=3 uid="uid://df3uq6eo0a66j"]
 
 [ext_resource type="Script" path="res://main/npc/npc_speak_auto/npc_speak_auto.gd" id="1_quxc4"]
+[ext_resource type="PackedScene" uid="uid://bp020r0i1tv8m" path="res://main/api/speech_to_speech_api/speech_to_speech_api.tscn" id="2_4gpr3"]
 
-[node name="NPC Speak Auto" type="Node"]
+[node name="NPC Speak Auto" type="Node" node_paths=PackedStringArray("status", "audio_player", "subtitles_label", "continue_btn", "speech_to_speech_api")]
 script = ExtResource("1_quxc4")
+status = NodePath("Status")
+audio_player = NodePath("AudioPlayer")
+subtitles_label = NodePath("Subtitles")
+continue_btn = NodePath("ContinueBtn")
+speech_to_speech_api = NodePath("SpeechToSpeechAPI")
+audio_record_auto_path = "res://main/audio_record_auto/audio_record_auto.tscn"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ContinueBtn" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -25.0
+offset_right = 108.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[node name="Status" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Processing..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitles" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -468.0
+offset_top = -84.0
+offset_right = 468.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SpeechToSpeechAPI" parent="." instance=ExtResource("2_4gpr3")]

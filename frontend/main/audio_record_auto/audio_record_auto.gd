@@ -37,7 +37,7 @@ func _on_speak_btn_pressed() -> void:
 			npc_speak_auto_scene_path,
 			[
 				{
-					"name": "setup",
+					"name": "interpret",
 					"args": [base64]
 				}
 			]
