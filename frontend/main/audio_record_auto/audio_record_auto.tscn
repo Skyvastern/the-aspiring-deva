@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://b36061vqcjy15"]
+
+[ext_resource type="Script" path="res://main/audio_record_auto/audio_record_auto.gd" id="1_n35vx"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_lrvel"]
+
+[node name="AudioRecordAuto" type="Control" node_paths=PackedStringArray("speak_btn", "audio_record", "audio_player")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n35vx")
+speak_btn = NodePath("SpeakBtn")
+audio_record = NodePath("AudioRecord")
+audio_player = NodePath("AudioPlayer")
+npc_speak_auto_scene_path = "res://main/npc/npc_speak_auto/npc_speak_auto.tscn"
+
+[node name="AudioRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_lrvel")
+bus = &"Record"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="SpeakBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -25.0
+offset_right = 108.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Speak"

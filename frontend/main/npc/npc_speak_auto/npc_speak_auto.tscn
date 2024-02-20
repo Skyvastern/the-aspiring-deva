@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://df3uq6eo0a66j"]
+
+[ext_resource type="Script" path="res://main/npc/npc_speak_auto/npc_speak_auto.gd" id="1_quxc4"]
+
+[node name="NPC Speak Auto" type="Node"]
+script = ExtResource("1_quxc4")
