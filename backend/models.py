@@ -13,3 +13,4 @@ class AudioInput(BaseModel):
 
 class QuestionInput(BaseModel):
     question: str
+    history: list[dict]

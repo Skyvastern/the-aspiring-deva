@@ -97,21 +97,17 @@ async def speech_to_text(audio_input: AudioInput):
 @app.post("/textgen/")
 async def textgen(question_input: QuestionInput):
     try:
+        question_input.history.append({
+            "role": "user",
+            "content": question_input.question
+        })
+
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are an NPC in single player game world set in ancient period."
-                },
-                {
-                    "role": "user",
-                    "content": question_input.question
-                }
-            ]
+            messages=question_input.history
         )
 
-        response_message = response.choices[0].message
+        response_message = response.choices[0].message.content
         return {"message": response_message}
     
     except Exception as e:
