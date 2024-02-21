@@ -18,25 +18,34 @@ func _ready() -> void:
 
 
 func interpret(audio_base64: String) -> void:
-	speech_to_speech_api.make_request(audio_base64)
+	speech_to_speech_api.make_request(
+		audio_base64,
+		Global.active_npc.get_history()
+	)
 
 
 func _on_speech_to_speech_api_processed(json: Dictionary) -> void:
+	var audio_base64: String = json["audio_base64"]
+	var player_message: String = json["player_message"]
+	var npc_message: String = json["npc_message"]
+	
 	# Update UI
 	status.visible = false
 	continue_btn.visible = true
 	
 	# Set the subtitles
-	var subtitle: String = json["subtitle"]
-	subtitles_label.text = subtitle
+	subtitles_label.text = npc_message
 	
 	# Play the audio
-	var audio_base64: String = json["audio_base64"]
 	var audio_data: PackedByteArray = Marshalls.base64_to_raw(audio_base64)
 	var audio_stream: AudioStreamOggVorbis = AudioStreamOggVorbis.load_from_buffer(audio_data)
 	audio_player.stream = audio_stream
 	audio_player.play()
+	
+	# Update history
+	Global.active_npc.add_player_message(player_message)
+	Global.active_npc.add_npc_message(npc_message)
 
 
 func _on_continue_btn_pressed() -> void:
-	Global.load_menu(self, audio_record_auto_path, [])
+	Global.load_scene(self, get_parent(), audio_record_auto_path, [])

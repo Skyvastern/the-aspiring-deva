@@ -32,8 +32,9 @@ func _on_speak_btn_pressed() -> void:
 		
 		var base64: String = _get_audio_base64()
 		
-		Global.load_menu(
+		Global.load_scene(
 			self,
+			get_parent(),
 			npc_speak_auto_scene_path,
 			[
 				{
