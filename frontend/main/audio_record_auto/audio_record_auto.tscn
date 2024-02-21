@@ -4,7 +4,7 @@
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_lrvel"]
 
-[node name="AudioRecordAuto" type="Control" node_paths=PackedStringArray("speak_btn", "audio_record", "audio_player")]
+[node name="AudioRecordAuto" type="Control" node_paths=PackedStringArray("stop_btn", "audio_record", "audio_player")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -14,7 +14,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n35vx")
-speak_btn = NodePath("SpeakBtn")
+stop_btn = NodePath("StopBtn")
 audio_record = NodePath("AudioRecord")
 audio_player = NodePath("AudioPlayer")
 npc_speak_auto_scene_path = "res://main/npc/npc_speak_auto/npc_speak_auto.tscn"
@@ -25,7 +25,7 @@ bus = &"Record"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="SpeakBtn" type="Button" parent="."]
+[node name="StopBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,4 +41,4 @@ grow_vertical = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 30
-text = "Speak"
+text = "Stop"

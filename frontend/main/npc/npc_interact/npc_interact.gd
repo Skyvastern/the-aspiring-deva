@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 		ui.visible = false
 		
 		var audio_record_auto: AudioRecordAuto = audio_record_auto_scene.instantiate()
-		add_child(audio_record_auto)
+		screens.add_child(audio_record_auto)
 		
 		Global.active_npc = npc
 

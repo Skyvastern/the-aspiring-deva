@@ -2,7 +2,7 @@ extends Control
 class_name AudioRecordAuto
 
 @export_group("UI")
-@export var speak_btn: Button
+@export var stop_btn: Button
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -14,24 +14,30 @@ var recording: AudioStreamWAV
 
 
 func _ready() -> void:
-	speak_btn.pressed.connect(_on_speak_btn_pressed)
+	stop_btn.pressed.connect(_on_stop_btn_pressed)
 	
+	_setup()
+	_start_recording()
+
+
+func _setup() -> void:
 	var index: int = AudioServer.get_bus_index("Record")
 	effect = AudioServer.get_bus_effect(index, 0)
-	
+
+
+func _start_recording() -> void:
 	audio_record.play()
+	effect.set_recording_active(true)
 
 
-func _on_speak_btn_pressed() -> void:
+func _on_stop_btn_pressed() -> void:
 	if effect.is_recording_active():
+		stop_btn.disabled = true
+		
 		recording = effect.get_recording()
 		effect.set_recording_active(false)
 		
-		speak_btn.text = "Processing..."
-		speak_btn.disabled = true
-		
 		var base64: String = _get_audio_base64()
-		
 		Global.load_scene(
 			self,
 			get_parent(),
@@ -44,8 +50,7 @@ func _on_speak_btn_pressed() -> void:
 			]
 		)
 	else:
-		effect.set_recording_active(true)
-		speak_btn.text = "Stop"
+		push_warning("Audio recording was off!")
 
 
 func _get_audio_base64() -> String:
