@@ -22,8 +22,9 @@ func interpret(audio_base64: String) -> void:
 
 
 func _on_speech_to_speech_api_processed(json: Dictionary) -> void:
-	# Hide the status
+	# Update UI
 	status.visible = false
+	continue_btn.visible = true
 	
 	# Set the subtitles
 	var subtitle: String = json["subtitle"]
