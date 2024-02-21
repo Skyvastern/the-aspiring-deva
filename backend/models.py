@@ -8,6 +8,7 @@ class TextToSpeechInput(BaseModel):
 
 class AudioInput(BaseModel):
     audio_base64: str
+    history: list[dict]
 
 
 class QuestionInput(BaseModel):

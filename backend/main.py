@@ -141,20 +141,17 @@ async def speech_to_speech(audio_input: AudioInput):
         # ----------------------------------------------------------------
 
         # -------------------------TEXT-TO-TEXT-------------------------
+
+        audio_input.history.append({
+            "role": "user",
+            "content": transcript.text
+        })
+
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "You are a traveller walking in the streets of ancient Patliputra."
-                },
-                {
-                    "role": "user",
-                    "content": transcript.text
-                }
-            ]
+            messages=audio_input.history
         )
-
+        
         response_message = response.choices[0].message.content
         # ----------------------------------------------------------------
 
@@ -186,7 +183,8 @@ async def speech_to_speech(audio_input: AudioInput):
         # Return the base64 audio data and the subtitle
         return {
             "audio_base64": ogg_base64,
-            "subtitle": response_message
+            "player_message": transcript.text,
+            "npc_message": response_message
         }
         # ----------------------------------------------------------------
     
