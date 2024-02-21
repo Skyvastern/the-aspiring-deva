@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcqh0x5sbp7oq"]
+[gd_scene load_steps=4 format=3 uid="uid://dcqh0x5sbp7oq"]
 
 [ext_resource type="Script" path="res://main/npc/npc_interact/npc_interact.gd" id="1_fwdf7"]
 [ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_dlpq3"]
+[ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_l4hwy"]
 
 [node name="NPC Interact" type="Node" node_paths=PackedStringArray("screens", "ui")]
 script = ExtResource("1_fwdf7")
 background_story = "You are a helpful assistant."
 screens = NodePath("Screens")
 ui = NodePath("UI")
+audio_record_scene = ExtResource("2_l4hwy")
 audio_record_auto_scene = ExtResource("2_dlpq3")
 
 [node name="Screens" type="Node" parent="."]
@@ -20,21 +22,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Interact Panel" type="Panel" parent="UI"]
+[node name="Interact Prompt" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 496.0
+offset_top = 293.0
+offset_right = 616.0
+offset_bottom = 333.0
+
+[node name="Panel" type="Panel" parent="UI/Interact Prompt"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/Interact Panel"]
+[node name="Label" type="Label" parent="UI/Interact Prompt/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,10 +49,45 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UI"]
+[node name="Description" type="Label" parent="UI/Interact Prompt"]
 layout_mode = 0
-offset_left = 604.0
-offset_top = 312.0
-offset_right = 665.0
-offset_bottom = 335.0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 109.0
+offset_bottom = 31.0
 text = "Interact"
+
+[node name="Interact Detailed Prompt" type="Control" parent="UI"]
+anchors_preset = 0
+offset_left = 496.0
+offset_top = 352.0
+offset_right = 689.0
+offset_bottom = 392.0
+
+[node name="Panel" type="Panel" parent="UI/Interact Detailed Prompt"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Interact Detailed Prompt/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI/Interact Detailed Prompt"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 109.0
+offset_bottom = 31.0
+text = "Interact Detailed"

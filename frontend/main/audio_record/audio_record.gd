@@ -35,8 +35,11 @@ func _on_record_btn_pressed() -> void:
 		record_btn.text = "Processing..."
 		record_btn.disabled = true
 		
-		_save_to_disk()
-		_perform_speech_to_text()
+		var base64: String = _get_audio_base64()
+		speech_to_text_api.make_request(
+			base64,
+			Global.active_npc.interact.get_history()
+		)
 	else:
 		effect.set_recording_active(true)
 		
@@ -55,18 +58,20 @@ func _play_recording() -> void:
 	audio_player.play()
 
 
-func _save_to_disk() -> void:
-	var wav_path: String = "C:\\Users\\Arpit Srivastava\\Desktop\\Audio\\input.wav"
-	recording.save_to_wav(wav_path)
-
-
-func _perform_speech_to_text() -> void:
-	var audio_file: FileAccess = FileAccess.open("C:\\Users\\Arpit Srivastava\\Desktop\\Audio\\input.wav", FileAccess.READ)
+func _get_audio_base64() -> String:
+	# Save to disk
+	recording.save_to_wav(Global.WAV_PATH)
+	
+	# Get data from the file
+	var audio_file: FileAccess = FileAccess.open(Global.WAV_PATH, FileAccess.READ)
 	var audio_data: PackedByteArray = audio_file.get_buffer(audio_file.get_length())
 	audio_file.close()
 	
-	var base64: String = Marshalls.raw_to_base64(audio_data)
-	speech_to_text_api.make_request(base64)
+	# Remove the saved file
+	DirAccess.remove_absolute(Global.WAV_PATH)
+	
+	# Return base64 audio data
+	return Marshalls.raw_to_base64(audio_data)
 
 
 func _on_speech_to_text_processed(json: Dictionary) -> void:
@@ -79,8 +84,9 @@ func _on_speech_to_text_processed(json: Dictionary) -> void:
 
 
 func _on_ask_btn_pressed() -> void:
-	Global.load_menu(
+	Global.load_scene(
 		self,
+		get_parent(),
 		npc_speak_scene_path,
 		[
 			{

@@ -6,6 +6,7 @@ var _history: Array
 @export var npc: NPC
 @export var screens: Node
 @export var ui: Control
+@export var audio_record_scene: PackedScene
 @export var audio_record_auto_scene: PackedScene
 
 
@@ -22,6 +23,14 @@ func _process(_delta: float) -> void:
 		
 		var audio_record_auto: AudioRecordAuto = audio_record_auto_scene.instantiate()
 		screens.add_child(audio_record_auto)
+		
+		Global.active_npc = npc
+	
+	elif Input.is_action_just_pressed("interact_detailed"):
+		ui.visible = false
+		
+		var audio_record: AudioRecord = audio_record_scene.instantiate()
+		screens.add_child(audio_record)
 		
 		Global.active_npc = npc
 

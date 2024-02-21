@@ -55,16 +55,15 @@ func _on_stop_btn_pressed() -> void:
 
 func _get_audio_base64() -> String:
 	# Save to disk
-	const WAV_PATH: String = "user://audio.wav"
-	recording.save_to_wav(WAV_PATH)
+	recording.save_to_wav(Global.WAV_PATH)
 	
 	# Get data from the file
-	var audio_file: FileAccess = FileAccess.open(WAV_PATH, FileAccess.READ)
+	var audio_file: FileAccess = FileAccess.open(Global.WAV_PATH, FileAccess.READ)
 	var audio_data: PackedByteArray = audio_file.get_buffer(audio_file.get_length())
 	audio_file.close()
 	
 	# Remove the saved file
-	DirAccess.remove_absolute(WAV_PATH)
+	DirAccess.remove_absolute(Global.WAV_PATH)
 	
 	# Return base64 audio data
 	return Marshalls.raw_to_base64(audio_data)

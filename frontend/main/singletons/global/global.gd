@@ -1,5 +1,7 @@
 extends Node
 
+const WAV_PATH: String = "user://audio.wav"
+
 var main: Main
 var active_npc: NPC
 

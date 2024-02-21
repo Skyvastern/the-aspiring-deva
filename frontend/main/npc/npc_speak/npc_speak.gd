@@ -11,7 +11,8 @@ class_name NPC_Speak
 @export var textgen_api: TextgenAPI
 @export var text_to_speech_api: TextToSpeechAPI
 
-var reply: String = ""
+var player_message: String = ""
+var npc_message: String = ""
 
 
 func _ready() -> void:
@@ -23,8 +24,13 @@ func _ready() -> void:
 
 
 func interpret(question: String) -> void:
+	player_message = question
 	npc_response.text = "Interpreting..."
-	textgen_api.make_request(question)
+	
+	textgen_api.make_request(
+		player_message,
+		Global.active_npc.interact.get_history()
+	)
 
 
 func speak(value: String) -> void:
@@ -35,13 +41,20 @@ func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> voi
 	audio_player.stream = audio_stream
 	audio_player.play()
 	
-	npc_response.text = reply
+	npc_response.text = npc_message
+	
+	Global.active_npc.interact.add_player_message(player_message)
+	Global.active_npc.interact.add_npc_message(npc_message)
 
 
 func _on_textgen_api_processed(json: Dictionary) -> void:
-	reply = json["message"]["content"]
-	speak(reply)
+	npc_message = json["message"]
+	speak(npc_message)
 
 
 func _on_continue_btn_pressed() -> void:
-	Global.load_menu(self, audio_record_scene_path)
+	Global.load_scene(
+		self,
+		get_parent(),
+		audio_record_scene_path
+	)
