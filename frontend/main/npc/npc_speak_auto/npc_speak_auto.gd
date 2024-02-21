@@ -20,7 +20,7 @@ func _ready() -> void:
 func interpret(audio_base64: String) -> void:
 	speech_to_speech_api.make_request(
 		audio_base64,
-		Global.active_npc.get_history()
+		Global.active_npc.interact.get_history()
 	)
 
 
@@ -43,8 +43,8 @@ func _on_speech_to_speech_api_processed(json: Dictionary) -> void:
 	audio_player.play()
 	
 	# Update history
-	Global.active_npc.add_player_message(player_message)
-	Global.active_npc.add_npc_message(npc_message)
+	Global.active_npc.interact.add_player_message(player_message)
+	Global.active_npc.interact.add_npc_message(npc_message)
 
 
 func _on_continue_btn_pressed() -> void:

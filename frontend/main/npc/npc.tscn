@@ -1,9 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl6ccnf5ec1qq"]
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
-[ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_0twg4"]
+[ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_hq4es"]
 
-[node name="NPC" type="Node"]
+[node name="NPC" type="Node" node_paths=PackedStringArray("interact")]
 script = ExtResource("1_hyvfc")
-background_story = "You are a helpful assistant."
-audio_record_auto_scene = ExtResource("2_0twg4")
+interact = NodePath("NPC Interact")
+
+[node name="NPC Interact" parent="." node_paths=PackedStringArray("npc") instance=ExtResource("2_hq4es")]
+background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
+
+By nature you're a optimistic but a shy person.
+
+Give response in less than 100 words."
+npc = NodePath("..")

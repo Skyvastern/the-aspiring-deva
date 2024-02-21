@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqh0x5sbp7oq"]
+
+[ext_resource type="Script" path="res://main/npc/npc_interact/npc_interact.gd" id="1_fwdf7"]
+[ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_dlpq3"]
+
+[node name="NPC Interact" type="Node" node_paths=PackedStringArray("screens", "ui")]
+script = ExtResource("1_fwdf7")
+background_story = "You are a helpful assistant."
+screens = NodePath("Screens")
+ui = NodePath("UI")
+audio_record_auto_scene = ExtResource("2_dlpq3")
+
+[node name="Screens" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Interact Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Interact Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 604.0
+offset_top = 312.0
+offset_right = 665.0
+offset_bottom = 335.0
+text = "Interact"
