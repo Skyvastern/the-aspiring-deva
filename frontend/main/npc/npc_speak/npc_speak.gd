@@ -23,18 +23,14 @@ func _ready() -> void:
 	npc_response.text = ""
 
 
-func interpret(question: String) -> void:
-	player_message = question
+func interpret(new_player_message: String) -> void:
+	player_message = new_player_message
 	npc_response.text = "Interpreting..."
 	
 	textgen_api.make_request(
 		player_message,
 		Global.active_npc.interact.get_history()
 	)
-
-
-func speak(value: String) -> void:
-	text_to_speech_api.make_request(value)
 
 
 func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> void:
@@ -48,8 +44,12 @@ func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> voi
 
 
 func _on_textgen_api_processed(json: Dictionary) -> void:
-	npc_message = json["message"]
-	speak(npc_message)
+	npc_message = json["npc_message"]
+	
+	text_to_speech_api.make_request(
+		npc_message,
+		Global.active_npc.voice
+	)
 
 
 func _on_continue_btn_pressed() -> void:

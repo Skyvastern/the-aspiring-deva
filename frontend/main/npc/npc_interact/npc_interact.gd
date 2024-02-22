@@ -2,7 +2,7 @@ extends Node
 class_name NPC_Interact
 
 var _history: Array
-@export_multiline var background_story: String
+
 @export var npc: NPC
 @export var screens: Node
 @export var selection_ui: Control
@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
 func _setup() -> void:
 	_history.append({
 		"role": "system",
-		"content": background_story
+		"content": npc.background_story
 	})
 
 

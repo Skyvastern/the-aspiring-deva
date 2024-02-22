@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func interpret(audio_base64: String) -> void:
 	speech_to_speech_api.make_request(
+		Global.active_npc.voice,
 		audio_base64,
 		Global.active_npc.interact.get_history()
 	)

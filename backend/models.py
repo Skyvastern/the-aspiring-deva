@@ -2,15 +2,16 @@ from pydantic import BaseModel
 
 
 class TextToSpeechInput(BaseModel):
-    text: str
-    voice: str
+    voice: str = "echo"
+    npc_message: str
 
 
 class AudioInput(BaseModel):
+    voice: str = "echo"
     audio_base64: str
     history: list[dict]
 
 
-class QuestionInput(BaseModel):
-    question: str
+class ChatInput(BaseModel):
+    player_message: str
     history: list[dict]

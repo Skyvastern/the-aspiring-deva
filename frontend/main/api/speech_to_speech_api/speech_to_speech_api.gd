@@ -9,9 +9,10 @@ func _ready() -> void:
 	request_completed.connect(_on_request_completed)
 
 
-func make_request(audio_base64: String, history: Array) -> void:
+func make_request(voice: String, audio_base64: String, history: Array) -> void:
 	var headers: PackedStringArray = ["Content-Type: application/json"]
 	var request_payload: String = JSON.stringify({
+		"voice": voice,
 		"audio_base64": audio_base64,
 		"history": history
 	})

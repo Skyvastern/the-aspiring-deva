@@ -9,10 +9,10 @@ func _ready() -> void:
 	request_completed.connect(_on_request_completed)
 
 
-func make_request(question: String, history: Array) -> void:
+func make_request(player_message: String, history: Array) -> void:
 	var headers: PackedStringArray = ["Content-Type: application/json"]
 	var request_payload: String = JSON.stringify({
-		"question": question,
+		"player_message": player_message,
 		"history": history
 	})
 	

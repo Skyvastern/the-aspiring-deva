@@ -9,11 +9,11 @@ func _ready() -> void:
 	request_completed.connect(_on_request_completed)
 
 
-func make_request(value: String) -> void:
+func make_request(npc_message: String, voice: String) -> void:
 	var headers: PackedStringArray = ["Content-Type: application/json"]
 	var request_payload: String = JSON.stringify({
-		"text": value,
-		"voice": "echo"
+		"npc_message": npc_message,
+		"voice": voice
 	})
 	
 	request(URL, headers, HTTPClient.METHOD_POST, request_payload)

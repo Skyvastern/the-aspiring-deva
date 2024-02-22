@@ -1,10 +1,9 @@
 import uvicorn
 import ffmpeg
 import os
-import requests
 import base64
 from fastapi import FastAPI, HTTPException, Response
-from models import TextToSpeechInput, AudioInput, QuestionInput
+from models import TextToSpeechInput, AudioInput, ChatInput
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -22,45 +21,31 @@ def read_root():
 
 
 @app.post("/text-to-speech/")
-async def text_to_speech(tts_input: TextToSpeechInput):
-    URL: str = "https://api.openai.com/v1/audio/speech"
-
-    headers = {
-        "Authorization": "Bearer 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",
-        "Content-Type": "application/json"
-    }
-
-    request_payload = {
-        "model": "tts-1",
-        "input": tts_input.text,
-        "voice": tts_input.voice
-    }
-    
+async def text_to_speech(tts_input: TextToSpeechInput):    
     try:
-        response = requests.post(URL, json=request_payload, headers=headers)
+        response = client.audio.speech.create(
+            model="tts-1",
+            voice=tts_input.voice,
+            input=tts_input.npc_message,
+            response_format="mp3"
+        )
 
-        if response.status_code == 200:
-            mp3_audio = response.content
-
-            # Save mp3 to a file
-            with open("audio.mp3", "wb") as mp3_file:
-                mp3_file.write(mp3_audio)
-            
-            # Convert mp3 to ogg
-            ffmpeg.input("audio.mp3").output("audio.ogg", acodec="libvorbis").run()
-
-            # Read ogg file and return it in response
-            with open("audio.ogg", "rb") as ogg_file:
-                ogg_audio = ogg_file.read()
-            
-            # Clean the audio files
-            os.remove("audio.mp3")
-            os.remove("audio.ogg")
-
-            return Response(content=ogg_audio, media_type="audio/ogg")
+        # Save mp3 to a file
+        with open("audio.mp3", "wb") as mp3_file:
+            mp3_file.write(response.content)
         
-        else:
-            raise HTTPException(status_code=400, detail="Error from TTS API")
+        # Convert mp3 to ogg
+        ffmpeg.input("audio.mp3").output("audio.ogg", acodec="libvorbis").run()
+
+        # Read ogg file and return it in response
+        with open("audio.ogg", "rb") as ogg_file:
+            ogg_audio = ogg_file.read()
+        
+        # Clean the audio files
+        os.remove("audio.mp3")
+        os.remove("audio.ogg")
+
+        return Response(content=ogg_audio, media_type="audio/ogg")
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -95,20 +80,20 @@ async def speech_to_text(audio_input: AudioInput):
 
 
 @app.post("/textgen/")
-async def textgen(question_input: QuestionInput):
+async def textgen(chat_input: ChatInput):
     try:
-        question_input.history.append({
+        chat_input.history.append({
             "role": "user",
-            "content": question_input.question
+            "content": chat_input.player_message
         })
 
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=question_input.history
+            messages=chat_input.history
         )
 
         response_message = response.choices[0].message.content
-        return {"message": response_message}
+        return {"npc_message": response_message}
     
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error: {e}")
@@ -154,7 +139,7 @@ async def speech_to_speech(audio_input: AudioInput):
         # -------------------------TEXT-TO-SPEECH-------------------------
         response = client.audio.speech.create(
             model="tts-1",
-            voice="echo",
+            voice=audio_input.voice,
             input=response_message,
             response_format="mp3"
         )
