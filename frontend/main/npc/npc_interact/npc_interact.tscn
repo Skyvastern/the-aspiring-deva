@@ -4,17 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_dlpq3"]
 [ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_l4hwy"]
 
-[node name="NPC Interact" type="Node" node_paths=PackedStringArray("screens", "ui")]
+[node name="NPC Interact" type="Node" node_paths=PackedStringArray("screens", "selection_ui")]
 script = ExtResource("1_fwdf7")
 background_story = "You are a helpful assistant."
 screens = NodePath("Screens")
-ui = NodePath("UI")
+selection_ui = NodePath("Selection")
 audio_record_scene = ExtResource("2_l4hwy")
 audio_record_auto_scene = ExtResource("2_dlpq3")
 
 [node name="Screens" type="Node" parent="."]
 
-[node name="UI" type="Control" parent="."]
+[node name="Selection" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,14 +22,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Interact Prompt" type="Control" parent="UI"]
-anchors_preset = 0
-offset_left = 496.0
-offset_top = 293.0
-offset_right = 616.0
-offset_bottom = 333.0
+[node name="Interact Prompt" type="Control" parent="Selection"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 9.0
 
-[node name="Panel" type="Panel" parent="UI/Interact Prompt"]
+[node name="Panel" type="Panel" parent="Selection/Interact Prompt"]
 layout_mode = 1
 anchors_preset = -1
 offset_right = 40.0
@@ -37,7 +41,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/Interact Prompt/Panel"]
+[node name="Label" type="Label" parent="Selection/Interact Prompt/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,7 +53,7 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UI/Interact Prompt"]
+[node name="Description" type="Label" parent="Selection/Interact Prompt"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 8.0
@@ -57,14 +61,18 @@ offset_right = 109.0
 offset_bottom = 31.0
 text = "Interact"
 
-[node name="Interact Detailed Prompt" type="Control" parent="UI"]
-anchors_preset = 0
-offset_left = 496.0
-offset_top = 352.0
-offset_right = 689.0
-offset_bottom = 392.0
+[node name="Interact Detailed Prompt" type="Control" parent="Selection"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 28.0
+offset_right = 113.0
+offset_bottom = 68.0
 
-[node name="Panel" type="Panel" parent="UI/Interact Detailed Prompt"]
+[node name="Panel" type="Panel" parent="Selection/Interact Detailed Prompt"]
 layout_mode = 1
 anchors_preset = -1
 offset_right = 40.0
@@ -72,7 +80,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/Interact Detailed Prompt/Panel"]
+[node name="Label" type="Label" parent="Selection/Interact Detailed Prompt/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,10 +92,46 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="UI/Interact Detailed Prompt"]
+[node name="Description" type="Label" parent="Selection/Interact Detailed Prompt"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 8.0
 offset_right = 109.0
 offset_bottom = 31.0
 text = "Interact Detailed"
+
+[node name="Close Prompt" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 26.0
+offset_right = -29.0
+offset_bottom = 66.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Close Prompt"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Close Prompt/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Close Prompt"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 9.0
+offset_right = 89.0
+offset_bottom = 32.0
+text = "Close"
