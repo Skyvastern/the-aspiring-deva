@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjnd35v4sh1vl"]
+[gd_scene load_steps=7 format=3 uid="uid://bjnd35v4sh1vl"]
 
 [ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
+[ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_sa35n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2e745"]
 sky_top_color = Color(0.294118, 0.588235, 1, 1)
@@ -62,3 +63,19 @@ material = SubResource("StandardMaterial3D_brawa")
 
 [node name="Player" parent="." instance=ExtResource("1_5vv7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 0.5, -10)
+background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
+
+By nature you're a optimistic but a shy person.
+
+Give response in less than 100 words."
+
+[node name="NPC 2" parent="NPCs" instance=ExtResource("2_sa35n")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0.5, -10)
+background_story = "You are the noble king of Patliputra in the year 300 BCE.
+
+Give response in less than 100 words."

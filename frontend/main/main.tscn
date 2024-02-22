@@ -1,14 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfawuhapwvy2u"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_8mdjw"]
-[ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_ncjub"]
+[ext_resource type="PackedScene" uid="uid://bjnd35v4sh1vl" path="res://main/world/world.tscn" id="2_upxpq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_8mdjw")
 
-[node name="NPC" parent="." instance=ExtResource("2_ncjub")]
-background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
-
-By nature you're a optimistic but a shy person.
-
-Give response in less than 100 words."
+[node name="World" parent="." instance=ExtResource("2_upxpq")]

@@ -1,12 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl6ccnf5ec1qq"]
+[gd_scene load_steps=7 format=3 uid="uid://dl6ccnf5ec1qq"]
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
-[ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_hq4es"]
 
-[node name="NPC" type="Node" node_paths=PackedStringArray("interact")]
+[sub_resource type="BoxMesh" id="BoxMesh_kw8wg"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yho2"]
+albedo_color = Color(0.784314, 1, 0.392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfeea"]
+size = Vector3(0.75, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6to1v"]
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
+size = Vector3(1, 2, 1)
+
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("interact")]
 script = ExtResource("1_hyvfc")
-interact = NodePath("NPC Interact")
+interact = NodePath("")
 background_story = "You are a helpful assistant."
 
-[node name="NPC Interact" parent="." node_paths=PackedStringArray("npc") instance=ExtResource("2_hq4es")]
-npc = NodePath("..")
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_kw8wg")
+surface_material_override/0 = SubResource("StandardMaterial3D_5yho2")
+
+[node name="Eyes" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.25)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pfeea")
+surface_material_override/0 = SubResource("StandardMaterial3D_6to1v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_5wxcb")
