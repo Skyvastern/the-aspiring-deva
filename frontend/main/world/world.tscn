@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjnd35v4sh1vl"]
+
+[ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2e745"]
+sky_top_color = Color(0.294118, 0.588235, 1, 1)
+sky_horizon_color = Color(0.607843, 0.681373, 0.784314, 1)
+ground_bottom_color = Color(0.137255, 0.137255, 0.137255, 1)
+ground_horizon_color = Color(0.607843, 0.681373, 0.784314, 1)
+
+[sub_resource type="Sky" id="Sky_hi364"]
+sky_material = SubResource("ProceduralSkyMaterial_2e745")
+
+[sub_resource type="Environment" id="Environment_755mj"]
+background_mode = 2
+sky = SubResource("Sky_hi364")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brawa"]
+albedo_color = Color(0.294118, 0.392157, 1, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_755mj")
+
+[node name="Terrain" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Terrain"]
+size = Vector3(48, 1, 48)
+
+[node name="Obstacle" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9, 2, 14.2)
+size = Vector3(7, 3, 3)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Obstacle2" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9, 2, 0.2)
+size = Vector3(7, 3, 3)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Obstacle3" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1, 2, 14.2)
+size = Vector3(7, 3, 3)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Obstacle4" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9, 2, -13.8)
+size = Vector3(7, 3, 3)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Obstacle5" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.1, 2, -11.8)
+size = Vector3(7, 3, 3)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Player" parent="." instance=ExtResource("1_5vv7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
