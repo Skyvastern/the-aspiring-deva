@@ -10,4 +10,4 @@ class_name NPC
 	"onyx",
 	"nova",
 	"shimmer"
-) var voice: String = "echo"
+) var voice: String = "onyx"
