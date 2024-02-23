@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl6ccnf5ec1qq"]
+[gd_scene load_steps=8 format=3 uid="uid://dl6ccnf5ec1qq"]
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
 
@@ -17,10 +17,13 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
 size = Vector3(1, 2, 1)
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("interact")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xxy8"]
+size = Vector3(10, 3, 10)
+
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("observation_area")]
 script = ExtResource("1_hyvfc")
-interact = NodePath("")
 background_story = "You are a helpful assistant."
+observation_area = NodePath("ObservationArea")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -37,3 +40,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6to1v")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_5wxcb")
+
+[node name="ObservationArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObservationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_0xxy8")

@@ -35,3 +35,21 @@ func load_scene(current_scene: Node, parent_scene: Node, new_scene_path: String,
 		new_scene.callv(fn_name, fn_args)
 	
 	current_scene.queue_free()
+
+
+func get_angle_to_rotate_for_slerp(t: Transform3D, target: Vector3) -> float:
+	var towards: Vector3 = t.origin.direction_to(target)
+	return Vector3.FORWARD.signed_angle_to(towards, Vector3.UP)
+
+
+func rotate_slerp(t: Transform3D, angle: float, slerp_amount: float) -> Basis:
+	# Current Quat
+	var basis: Basis = t.basis.orthonormalized()
+	var start_quat: Quaternion = basis.get_rotation_quaternion()
+	
+	# Target Quat
+	var target_quat: Quaternion = Quaternion(Vector3.UP, angle)
+	
+	# Interpolate
+	var result_quat: Quaternion = start_quat.slerp(target_quat, slerp_amount)
+	return Basis(result_quat)

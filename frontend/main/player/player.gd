@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 @export var camera_3d: Camera3D
 @export var mouse_senstivity: float = 0.005
