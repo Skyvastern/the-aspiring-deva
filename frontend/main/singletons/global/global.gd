@@ -3,6 +3,7 @@ extends Node
 const WAV_PATH: String = "user://audio.wav"
 
 var main: Main
+var player: Player
 var active_npc: NPC
 
 func save_file_to_disk(binary_data: PackedByteArray, output_path: String) -> void:
@@ -53,3 +54,10 @@ func rotate_slerp(t: Transform3D, angle: float, slerp_amount: float) -> Basis:
 	# Interpolate
 	var result_quat: Quaternion = start_quat.slerp(target_quat, slerp_amount)
 	return Basis(result_quat)
+
+
+func create_ray(node3d: Node3D, from: Vector3, to: Vector3, collision_mask: int, exclude = []) -> Dictionary:
+	var space_state: PhysicsDirectSpaceState3D = node3d.get_world_3d().direct_space_state
+	var query_params: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from, to, collision_mask, exclude)
+	var result: Dictionary = space_state.intersect_ray(query_params)
+	return result

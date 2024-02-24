@@ -13,8 +13,9 @@ class_name NPC
 ) var voice: String = "onyx"
 
 @export_group("References")
-@export var interact: NPC_Interact
+@export var interact_scene: PackedScene
 @export var observation_area: Area3D
+var interact: NPC_Interact
 
 var target: Node3D = null
 @onready var target_y_rotation: float = global_rotation.y
@@ -24,6 +25,7 @@ var target: Node3D = null
 func _ready() -> void:
 	observation_area.body_entered.connect(_on_observ_area_body_entered)
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
+	Global.player.interactable.connect(_on_player_interactable)
 
 
 func _physics_process(_delta: float) -> void:
@@ -83,3 +85,13 @@ func _on_observ_area_body_entered(body: Node3D) -> void:
 func _on_observ_area_body_exited(body: Node3D) -> void:
 	if body is Player:
 		target = null
+
+
+func _on_player_interactable(interactable: bool) -> void:
+	if interactable:
+		interact = interact_scene.instantiate()
+		interact.npc = self
+		add_child(interact)
+	else:
+		if is_instance_valid(interact):
+			interact.queue_free()

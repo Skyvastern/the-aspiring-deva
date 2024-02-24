@@ -6,6 +6,15 @@ class_name Player
 @export var speed = 10.0
 @export var jump_velocity = 25
 @export var gravity: float = 100
+@export var npc_detection_range: float = 3
+
+const NPC_LAYER = 4
+var is_interaction_available: bool = false
+signal interactable
+
+
+func _enter_tree() -> void:
+	Global.player = self
 
 
 func _ready() -> void:
@@ -33,9 +42,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	move_and_slide()
+	
+	# Check for NPCs
+	_check_for_npcs()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_senstivity)
 		camera_3d.rotate_x(-event.relative.y * mouse_senstivity)
@@ -44,3 +56,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			-90,
 			90
 		)
+
+
+func _check_for_npcs() -> void:
+	var from: Vector3 = camera_3d.global_position
+	var to: Vector3 = from + (-camera_3d.global_transform.basis.z * npc_detection_range)
+	var result: Dictionary = Global.create_ray(self, from, to, NPC_LAYER)
+	
+	if result.is_empty() == false:
+		if is_interaction_available == false:
+			is_interaction_available = true
+			interactable.emit(true)
+	else:
+		if is_interaction_available:
+			is_interaction_available = false
+			interactable.emit(false)
