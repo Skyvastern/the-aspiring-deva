@@ -1,6 +1,7 @@
 extends Control
 class_name PauseMenu
 
+signal game_paused
 @export var resume_btn: Button
 @export var exit_btn: Button
 
@@ -20,6 +21,7 @@ func _process(_delta: float) -> void:
 
 func _on_visibility_changed() -> void:
 	get_tree().paused = visible
+	game_paused.emit(visible)
 	
 	if visible:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
