@@ -22,11 +22,6 @@ func _process(_delta: float) -> void:
 func _on_visibility_changed() -> void:
 	get_tree().paused = visible
 	game_paused.emit(visible)
-	
-	if visible:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _on_resume_btn_pressed() -> void:

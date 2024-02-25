@@ -12,9 +12,29 @@ const NPC_LAYER = 4
 var is_interaction_available: bool = false
 signal interactable
 
+var is_controllable: bool = false:
+	get:
+		return is_controllable
+	set(value):
+		is_controllable = value
+		
+		if is_controllable:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 
 func _enter_tree() -> void:
 	Global.player = self
+
+
+func _ready() -> void:
+	is_controllable = true
+	
+	Global.main.pause_menu.game_paused.connect(
+		func(paused: bool):
+			is_controllable = !paused
+	)
 
 
 func _physics_process(delta: float) -> void:
@@ -24,15 +44,15 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
+		velocity.y = jump_velocity * int(is_controllable)
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir: Vector2 = Input.get_vector("left", "right", "forward", "backward")
 	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * speed * int(is_controllable)
+		velocity.z = direction.z * speed * int(is_controllable)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
@@ -44,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and is_controllable:
 		rotate_y(-event.relative.x * mouse_senstivity)
 		camera_3d.rotate_x(-event.relative.y * mouse_senstivity)
 		camera_3d.rotation_degrees.x = clampf(
