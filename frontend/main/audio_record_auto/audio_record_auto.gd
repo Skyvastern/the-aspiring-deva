@@ -3,6 +3,7 @@ class_name AudioRecordAuto
 
 @export_group("UI")
 @export var stop_btn: Button
+@export var close_btn: Button
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -15,6 +16,7 @@ var recording: AudioStreamWAV
 
 func _ready() -> void:
 	stop_btn.pressed.connect(_on_stop_btn_pressed)
+	close_btn.pressed.connect(_on_close_btn_pressed)
 	
 	_setup()
 	_start_recording()
@@ -67,3 +69,8 @@ func _get_audio_base64() -> String:
 	
 	# Return base64 audio data
 	return Marshalls.raw_to_base64(audio_data)
+
+
+func _on_close_btn_pressed() -> void:
+	Global.active_npc.interact.close_interaction_screen()
+	queue_free()

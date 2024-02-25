@@ -5,6 +5,7 @@ class_name AudioRecord
 @export var text_edit: TextEdit
 @export var record_btn: Button
 @export var ask_btn: Button
+@export var close_btn: Button
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -17,6 +18,7 @@ var recording: AudioStreamWAV
 
 
 func _ready() -> void:
+	close_btn.pressed.connect(_on_closed_btn_pressed)
 	record_btn.pressed.connect(_on_record_btn_pressed)
 	ask_btn.pressed.connect(_on_ask_btn_pressed)
 	speech_to_text_api.processed.connect(_on_speech_to_text_processed)
@@ -38,7 +40,7 @@ func _on_record_btn_pressed() -> void:
 		var base64: String = _get_audio_base64()
 		speech_to_text_api.make_request(
 			base64,
-			Global.active_npc.interact.get_history()
+			Global.active_npc.get_history()
 		)
 	else:
 		effect.set_recording_active(true)
@@ -95,3 +97,8 @@ func _on_ask_btn_pressed() -> void:
 			}
 		]
 	)
+
+
+func _on_closed_btn_pressed() -> void:
+	Global.active_npc.interact.close_interaction_screen()
+	queue_free()

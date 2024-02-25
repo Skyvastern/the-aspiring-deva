@@ -1,8 +1,6 @@
 extends Node
 class_name NPC_Interact
 
-var _history: Array
-
 @export var npc: NPC
 @export var screens: Node
 @export var selection_ui: Control
@@ -10,18 +8,18 @@ var _history: Array
 @export var audio_record_auto_scene: PackedScene
 
 
-func _ready() -> void:
-	_setup()
-
-
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("close_interaction"):
-		queue_free()
-	
 	if screens.get_child_count() > 0:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		open_interaction_screen("quick")
+	elif Input.is_action_just_pressed("interact_detailed"):
+		open_interaction_screen("detailed")
+
+
+func open_interaction_screen(choice: String) -> void:
+	if choice == "quick":
 		selection_ui.visible = false
 		
 		var audio_record_auto: AudioRecordAuto = audio_record_auto_scene.instantiate()
@@ -29,7 +27,7 @@ func _process(_delta: float) -> void:
 		
 		Global.active_npc = npc
 	
-	elif Input.is_action_just_pressed("interact_detailed"):
+	elif choice == "detailed":
 		selection_ui.visible = false
 		
 		var audio_record: AudioRecord = audio_record_scene.instantiate()
@@ -38,26 +36,6 @@ func _process(_delta: float) -> void:
 		Global.active_npc = npc
 
 
-func _setup() -> void:
-	_history.append({
-		"role": "system",
-		"content": npc.background_story
-	})
-
-
-func get_history() -> Array:
-	return _history
-
-
-func add_player_message(message: String) -> void:
-	_history.append({
-		"role": "user",
-		"content": message
-	})
-
-
-func add_npc_message(message: String) -> void:
-	_history.append({
-		"role": "assistant",
-		"content": message
-	})
+func close_interaction_screen() -> void:
+	selection_ui.visible = true
+	Global.active_npc = null

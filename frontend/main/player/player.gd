@@ -29,12 +29,10 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	is_controllable = true
+	Global.main.pause_menu.game_paused.connect(_on_game_paused)
+	Global.active_npc_updated.connect(_on_active_npc_updated)
 	
-	Global.main.pause_menu.game_paused.connect(
-		func(paused: bool):
-			is_controllable = !paused
-	)
+	is_controllable = true
 
 
 func _physics_process(delta: float) -> void:
@@ -82,8 +80,24 @@ func _check_for_npcs() -> void:
 	if result.is_empty() == false:
 		if is_interaction_available == false:
 			is_interaction_available = true
-			interactable.emit(true)
+			interactable.emit(true, result["collider"])
 	else:
 		if is_interaction_available:
 			is_interaction_available = false
-			interactable.emit(false)
+			interactable.emit(false, null)
+
+
+func _on_game_paused(paused: bool) -> void:
+	if paused:
+		is_controllable = false
+	elif paused == false and Global.active_npc != null:
+		is_controllable = false
+	else:
+		is_controllable = true
+
+
+func _on_active_npc_updated(npc: NPC) -> void:
+	if npc == null:
+		is_controllable = true
+	else:
+		is_controllable = false

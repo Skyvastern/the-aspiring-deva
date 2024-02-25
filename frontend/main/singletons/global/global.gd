@@ -4,7 +4,19 @@ const WAV_PATH: String = "user://audio.wav"
 
 var main: Main
 var player: Player
-var active_npc: NPC
+
+signal active_npc_updated
+var active_npc: NPC:
+	get:
+		return active_npc
+	set(value):
+		active_npc = value
+		
+		if active_npc == null:
+			active_npc_updated.emit(active_npc)
+		else:
+			active_npc_updated.emit(active_npc)
+
 
 func save_file_to_disk(binary_data: PackedByteArray, output_path: String) -> void:
 	var file = FileAccess.open(output_path, FileAccess.WRITE)

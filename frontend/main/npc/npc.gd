@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name NPC
 
+var _history: Array
+
 @export_group("Data")
 @export_multiline var background_story: String
 @export_enum(
@@ -26,6 +28,33 @@ func _ready() -> void:
 	observation_area.body_entered.connect(_on_observ_area_body_entered)
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
 	Global.player.interactable.connect(_on_player_interactable)
+	
+	_setup()
+
+
+func _setup() -> void:
+	_history.append({
+		"role": "system",
+		"content": background_story
+	})
+
+
+func get_history() -> Array:
+	return _history
+
+
+func add_player_message(message: String) -> void:
+	_history.append({
+		"role": "user",
+		"content": message
+	})
+
+
+func add_npc_message(message: String) -> void:
+	_history.append({
+		"role": "assistant",
+		"content": message
+	})
 
 
 func _physics_process(_delta: float) -> void:
@@ -87,8 +116,8 @@ func _on_observ_area_body_exited(body: Node3D) -> void:
 		target = null
 
 
-func _on_player_interactable(interactable: bool) -> void:
-	if interactable:
+func _on_player_interactable(interactable: bool, collider: Node) -> void:
+	if interactable and collider == self:
 		interact = interact_scene.instantiate()
 		interact.npc = self
 		add_child(interact)
