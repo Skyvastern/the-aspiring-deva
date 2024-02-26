@@ -1,47 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b36061vqcjy15"]
+[gd_scene load_steps=6 format=3 uid="uid://b36061vqcjy15"]
 
 [ext_resource type="Script" path="res://main/audio_record_auto/audio_record_auto.gd" id="1_n35vx"]
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="2_6i6lb"]
 [ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="3_o1e45"]
+[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="4_pwipj"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_lrvel"]
-
-[sub_resource type="Animation" id="Animation_x1fyh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ccvp5"]
-resource_name = "blink"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlu7o"]
-_data = {
-"RESET": SubResource("Animation_x1fyh"),
-"blink": SubResource("Animation_ccvp5")
-}
 
 [node name="AudioRecordAuto" type="Control" node_paths=PackedStringArray("stop_btn", "close_btn", "audio_record", "audio_player")]
 layout_mode = 3
@@ -120,26 +84,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 
-[node name="Status" type="Label" parent="Panel"]
+[node name="Status" parent="Panel" instance=ExtResource("4_pwipj")]
 layout_mode = 1
 anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -58.0
-offset_top = -96.0
+offset_top = -97.0
 offset_right = 58.0
-offset_bottom = -62.0
+offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
 text = "Recording"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Status"]
-libraries = {
-"": SubResource("AnimationLibrary_jlu7o")
-}
-autoplay = "blink"
