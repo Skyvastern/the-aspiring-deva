@@ -1,31 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://df3uq6eo0a66j"]
+[gd_scene load_steps=6 format=3 uid="uid://df3uq6eo0a66j"]
 
 [ext_resource type="Script" path="res://main/npc/npc_speak_auto/npc_speak_auto.gd" id="1_quxc4"]
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_uegw7"]
 [ext_resource type="PackedScene" uid="uid://bp020r0i1tv8m" path="res://main/api/speech_to_speech_api/speech_to_speech_api.tscn" id="2_4gpr3"]
+[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="4_20nxj"]
+[ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="5_r5iro"]
 
-[node name="NPC Speak Auto" type="Node" node_paths=PackedStringArray("status", "audio_player", "subtitles_label", "continue_btn", "close_btn", "speech_to_speech_api")]
+[node name="NPC Speak Auto" type="Control" node_paths=PackedStringArray("status", "loader", "audio_player", "subtitles_label", "continue_btn", "close_btn", "speech_to_speech_api")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uegw7")
 script = ExtResource("1_quxc4")
-status = NodePath("Status")
+status = NodePath("Panel/Status")
+loader = NodePath("Panel/Loader")
 audio_player = NodePath("AudioPlayer")
-subtitles_label = NodePath("Subtitles")
-continue_btn = NodePath("ContinueBtn")
-close_btn = NodePath("CloseBtn")
+subtitles_label = NodePath("Panel/Subtitles")
+continue_btn = NodePath("Panel/ContinueBtn")
+close_btn = NodePath("Panel/CloseBtn")
 speech_to_speech_api = NodePath("SpeechToSpeechAPI")
 audio_record_auto_path = "res://main/audio_record_auto/audio_record_auto.tscn"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="ContinueBtn" type="Button" parent="."]
+[node name="SpeechToSpeechAPI" parent="." instance=ExtResource("2_4gpr3")]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -370.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CloseBtn" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_top = -13.0
+offset_right = -25.0
+offset_bottom = 31.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="ContinueBtn" type="Button" parent="Panel"]
 visible = false
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -108.5
-offset_top = -25.0
+offset_top = 66.0
 offset_right = 108.5
-offset_bottom = 25.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -33,58 +71,44 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 30
 text = "Continue"
 
-[node name="Status" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 36
-text = "Processing..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Subtitles" type="Label" parent="."]
+[node name="Subtitles" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -468.0
-offset_top = -84.0
-offset_right = 468.0
-offset_bottom = -58.0
+offset_left = -849.0
+offset_top = -293.0
+offset_right = 849.0
+offset_bottom = -148.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 18
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 21
 autowrap_mode = 3
 
-[node name="CloseBtn" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -112.0
-offset_top = 28.0
-offset_right = -70.0
-offset_bottom = 70.0
-grow_horizontal = 0
-focus_mode = 0
-theme_override_font_sizes/font_size = 24
-text = "X"
+[node name="Status" parent="Panel" instance=ExtResource("4_20nxj")]
+layout_mode = 1
+anchors_preset = 8
+offset_left = -58.0
+offset_top = -47.0
+offset_right = 67.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Processing"
 
-[node name="Description" type="Label" parent="CloseBtn"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 33.0
-text = "Close"
-
-[node name="SpeechToSpeechAPI" parent="." instance=ExtResource("2_4gpr3")]
+[node name="Loader" parent="Panel" instance=ExtResource("5_r5iro")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -11.0
+offset_right = 50.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)

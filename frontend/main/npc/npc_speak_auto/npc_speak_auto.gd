@@ -1,8 +1,9 @@
-extends Node
+extends Control
 class_name NPC_Speak_Auto
 
 @export_group("UI")
 @export var status: Label
+@export var loader: TextureRect
 @export var audio_player: AudioStreamPlayer
 @export var subtitles_label: Label
 @export var continue_btn: Button
@@ -34,6 +35,7 @@ func _on_speech_to_speech_api_processed(json: Dictionary) -> void:
 	
 	# Update UI
 	status.visible = false
+	loader.visible = false
 	continue_btn.visible = true
 	
 	# Set the subtitles
