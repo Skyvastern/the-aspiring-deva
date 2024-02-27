@@ -2,7 +2,9 @@ extends Node
 class_name NPC_Speak
 
 @export_group("UI")
-@export var npc_response: Label
+@export var status: Label
+@export var loader: TextureRect
+@export var subtitles_label: Label
 @export var continue_btn: Button
 @export var close_btn: Button
 
@@ -22,12 +24,11 @@ func _ready() -> void:
 	continue_btn.pressed.connect(_on_continue_btn_pressed)
 	close_btn.pressed.connect(_on_close_btn_pressed)
 	
-	npc_response.text = ""
+	subtitles_label.text = ""
 
 
 func interpret(new_player_message: String) -> void:
 	player_message = new_player_message
-	npc_response.text = "Interpreting..."
 	
 	textgen_api.make_request(
 		player_message,
@@ -39,7 +40,11 @@ func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> voi
 	audio_player.stream = audio_stream
 	audio_player.play()
 	
-	npc_response.text = npc_message
+	subtitles_label.text = npc_message
+	
+	status.visible = false
+	loader.visible = false
+	continue_btn.visible = true
 	
 	Global.active_npc.add_player_message(player_message)
 	Global.active_npc.add_npc_message(npc_message)
