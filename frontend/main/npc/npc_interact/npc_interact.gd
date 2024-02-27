@@ -1,8 +1,8 @@
-extends Node
+extends Control
 class_name NPC_Interact
 
 @export var npc: NPC
-@export var screens: Node
+@export var screens: Control
 @export var selection_ui: Control
 @export var audio_record_scene: PackedScene
 @export var audio_record_auto_scene: PackedScene

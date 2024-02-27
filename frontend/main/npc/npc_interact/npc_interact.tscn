@@ -1,20 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcqh0x5sbp7oq"]
+[gd_scene load_steps=5 format=3 uid="uid://dcqh0x5sbp7oq"]
 
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_5lhsb"]
 [ext_resource type="Script" path="res://main/npc/npc_interact/npc_interact.gd" id="1_fwdf7"]
 [ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_dlpq3"]
 [ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_l4hwy"]
 
-[node name="NPC Interact" type="Node" node_paths=PackedStringArray("screens", "selection_ui")]
+[node name="NPC Interact" type="Control" node_paths=PackedStringArray("screens", "selection_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_5lhsb")
 script = ExtResource("1_fwdf7")
 screens = NodePath("Screens")
 selection_ui = NodePath("Selection")
 audio_record_scene = ExtResource("2_l4hwy")
 audio_record_auto_scene = ExtResource("2_dlpq3")
 
-[node name="Screens" type="Node" parent="."]
+[node name="Screens" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Selection" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
