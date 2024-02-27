@@ -37,86 +37,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Interact Prompt" type="Control" parent="Selection"]
+[node name="Prompts" type="HBoxContainer" parent="Selection"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -31.0
-offset_right = 40.0
-offset_bottom = 9.0
+offset_left = -121.0
+offset_top = 67.0
+offset_right = 121.0
+offset_bottom = 167.0
 grow_horizontal = 2
-grow_vertical = 2
+theme_override_constants/separation = 100
 
-[node name="Panel" type="Panel" parent="Selection/Interact Prompt"]
-layout_mode = 1
-anchors_preset = -1
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Interact Prompt" type="HBoxContainer" parent="Selection/Prompts"]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Selection/Interact Prompt/Panel"]
+[node name="Panel" type="Panel" parent="Selection/Prompts/Interact Prompt"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Selection/Prompts/Interact Prompt/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 50
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Selection/Interact Prompt"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 109.0
-offset_bottom = 31.0
-text = "Interact"
+[node name="Description" type="Label" parent="Selection/Prompts/Interact Prompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Interact (Mic)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Interact Detailed Prompt" type="Control" parent="Selection"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = 28.0
-offset_right = 113.0
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Interact Detailed Prompt" type="HBoxContainer" parent="Selection/Prompts"]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Panel" type="Panel" parent="Selection/Interact Detailed Prompt"]
-layout_mode = 1
-anchors_preset = -1
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" type="Panel" parent="Selection/Prompts/Interact Detailed Prompt"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
 
-[node name="Label" type="Label" parent="Selection/Interact Detailed Prompt/Panel"]
+[node name="Label" type="Label" parent="Selection/Prompts/Interact Detailed Prompt/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 50
 text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Selection/Interact Detailed Prompt"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 109.0
-offset_bottom = 31.0
-text = "Interact Detailed"
+[node name="Description" type="Label" parent="Selection/Prompts/Interact Detailed Prompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Interact (Keyboard)"
+horizontal_alignment = 1
+vertical_alignment = 1
