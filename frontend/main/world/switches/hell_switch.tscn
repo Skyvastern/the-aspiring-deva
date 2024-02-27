@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0trwpdds8xu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n21w0"]
+albedo_color = Color(1, 0.196078, 0.196078, 1)
+
+[node name="HellSwitch" type="CSGCombiner3D"]
+
+[node name="Base" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(0.2, 1, 0.2)
+material = SubResource("StandardMaterial3D_n21w0")
+
+[node name="Top" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(0.3, 0.3, 0.3)
+material = SubResource("StandardMaterial3D_n21w0")
