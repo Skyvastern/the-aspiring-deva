@@ -6,7 +6,7 @@ class_name Player
 @export var speed = 10.0
 @export var jump_velocity = 25
 @export var gravity: float = 100
-@export var npc_detection_range: float = 3
+@export var npc_detection_range: float = 5
 
 const NPC_LAYER = 4
 var is_interaction_available: bool = false
