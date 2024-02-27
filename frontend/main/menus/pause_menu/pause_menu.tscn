@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b71imdt2kchb3"]
+[gd_scene load_steps=3 format=3 uid="uid://b71imdt2kchb3"]
 
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_euhwi"]
 [ext_resource type="Script" path="res://main/menus/pause_menu/pause_menu.gd" id="1_tlltf"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_btn", "exit_btn")]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_euhwi")
 script = ExtResource("1_tlltf")
 resume_btn = NodePath("Buttons/ResumeBtn")
 exit_btn = NodePath("Buttons/ExitBtn")
@@ -21,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.784314)
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
