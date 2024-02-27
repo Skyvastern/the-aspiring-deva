@@ -6,6 +6,8 @@ class_name AudioRecord
 @export var record_btn: Button
 @export var ask_btn: Button
 @export var close_btn: Button
+@export var loader: TextureRect
+@export var status: Label
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -23,9 +25,10 @@ func _ready() -> void:
 	ask_btn.pressed.connect(_on_ask_btn_pressed)
 	speech_to_text_api.processed.connect(_on_speech_to_text_processed)
 	
+	_hide_status()
+	
 	var index: int = AudioServer.get_bus_index("Record")
 	effect = AudioServer.get_bus_effect(index, 0)
-	
 	audio_record.play()
 
 
@@ -34,8 +37,10 @@ func _on_record_btn_pressed() -> void:
 		recording = effect.get_recording()
 		effect.set_recording_active(false)
 		
-		record_btn.text = "Processing..."
+		record_btn.text = "Processing"
 		record_btn.disabled = true
+		
+		_show_status("Processing")
 		
 		var base64: String = _get_audio_base64()
 		speech_to_text_api.make_request(
@@ -48,6 +53,8 @@ func _on_record_btn_pressed() -> void:
 		text_edit.editable = false
 		text_edit.text = "Processing..."
 		record_btn.text = "Stop"
+		
+		_show_status("Recording")
 
 
 func _on_play_btn_pressed() -> void:
@@ -83,6 +90,8 @@ func _on_speech_to_text_processed(json: Dictionary) -> void:
 	text_edit.editable = true
 	record_btn.disabled = false
 	record_btn.text = "Record"
+	
+	_hide_status()
 
 
 func _on_ask_btn_pressed() -> void:
@@ -101,4 +110,16 @@ func _on_ask_btn_pressed() -> void:
 
 func _on_closed_btn_pressed() -> void:
 	Global.active_npc.interact.close_interaction_screen()
+	
+	effect.set_recording_active(false)
 	queue_free()
+
+
+func _show_status(message: String) -> void:
+	status.text = message
+	loader.visible = true
+
+
+func _hide_status() -> void:
+	status.text = ""
+	loader.visible = false

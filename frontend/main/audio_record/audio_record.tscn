@@ -1,22 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctgeu75p213ew"]
+[gd_scene load_steps=7 format=3 uid="uid://ctgeu75p213ew"]
 
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_tjsc4"]
 [ext_resource type="Script" path="res://main/audio_record/audio_record.gd" id="1_w3vpf"]
 [ext_resource type="PackedScene" uid="uid://dbo40ic8y6d5i" path="res://main/api/speech_to_text_api/speech_to_text_api.tscn" id="2_e1hex"]
+[ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="4_x7n5e"]
+[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="5_quc1n"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_rgdxj"]
 
-[node name="AudioRecord" type="Control" node_paths=PackedStringArray("text_edit", "record_btn", "ask_btn", "close_btn", "audio_record", "audio_player", "speech_to_text_api")]
+[node name="AudioRecord" type="Control" node_paths=PackedStringArray("text_edit", "record_btn", "ask_btn", "close_btn", "loader", "status", "audio_record", "audio_player", "speech_to_text_api")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tjsc4")
 script = ExtResource("1_w3vpf")
-text_edit = NodePath("TextEdit")
-record_btn = NodePath("InputBtns/RecordBtn")
-ask_btn = NodePath("InputBtns/AskBtn")
-close_btn = NodePath("CloseBtn")
+text_edit = NodePath("Panel/TextEdit")
+record_btn = NodePath("Panel/InputBtns/RecordBtn")
+ask_btn = NodePath("Panel/InputBtns/AskBtn")
+close_btn = NodePath("Panel/CloseBtn")
+loader = NodePath("Panel/Loader")
+status = NodePath("Panel/Status")
 audio_record = NodePath("AudioRecord")
 audio_player = NodePath("AudioPlayer")
 speech_to_text_api = NodePath("SpeechToTextAPI")
@@ -28,70 +34,102 @@ bus = &"Record"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="SpeechToTextAPI" parent="." instance=ExtResource("2_e1hex")]
+
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -319.0
-offset_top = -97.0
-offset_right = 319.0
-offset_bottom = 97.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -370.0
 grow_horizontal = 2
-grow_vertical = 2
-wrap_mode = 1
+grow_vertical = 0
 
-[node name="InputBtns" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = 122.0
-offset_right = 224.0
-offset_bottom = 172.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-
-[node name="RecordBtn" type="Button" parent="InputBtns"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "Record"
-
-[node name="AskBtn" type="Button" parent="InputBtns"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-theme_override_font_sizes/font_size = 30
-text = "Ask"
-
-[node name="CloseBtn" type="Button" parent="."]
+[node name="CloseBtn" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -112.0
-offset_top = 28.0
-offset_right = -70.0
-offset_bottom = 70.0
+offset_left = -71.0
+offset_top = -13.0
+offset_right = -25.0
+offset_bottom = 31.0
 grow_horizontal = 0
 focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "X"
 
-[node name="Description" type="Label" parent="CloseBtn"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 10.0
-offset_right = 90.0
-offset_bottom = 33.0
-text = "Close"
+[node name="TextEdit" type="TextEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -679.0
+offset_top = -103.0
+offset_right = 479.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+wrap_mode = 1
+caret_blink = true
 
-[node name="SpeechToTextAPI" parent="." instance=ExtResource("2_e1hex")]
+[node name="InputBtns" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 502.0
+offset_top = -103.0
+offset_right = 726.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="RecordBtn" type="Button" parent="Panel/InputBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Record"
+
+[node name="AskBtn" type="Button" parent="Panel/InputBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Ask"
+
+[node name="Loader" parent="Panel" instance=ExtResource("4_x7n5e")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = 76.0
+offset_right = 84.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="Status" parent="Panel" instance=ExtResource("5_quc1n")]
+layout_mode = 1
+anchors_preset = 8
+offset_left = -130.0
+offset_top = 107.0
+offset_right = -14.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Recording"

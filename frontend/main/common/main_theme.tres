@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://15ielt17md1r"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://15ielt17md1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht8tj"]
 bg_color = Color(0.294118, 0.294118, 0.294118, 0.882353)
@@ -45,6 +45,42 @@ bg_color = Color(0, 0, 0, 0.784314)
 border_width_top = 20
 border_color = Color(0, 0, 0, 0.882353)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_saq3c"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.882353)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.431373, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8oao2"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.117647, 0.117647, 0.117647, 0.882353)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.431373, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enirp"]
+content_margin_left = 30.0
+content_margin_top = 30.0
+content_margin_right = 30.0
+content_margin_bottom = 30.0
+bg_color = Color(0.294118, 0.294118, 0.294118, 0.882353)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.431373, 0.490196, 1)
+
 [resource]
 Button/colors/font_hover_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 Button/styles/disabled = SubResource("StyleBoxFlat_ht8tj")
@@ -53,3 +89,9 @@ Button/styles/hover = SubResource("StyleBoxFlat_7lbg1")
 Button/styles/normal = SubResource("StyleBoxFlat_rwfo5")
 Button/styles/pressed = SubResource("StyleBoxFlat_r6pct")
 Panel/styles/panel = SubResource("StyleBoxFlat_i2qax")
+TextEdit/colors/font_selected_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+TextEdit/colors/selection_color = Color(1, 1, 1, 0.882353)
+TextEdit/constants/caret_width = 2
+TextEdit/styles/focus = SubResource("StyleBoxFlat_saq3c")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_8oao2")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_enirp")
