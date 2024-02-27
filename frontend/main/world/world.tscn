@@ -76,6 +76,7 @@ Give response in less than 100 words."
 
 [node name="NPC 2" parent="NPCs" instance=ExtResource("2_sa35n")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0.5, -10)
-background_story = "You are the noble king of Patliputra in the year 300 BCE.
+background_story = "You are the noble queen of Patliputra in the year 300 BCE.
 
 Give response in less than 100 words."
+voice = "nova"
