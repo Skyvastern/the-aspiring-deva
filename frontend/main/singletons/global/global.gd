@@ -73,3 +73,8 @@ func create_ray(node3d: Node3D, from: Vector3, to: Vector3, collision_mask: int,
 	var query_params: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from, to, collision_mask, exclude)
 	var result: Dictionary = space_state.intersect_ray(query_params)
 	return result
+
+
+func clear_child_nodes(parent: Node) -> void:
+	for child in parent.get_children():
+		child.queue_free()

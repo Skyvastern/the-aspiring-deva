@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjnd35v4sh1vl"]
+[gd_scene load_steps=9 format=3 uid="uid://bjnd35v4sh1vl"]
 
 [ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
+[ext_resource type="PackedScene" uid="uid://c2s0th8kkr57s" path="res://main/world/game_manager/game_manager.tscn" id="1_h32pl"]
 [ext_resource type="Environment" uid="uid://befll418cexng" path="res://main/world/main_env.tres" id="1_xp4fg"]
 [ext_resource type="PackedScene" uid="uid://ftcs7g4rxosn" path="res://main/world/switches/heaven_switch.tscn" id="2_4x6a0"]
 [ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_sa35n"]
@@ -13,6 +14,9 @@ albedo_color = Color(0.294118, 0.392157, 1, 1)
 albedo_color = Color(0.294118, 0.392157, 1, 1)
 
 [node name="World" type="Node3D"]
+
+[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent") instance=ExtResource("1_h32pl")]
+npc_parent = NodePath("../NPCs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 0, 0)
@@ -77,9 +81,9 @@ size = Vector3(11, 1, 5)
 material = SubResource("StandardMaterial3D_wtiv6")
 
 [node name="NPCs" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 4)
 
 [node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 4)
 background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
 
 By nature you're a optimistic but a shy person.
