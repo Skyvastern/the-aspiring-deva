@@ -11,6 +11,10 @@ var index: int = -1
 var current_npc: NPC
 
 
+func _enter_tree() -> void:
+	Global.game_manager = self
+
+
 func _ready() -> void:
 	_reset_state()
 	bring_next_npc()
@@ -35,3 +39,13 @@ func bring_next_npc() -> void:
 	current_npc.voice = all_npcs_data[index]["voice"]
 	
 	npc_parent.add_child(current_npc)
+
+
+func decide_fate(heaven: bool) -> void:
+	if heaven:
+		print("NPC goes to heaven!")
+	else:
+		print("NPC goes to hell.")
+	
+	Global.clear_child_nodes(npc_parent)
+	bring_next_npc()
