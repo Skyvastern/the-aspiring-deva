@@ -8,9 +8,9 @@ class_name Player
 @export var gravity: float = 100
 @export var npc_detection_range: float = 5
 
-const NPC_LAYER = 4
-var is_interaction_available: bool = false
+const INTERACTABLE_LAYER = 5
 var interactable_node: Node
+var prev_interactable_node: Node
 
 var is_controllable: bool = false:
 	get:
@@ -57,8 +57,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	# Check for NPCs
-	_check_for_npcs()
+	# Check for Interactable Nodes
+	_check_for_interactable_nodes()
 
 
 func _input(event: InputEvent) -> void:
@@ -72,32 +72,31 @@ func _input(event: InputEvent) -> void:
 		)
 
 
-func _check_for_npcs() -> void:
+func _check_for_interactable_nodes() -> void:
 	var from: Vector3 = camera_3d.global_position
 	var to: Vector3 = from + (-camera_3d.global_transform.basis.z * npc_detection_range)
-	var result: Dictionary = Global.create_ray(self, from, to, NPC_LAYER)
+	var result: Dictionary = Global.create_ray(self, from, to, INTERACTABLE_LAYER)
 	
 	if result.is_empty() == false:
-		if is_interaction_available == false:
-			is_interaction_available = true
-			interactable_node = result["collider"]
+		interactable_node = result["collider"]
+		
+		if interactable_node != prev_interactable_node:
+			if prev_interactable_node and is_instance_valid(prev_interactable_node):
+				if prev_interactable_node.has_method("on_player_not_interactable"):
+					prev_interactable_node.on_player_not_interactable()
 			
 			if interactable_node.has_method("on_player_interactable"):
 				interactable_node.on_player_interactable()
-			else:
-				push_warning(interactable_node.name + " doesn't have method on_player_interactable()")
 			
+			prev_interactable_node = interactable_node
+	
 	else:
-		if is_interaction_available:
-			is_interaction_available = false
+		if interactable_node and is_instance_valid(interactable_node):
+			if interactable_node.has_method("on_player_not_interactable"):
+				interactable_node.on_player_not_interactable()
 			
-			if is_instance_valid(interactable_node):
-				if interactable_node.has_method("on_player_not_interactable"):
-					interactable_node.on_player_not_interactable()
-				else:
-					push_warning(interactable_node.name + " doesn't have method on_player_not_interactable()")
-				
-				interactable_node = null
+			interactable_node = null
+			prev_interactable_node = null
 
 
 func _on_game_paused(paused: bool) -> void:
