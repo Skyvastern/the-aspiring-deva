@@ -10,7 +10,7 @@ class_name Player
 
 const NPC_LAYER = 4
 var is_interaction_available: bool = false
-signal interactable
+var interactable_node: Node
 
 var is_controllable: bool = false:
 	get:
@@ -80,11 +80,24 @@ func _check_for_npcs() -> void:
 	if result.is_empty() == false:
 		if is_interaction_available == false:
 			is_interaction_available = true
-			interactable.emit(true, result["collider"])
+			interactable_node = result["collider"]
+			
+			if interactable_node.has_method("on_player_interactable"):
+				interactable_node.on_player_interactable()
+			else:
+				push_warning(interactable_node.name + " doesn't have method on_player_interactable()")
+			
 	else:
 		if is_interaction_available:
 			is_interaction_available = false
-			interactable.emit(false, null)
+			
+			if is_instance_valid(interactable_node):
+				if interactable_node.has_method("on_player_not_interactable"):
+					interactable_node.on_player_not_interactable()
+				else:
+					push_warning(interactable_node.name + " doesn't have method on_player_not_interactable()")
+				
+				interactable_node = null
 
 
 func _on_game_paused(paused: bool) -> void:

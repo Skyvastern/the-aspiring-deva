@@ -27,7 +27,6 @@ var target: Node3D = null
 func _ready() -> void:
 	observation_area.body_entered.connect(_on_observ_area_body_entered)
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
-	Global.player.interactable.connect(_on_player_interactable)
 	
 	_setup()
 
@@ -116,11 +115,12 @@ func _on_observ_area_body_exited(body: Node3D) -> void:
 		target = null
 
 
-func _on_player_interactable(interactable: bool, collider: Node) -> void:
-	if interactable and collider == self:
-		interact = interact_scene.instantiate()
-		interact.npc = self
-		add_child(interact)
-	else:
-		if is_instance_valid(interact):
-			interact.queue_free()
+func on_player_interactable() -> void:
+	interact = interact_scene.instantiate()
+	interact.npc = self
+	add_child(interact)
+
+
+func on_player_not_interactable() -> void:
+	if is_instance_valid(interact):
+		interact.queue_free()
