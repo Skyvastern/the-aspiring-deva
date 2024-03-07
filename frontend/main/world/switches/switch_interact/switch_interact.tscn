@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq708wlcphg8j"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_mm05j"]
+[ext_resource type="Script" path="res://main/world/switches/switch_interact/switch_interact.gd" id="2_340yw"]
+
+[node name="Switch Interact" type="Control" node_paths=PackedStringArray("description")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_mm05j")
+script = ExtResource("2_340yw")
+description = NodePath("Selection/Prompts/Interact Prompt/Description")
+
+[node name="Selection" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Prompts" type="HBoxContainer" parent="Selection"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_top = 67.0
+offset_right = 121.0
+offset_bottom = 167.0
+grow_horizontal = 2
+theme_override_constants/separation = 100
+
+[node name="Interact Prompt" type="HBoxContainer" parent="Selection/Prompts"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="Selection/Prompts/Interact Prompt"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Selection/Prompts/Interact Prompt/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Selection/Prompts/Interact Prompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -24,6 +24,12 @@ environment = ExtResource("1_xp4fg")
 [node name="Player" parent="." instance=ExtResource("1_5vv7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
 
+[node name="HeavenSwitch" parent="." instance=ExtResource("2_4x6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 8)
+
+[node name="HellSwitch" parent="." instance=ExtResource("3_df7k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 8)
+
 [node name="Terrain" type="CSGCombiner3D" parent="."]
 use_collision = true
 
@@ -69,12 +75,6 @@ material = SubResource("StandardMaterial3D_brawa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 size = Vector3(11, 1, 5)
 material = SubResource("StandardMaterial3D_wtiv6")
-
-[node name="HeavenSwitch" parent="Terrain" instance=ExtResource("2_4x6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 8)
-
-[node name="HellSwitch" parent="Terrain" instance=ExtResource("3_df7k4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 8)
 
 [node name="NPCs" type="Node3D" parent="."]
 
