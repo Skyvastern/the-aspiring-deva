@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl6ccnf5ec1qq"]
+[gd_scene load_steps=10 format=3 uid="uid://dl6ccnf5ec1qq"]
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
 [ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_sti3o"]
+[ext_resource type="PackedScene" uid="uid://ci42qmw5oetrf" path="res://main/npc/components/npc_movement/npc_movement.tscn" id="3_kafhi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_kw8wg"]
 size = Vector3(1, 2, 1)
@@ -21,13 +22,14 @@ size = Vector3(1, 2, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xxy8"]
 size = Vector3(10, 3, 10)
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("observation_area")]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("observation_area", "npc_movement")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_hyvfc")
 background_story = "You are a helpful assistant."
 interact_scene = ExtResource("2_sti3o")
 observation_area = NodePath("ObservationArea")
+npc_movement = NodePath("Components/NPC Movement")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -52,3 +54,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObservationArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_0xxy8")
+
+[node name="Components" type="Node" parent="."]
+
+[node name="NPC Movement" parent="Components" instance=ExtResource("3_kafhi")]

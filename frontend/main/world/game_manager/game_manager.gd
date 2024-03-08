@@ -10,6 +10,10 @@ var index: int = -1
 @export var npc_parent: Node3D
 var current_npc: NPC
 
+@export_group("NPC Waypoints")
+@export var entry_waypoints: Array[Node3D]
+@export var exit_waypoints: Array[Node3D]
+
 
 func _enter_tree() -> void:
 	Global.game_manager = self
@@ -37,6 +41,8 @@ func bring_next_npc() -> void:
 	current_npc = npc_scene.instantiate()
 	current_npc.background_story = all_npcs_data[index]["background_story"]
 	current_npc.voice = all_npcs_data[index]["voice"]
+	current_npc.entry_waypoints = entry_waypoints
+	current_npc.exit_waypoints = exit_waypoints
 	
 	npc_parent.add_child(current_npc)
 

@@ -23,12 +23,18 @@ var target: Node3D = null
 @onready var target_y_rotation: float = global_rotation.y
 @onready var rotate_speed: float = 0.1
 
+@export_group("Waypoints")
+@export var npc_movement: NPC_Movement
+@export var entry_waypoints: Array[Node3D]
+@export var exit_waypoints: Array[Node3D]
+
 
 func _ready() -> void:
 	observation_area.body_entered.connect(_on_observ_area_body_entered)
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
 	
 	_setup()
+	npc_movement.begin_travel(self, entry_waypoints)
 
 
 func _setup() -> void:
