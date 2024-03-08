@@ -34,7 +34,7 @@ func _ready() -> void:
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
 	
 	_setup()
-	npc_movement.begin_travel(self, entry_waypoints)
+	go_through_entry_waypoints()
 
 
 func _setup() -> void:
@@ -42,6 +42,14 @@ func _setup() -> void:
 		"role": "system",
 		"content": background_story
 	})
+
+
+func go_through_entry_waypoints() -> void:
+	npc_movement.begin_travel(self, entry_waypoints)
+
+
+func go_through_exit_waypoints() -> void:
+	npc_movement.begin_travel(self, exit_waypoints)
 
 
 func get_history() -> Array:

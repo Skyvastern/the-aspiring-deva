@@ -40,6 +40,8 @@ func _reset_state() -> void:
 
 
 func begin_travel(new_npc: NPC, new_waypoints: Array[Node3D]) -> void:
+	_reset_state()
+	
 	npc = new_npc
 	waypoints = new_waypoints
 	update_current_waypoint()

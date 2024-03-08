@@ -15,9 +15,10 @@ albedo_color = Color(0.294118, 0.392157, 1, 1)
 
 [node name="World" type="Node3D"]
 
-[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints") instance=ExtResource("1_h32pl")]
+[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints") instance=ExtResource("1_h32pl")]
 npc_parent = NodePath("../NPCs")
 entry_waypoints = [NodePath("../NPCs Entry Waypoints/W1"), NodePath("../NPCs Entry Waypoints/W2"), NodePath("../NPCs Entry Waypoints/W3")]
+exit_waypoints = [NodePath("../NPCs Exit Waypoints/W1")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 0, 0)
@@ -84,21 +85,25 @@ material = SubResource("StandardMaterial3D_wtiv6")
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0.5, -22)
 
-[node name="NPC 1" parent="NPCs" node_paths=PackedStringArray("entry_waypoints") instance=ExtResource("2_sa35n")]
+[node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
 background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
 
 By nature you're a optimistic but a shy person.
 
 Give response in less than 100 words."
-entry_waypoints = [NodePath("../../NPCs Entry Waypoints/W1"), NodePath("../../NPCs Entry Waypoints/W2"), NodePath("../../NPCs Entry Waypoints/W3")]
 
 [node name="NPCs Entry Waypoints" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0.5, -22)
 
 [node name="W1" type="Node3D" parent="NPCs Entry Waypoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0.5, -22)
 
 [node name="W2" type="Node3D" parent="NPCs Entry Waypoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.90735e-06)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -22)
 
 [node name="W3" type="Node3D" parent="NPCs Entry Waypoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -27)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 5)
+
+[node name="NPCs Exit Waypoints" type="Node3D" parent="."]
+
+[node name="W1" type="Node3D" parent="NPCs Exit Waypoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -5)

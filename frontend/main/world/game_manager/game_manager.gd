@@ -41,8 +41,8 @@ func bring_next_npc() -> void:
 	current_npc = npc_scene.instantiate()
 	current_npc.background_story = all_npcs_data[index]["background_story"]
 	current_npc.voice = all_npcs_data[index]["voice"]
-	current_npc.entry_waypoints = entry_waypoints
-	current_npc.exit_waypoints = exit_waypoints
+	current_npc.entry_waypoints = entry_waypoints.duplicate(true)
+	current_npc.exit_waypoints = exit_waypoints.duplicate(true)
 	
 	npc_parent.add_child(current_npc)
 
@@ -52,6 +52,9 @@ func decide_fate(heaven: bool) -> void:
 		print("NPC goes to heaven!")
 	else:
 		print("NPC goes to hell.")
+	
+	current_npc.go_through_exit_waypoints()
+	await get_tree().create_timer(3).timeout
 	
 	Global.clear_child_nodes(npc_parent)
 	bring_next_npc()
