@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbabh0fln5okh"]
+
+[ext_resource type="Environment" uid="uid://befll418cexng" path="res://main/world/main_env.tres" id="1_4s7j5"]
+[ext_resource type="PackedScene" uid="uid://ftcs7g4rxosn" path="res://main/world/switches/heaven_switch.tscn" id="2_yusr2"]
+[ext_resource type="PackedScene" uid="uid://d0trwpdds8xu1" path="res://main/world/switches/hell_switch.tscn" id="3_0s6ij"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brawa"]
+albedo_color = Color(0.294118, 0.392157, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtiv6"]
+albedo_color = Color(0.294118, 0.392157, 1, 1)
+
+[node name="World Yama" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 0, 0)
+light_energy = 0.75
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_4s7j5")
+
+[node name="Terrain" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Ground" type="CSGBox3D" parent="Terrain"]
+size = Vector3(48, 1, 48)
+
+[node name="Wall" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9, 2, -19.3)
+size = Vector3(17, 3, 2)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall2" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, 2, -19.3)
+size = Vector3(17, 3, 2)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall3" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 2, 18.7)
+size = Vector3(41, 3, 2)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall4" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4, 2, -0.299999)
+size = Vector3(2, 3, 36)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall5" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6, 2, -0.299999)
+size = Vector3(2, 3, 36)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall6" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 2, -15.3)
+size = Vector3(2, 3, 6)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Wall7" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 2, -15.3)
+size = Vector3(2, 3, 6)
+material = SubResource("StandardMaterial3D_brawa")
+
+[node name="Platform" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
+size = Vector3(11, 1, 5)
+material = SubResource("StandardMaterial3D_wtiv6")
+
+[node name="HeavenSwitch" parent="." instance=ExtResource("2_yusr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 8)
+
+[node name="HellSwitch" parent="." instance=ExtResource("3_0s6ij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 8)
