@@ -13,7 +13,7 @@ albedo_color = Color(0.294118, 0.392157, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtiv6"]
 albedo_color = Color(0.294118, 0.392157, 1, 1)
 
-[node name="World" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints") instance=ExtResource("1_h32pl")]
 npc_parent = NodePath("../NPCs")
