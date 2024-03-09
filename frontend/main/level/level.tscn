@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjnd35v4sh1vl"]
 
 [ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
-[ext_resource type="PackedScene" uid="uid://c2s0th8kkr57s" path="res://main/world/game_manager/game_manager.tscn" id="1_h32pl"]
-[ext_resource type="PackedScene" uid="uid://bbabh0fln5okh" path="res://main/world/worlds/world_yama.tscn" id="2_cqj72"]
+[ext_resource type="PackedScene" uid="uid://c2s0th8kkr57s" path="res://main/level/game_manager/game_manager.tscn" id="1_h32pl"]
+[ext_resource type="PackedScene" uid="uid://bbabh0fln5okh" path="res://main/level/worlds/world_yama.tscn" id="2_cqj72"]
 [ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_sa35n"]
 
 [node name="Level" type="Node3D"]

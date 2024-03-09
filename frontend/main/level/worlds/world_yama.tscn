@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbabh0fln5okh"]
 
-[ext_resource type="Environment" uid="uid://befll418cexng" path="res://main/world/main_env.tres" id="1_4s7j5"]
-[ext_resource type="PackedScene" uid="uid://ftcs7g4rxosn" path="res://main/world/switches/heaven_switch.tscn" id="2_yusr2"]
-[ext_resource type="PackedScene" uid="uid://d0trwpdds8xu1" path="res://main/world/switches/hell_switch.tscn" id="3_0s6ij"]
+[ext_resource type="Environment" uid="uid://befll418cexng" path="res://main/level/worlds/world_yama_env.tres" id="1_4s7j5"]
+[ext_resource type="PackedScene" uid="uid://ftcs7g4rxosn" path="res://main/level/switches/heaven_switch.tscn" id="2_yusr2"]
+[ext_resource type="PackedScene" uid="uid://d0trwpdds8xu1" path="res://main/level/switches/hell_switch.tscn" id="3_0s6ij"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brawa"]
 albedo_color = Color(0.294118, 0.392157, 1, 1)

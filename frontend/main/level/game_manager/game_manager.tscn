@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2s0th8kkr57s"]
 
-[ext_resource type="Script" path="res://main/world/game_manager/game_manager.gd" id="1_q0l4a"]
+[ext_resource type="Script" path="res://main/level/game_manager/game_manager.gd" id="1_q0l4a"]
 [ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_f0bhy"]
 
 [node name="Game Manager" type="Node"]

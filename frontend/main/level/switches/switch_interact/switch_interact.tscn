@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cq708wlcphg8j"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_mm05j"]
-[ext_resource type="Script" path="res://main/world/switches/switch_interact/switch_interact.gd" id="2_340yw"]
+[ext_resource type="Script" path="res://main/level/switches/switch_interact/switch_interact.gd" id="2_340yw"]
 
 [node name="Switch Interact" type="Control" node_paths=PackedStringArray("description")]
 layout_mode = 3
