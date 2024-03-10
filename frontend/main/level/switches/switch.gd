@@ -1,7 +1,7 @@
 extends CSGCombiner3D
 class_name Switch
 
-@export_enum("Heaven", "Hell") var switch_type: String = "Heaven"
+@export_enum("Yama", "Heaven", "Hell") var switch_type: String = "Heaven"
 @export var switch_interact_scene: PackedScene
 var switch_interact: SwitchInteract
 

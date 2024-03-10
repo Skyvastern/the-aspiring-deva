@@ -81,32 +81,30 @@ func decide_fate(heaven: bool) -> void:
 						1,
 						func():
 							current_npc.go_through_exit_waypoints()
-							
-							start_timer(
-								3,
-								func():
-									Global.flash.flash_in()
-									
-									start_timer(
-										0.5,
-										func():
-											Global.clear_child_nodes(world_parent)
-											
-											var world_yama: Node3D = world_yama_scene.instantiate()
-											world_parent.add_child(world_yama)
-											
-											Global.player.position.y += 0.5
-											Global.clear_child_nodes(npc_parent)
-											
-											start_timer(
-												1,
-												func():
-													Global.flash.flash_out()
-													bring_next_npc()
-											)
-									)
-							)
 					)
+			)
+	)
+
+
+func return_to_yama() -> void:
+	Global.flash.flash_in()
+	
+	start_timer(
+		0.5,
+		func():
+			Global.clear_child_nodes(world_parent)
+			
+			var world_yama: Node3D = world_yama_scene.instantiate()
+			world_parent.add_child(world_yama)
+			
+			Global.clear_child_nodes(npc_parent)
+			Global.player.reset_position_and_look_direction()
+			
+			start_timer(
+				1,
+				func():
+					Global.flash.flash_out()
+					bring_next_npc()
 			)
 	)
 

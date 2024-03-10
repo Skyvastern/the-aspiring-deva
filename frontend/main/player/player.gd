@@ -113,3 +113,9 @@ func _on_active_npc_updated(npc: NPC) -> void:
 		is_controllable = true
 	else:
 		is_controllable = false
+
+
+func reset_position_and_look_direction() -> void:
+	position = Vector3(0, 1.5, 8.75)
+	rotation.y = 0
+	camera_3d.rotation.x = 0
