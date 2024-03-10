@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayyj"]
 albedo_color = Color(0.294118, 0.392157, 1, 1)
 
-[node name="YamaSwitch" type="CSGCombiner3D"]
+[node name="SwitchYama" type="CSGCombiner3D"]
 use_collision = true
 script = ExtResource("1_fqdxl")
 switch_type = "Yama"

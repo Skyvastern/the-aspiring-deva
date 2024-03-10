@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dp5y"]
 albedo_color = Color(0.196078, 1, 0.196078, 1)
 
-[node name="HeavenSwitch" type="CSGCombiner3D"]
+[node name="SwitchHeaven" type="CSGCombiner3D"]
 use_collision = true
 script = ExtResource("1_bx127")
 switch_interact_scene = ExtResource("2_t4300")

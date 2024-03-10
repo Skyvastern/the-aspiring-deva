@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbqi03rr4rnlj"]
 
 [ext_resource type="Environment" uid="uid://d1dxk2ewkcarq" path="res://main/level/worlds/world_hell_env.tres" id="1_4xppp"]
-[ext_resource type="PackedScene" uid="uid://b17roqyqpbknf" path="res://main/level/switches/yama_switch.tscn" id="2_jpci2"]
+[ext_resource type="PackedScene" uid="uid://b17roqyqpbknf" path="res://main/level/switches/switch_yama.tscn" id="2_jpci2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v0em"]
 albedo_color = Color(1, 0.392157, 0.392157, 1)
@@ -37,5 +37,5 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3.5
 size = Vector3(1, 7, 1)
 material = SubResource("StandardMaterial3D_4v0em")
 
-[node name="YamaSwitch" parent="." instance=ExtResource("2_jpci2")]
+[node name="SwitchYama" parent="." instance=ExtResource("2_jpci2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
