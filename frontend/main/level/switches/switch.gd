@@ -8,7 +8,7 @@ var switch_interact: SwitchInteract
 
 func on_player_interactable() -> void:
 	switch_interact = switch_interact_scene.instantiate()
-	switch_interact.setup(switch_type)
+	switch_interact.setup(self)
 	
 	add_child(switch_interact)
 
@@ -16,3 +16,7 @@ func on_player_interactable() -> void:
 func on_player_not_interactable() -> void:
 	if is_instance_valid(switch_interact):
 		switch_interact.queue_free()
+
+
+func disable_further_interaction() -> void:
+	collision_layer = 1

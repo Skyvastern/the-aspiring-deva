@@ -8,6 +8,7 @@ albedo_color = Color(0.294118, 0.392157, 1, 1)
 
 [node name="SwitchYama" type="CSGCombiner3D"]
 use_collision = true
+collision_layer = 8
 script = ExtResource("1_fqdxl")
 switch_type = "Yama"
 switch_interact_scene = ExtResource("2_5ndm4")

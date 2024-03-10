@@ -8,7 +8,7 @@ class_name Player
 @export var gravity: float = 100
 @export var npc_detection_range: float = 5
 
-const INTERACTABLE_LAYER = 5
+const INTERACTABLE_LAYER = 12 # npc(4) + switch(8)
 var interactable_node: Node
 var prev_interactable_node: Node
 
