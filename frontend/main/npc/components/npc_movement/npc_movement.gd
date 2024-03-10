@@ -9,6 +9,9 @@ var waypoints: Array[Node3D]
 var current_waypoint: Node3D
 var index: int = -1
 
+signal npc_started_walking
+signal npc_ended_walking
+
 
 func _ready() -> void:
 	wait_timer.timeout.connect(_on_wait_timer_timeout)
@@ -45,11 +48,15 @@ func begin_travel(new_npc: NPC, new_waypoints: Array[Node3D]) -> void:
 	npc = new_npc
 	waypoints = new_waypoints
 	update_current_waypoint()
+	
+	npc_started_walking.emit()
 
 
 func update_current_waypoint() -> void:
 	if index >= waypoints.size() - 1:
+		npc_ended_walking.emit()
 		print(npc.name + " : Destination reached!")
+		
 		return
 	
 	index += 1

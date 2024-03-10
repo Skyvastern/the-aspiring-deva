@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name NPC
 
 var _history: Array
+var is_npc_walking: bool = false
 
 @export_group("Data")
 @export_multiline var background_story: String
@@ -32,6 +33,8 @@ var target: Node3D = null
 func _ready() -> void:
 	observation_area.body_entered.connect(_on_observ_area_body_entered)
 	observation_area.body_exited.connect(_on_observ_area_body_exited)
+	npc_movement.npc_started_walking.connect(func(): is_npc_walking = true)
+	npc_movement.npc_ended_walking.connect(func(): is_npc_walking = false)
 	
 	_setup()
 	go_through_entry_waypoints()

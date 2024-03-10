@@ -58,7 +58,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Check for Interactable Nodes
-	_check_for_interactable_nodes()
+	if Global.game_manager.can_player_interact():
+		_check_for_interactable_nodes()
+	else:
+		_remove_interaction_prompt()
 
 
 func _input(event: InputEvent) -> void:
@@ -89,14 +92,17 @@ func _check_for_interactable_nodes() -> void:
 				interactable_node.on_player_interactable()
 			
 			prev_interactable_node = interactable_node
-	
 	else:
-		if interactable_node and is_instance_valid(interactable_node):
-			if interactable_node.has_method("on_player_not_interactable"):
-				interactable_node.on_player_not_interactable()
-			
-			interactable_node = null
-			prev_interactable_node = null
+		_remove_interaction_prompt()
+
+
+func _remove_interaction_prompt() -> void:
+	if interactable_node and is_instance_valid(interactable_node):
+		if interactable_node.has_method("on_player_not_interactable"):
+			interactable_node.on_player_not_interactable()
+		
+		interactable_node = null
+		prev_interactable_node = null
 
 
 func _on_game_paused(paused: bool) -> void:
