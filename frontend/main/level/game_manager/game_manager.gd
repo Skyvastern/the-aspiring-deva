@@ -14,12 +14,22 @@ var current_npc: NPC
 @export var entry_waypoints: Array[Node3D]
 @export var exit_waypoints: Array[Node3D]
 
+@export_group("World Transition")
+@export var world_parent: Node3D
+@export var world_yama_scene: PackedScene
+@export var world_heaven_scene: PackedScene
+@export var world_hell_scene: PackedScene
+@export var timer: Timer
+var timer_callback: Callable
+
 
 func _enter_tree() -> void:
 	Global.game_manager = self
 
 
 func _ready() -> void:
+	timer.timeout.connect(_on_timer_timeout)
+	
 	_reset_state()
 	bring_next_npc()
 
@@ -48,13 +58,66 @@ func bring_next_npc() -> void:
 
 
 func decide_fate(heaven: bool) -> void:
-	if heaven:
-		print("NPC goes to heaven!")
-	else:
-		print("NPC goes to hell.")
+	Global.flash.flash_in()
 	
-	current_npc.go_through_exit_waypoints()
-	await get_tree().create_timer(3).timeout
-	
-	Global.clear_child_nodes(npc_parent)
-	bring_next_npc()
+	start_timer(
+		0.5,
+		func():
+			Global.clear_child_nodes(world_parent)
+			
+			if heaven:
+				var world_heaven: Node3D = world_heaven_scene.instantiate()
+				world_parent.add_child(world_heaven)
+			else:
+				var world_hell: Node3D = world_hell_scene.instantiate()
+				world_parent.add_child(world_hell)
+			
+			start_timer(
+				1,
+				func():
+					Global.flash.flash_out()
+					
+					start_timer(
+						1,
+						func():
+							current_npc.go_through_exit_waypoints()
+							
+							start_timer(
+								3,
+								func():
+									Global.flash.flash_in()
+									
+									start_timer(
+										0.5,
+										func():
+											Global.clear_child_nodes(world_parent)
+											
+											var world_yama: Node3D = world_yama_scene.instantiate()
+											world_parent.add_child(world_yama)
+											
+											Global.player.position.y += 0.5
+											Global.clear_child_nodes(npc_parent)
+											
+											start_timer(
+												1,
+												func():
+													Global.flash.flash_out()
+													bring_next_npc()
+											)
+									)
+							)
+					)
+			)
+	)
+
+
+# NOTE: Not using get_tree().create_timer().timeout as it keeps running when tree is paused
+func start_timer(wait_time: float, callback: Callable) -> void:
+	timer.wait_time = wait_time
+	timer_callback = callback
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	if timer_callback:
+		timer_callback.call()

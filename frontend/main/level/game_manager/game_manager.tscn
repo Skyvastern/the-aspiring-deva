@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2s0th8kkr57s"]
+[gd_scene load_steps=6 format=3 uid="uid://c2s0th8kkr57s"]
 
 [ext_resource type="Script" path="res://main/level/game_manager/game_manager.gd" id="1_q0l4a"]
 [ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_f0bhy"]
+[ext_resource type="PackedScene" uid="uid://bbabh0fln5okh" path="res://main/level/worlds/world_yama.tscn" id="3_ev07f"]
+[ext_resource type="PackedScene" uid="uid://dhbbe46duivvr" path="res://main/level/worlds/world_heaven.tscn" id="4_bvngb"]
+[ext_resource type="PackedScene" uid="uid://cbqi03rr4rnlj" path="res://main/level/worlds/world_hell.tscn" id="5_xhblc"]
 
-[node name="Game Manager" type="Node"]
+[node name="Game Manager" type="Node" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_q0l4a")
 all_npcs_data = Array[Dictionary]([{
 "background_story": "A wise man from the land of wisdom, died a natural death at the age of 98..",
@@ -13,3 +16,10 @@ all_npcs_data = Array[Dictionary]([{
 "voice": "echo"
 }])
 npc_scene = ExtResource("2_f0bhy")
+world_yama_scene = ExtResource("3_ev07f")
+world_heaven_scene = ExtResource("4_bvngb")
+world_hell_scene = ExtResource("5_xhblc")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

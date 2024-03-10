@@ -7,12 +7,15 @@
 
 [node name="Level" type="Node3D"]
 
-[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints") instance=ExtResource("1_h32pl")]
+[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints", "world_parent") instance=ExtResource("1_h32pl")]
 npc_parent = NodePath("../NPCs")
 entry_waypoints = [NodePath("../NPCs Entry Waypoints/W1"), NodePath("../NPCs Entry Waypoints/W2"), NodePath("../NPCs Entry Waypoints/W3")]
 exit_waypoints = [NodePath("../NPCs Exit Waypoints/W1")]
+world_parent = NodePath("../World Parent")
 
-[node name="World Yama" parent="." instance=ExtResource("2_cqj72")]
+[node name="World Parent" type="Node3D" parent="."]
+
+[node name="World Yama" parent="World Parent" instance=ExtResource("2_cqj72")]
 
 [node name="Player" parent="." instance=ExtResource("1_5vv7m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
