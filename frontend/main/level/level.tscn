@@ -9,7 +9,7 @@
 
 [node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints", "world_parent") instance=ExtResource("1_h32pl")]
 npc_parent = NodePath("../NPCs")
-entry_waypoints = [NodePath("../NPCs Entry Waypoints/W1"), NodePath("../NPCs Entry Waypoints/W2"), NodePath("../NPCs Entry Waypoints/W3")]
+entry_waypoints = [NodePath("../NPCs Entry Waypoints/W1"), NodePath("../NPCs Entry Waypoints/W2")]
 exit_waypoints = [NodePath("../NPCs Exit Waypoints/W1")]
 world_parent = NodePath("../World Parent")
 
@@ -21,7 +21,7 @@ world_parent = NodePath("../World Parent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
 
 [node name="NPCs" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0.5, -22)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0.5, -10)
 
 [node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
 background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
@@ -33,12 +33,9 @@ Give response in less than 100 words."
 [node name="NPCs Entry Waypoints" type="Node3D" parent="."]
 
 [node name="W1" type="Node3D" parent="NPCs Entry Waypoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0.5, -22)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -10)
 
 [node name="W2" type="Node3D" parent="NPCs Entry Waypoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -22)
-
-[node name="W3" type="Node3D" parent="NPCs Entry Waypoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 5)
 
 [node name="NPCs Exit Waypoints" type="Node3D" parent="."]
