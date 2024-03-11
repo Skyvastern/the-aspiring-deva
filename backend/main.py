@@ -2,8 +2,9 @@ import uvicorn
 import ffmpeg
 import os
 import base64
+import json
 from fastapi import FastAPI, HTTPException, Response
-from models import TextToSpeechInput, AudioInput, ChatInput
+from models import TextToSpeechInput, AudioInput, ChatInput, CharactersInstruction
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -172,6 +173,27 @@ async def speech_to_speech(audio_input: AudioInput):
     except Exception as e:
         print("Error: ", e)
         raise HTTPException(status_code=400, detail=f"Error: {e}")
+
+
+
+@app.post("/get-characters/")
+async def get_characters(characters_instruction: CharactersInstruction):
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo-0125",
+            response_format={ "type": "json_object" },
+            messages=[{
+                "role": "system",
+                "content": characters_instruction.instructions
+            }]
+        )
+        
+        response_message = response.choices[0].message.content
+        return json.loads(response_message)
+    
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error: {e}")
+
 
 
 if __name__ == "__main__":

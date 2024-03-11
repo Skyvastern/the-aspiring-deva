@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://nibq83fmhugb"]
+
+[ext_resource type="PackedScene" uid="uid://de3xfgs87413q" path="res://main/api/get_characters_api/get_characters_api.tscn" id="1_13bx6"]
+[ext_resource type="Script" path="res://main/menus/get_characters_data_menu/get_characters_data_menu.gd" id="1_bndo5"]
+
+[node name="Get Characters Data Menu" type="Control" node_paths=PackedStringArray("get_characters_api")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bndo5")
+instructions = "I (the user) am a aspiring deva working under Yamaraj (the God of Death).
+
+You (ChatGPT) are gonna be a human who has come to the realm of Yama after his/her death.
+
+My (the user) job is to assess you on your life by asking questions. In the end, I will judge whether you go to Heaven or you go to Hell.
+
+You (ChatGPT) give responses in less than or equal to 100 words.
+
+You (ChatGPT) only give conversation's response (nothing else).
+
+
+You have to generate details of 10 individuals (5 good people and 5 bad people) in JSON format, with the following information -
+
+{
+name: String
+age: int
+background_story: String (0-256 characters, and also mention the cause of your death)
+voice: String (\"onyx\" (male), \"echo\" (male), \"nova\" (female), \"fable\" (female))
+nature: {\"truthfulness\": int (0-10), \"friendliness\": int (0-10), \"talkative\": int (0-10)}
+}
+
+Above is the format for each character. So give the final response like this -
+
+{characters: [{}, {}, {} ... ]}"
+get_characters_api = NodePath("GetCharactersAPI")
+
+[node name="GetCharactersAPI" parent="." instance=ExtResource("1_13bx6")]

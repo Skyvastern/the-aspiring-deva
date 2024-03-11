@@ -15,3 +15,7 @@ class AudioInput(BaseModel):
 class ChatInput(BaseModel):
     player_message: str
     history: list[dict]
+
+
+class CharactersInstruction(BaseModel):
+    instructions: str
