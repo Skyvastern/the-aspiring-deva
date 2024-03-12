@@ -29,7 +29,7 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
-	Global.main.pause_menu.game_paused.connect(_on_game_paused)
+	Global.level.pause_menu.game_paused.connect(_on_game_paused)
 	Global.active_npc_updated.connect(_on_active_npc_updated)
 	
 	is_controllable = true
