@@ -31,11 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0.5, -10)
 
 [node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
-background_story = "You are a farmer living in the outskirts of Patliputra in the year 300 BCE. You are someone who hasn't see many travellers in your life.
-
-By nature you're a optimistic but a shy person.
-
-Give response in less than 100 words."
 
 [node name="NPCs Entry Waypoints" type="Node3D" parent="."]
 

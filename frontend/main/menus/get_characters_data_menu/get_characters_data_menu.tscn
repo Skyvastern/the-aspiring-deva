@@ -14,13 +14,13 @@ grow_vertical = 2
 script = ExtResource("1_bndo5")
 instructions = "I (the user) am a aspiring deva working under Yamaraj (the God of Death).
 
-You (ChatGPT) are gonna be a human who has come to the realm of Yama after his/her death.
+You (AI) are gonna be a human who has come to the realm of Yama after his/her death.
 
 My (the user) job is to assess you on your life by asking questions. In the end, I will judge whether you go to Heaven or you go to Hell.
 
-You (ChatGPT) give responses in less than or equal to 100 words.
+You (AI) give responses in less than or equal to 100 words.
 
-You (ChatGPT) only give conversation's response (nothing else).
+You (AI) only give conversation's response (nothing else).
 
 
 You have to generate details of 10 individuals (5 good people and 5 bad people) in JSON format, with the following information -

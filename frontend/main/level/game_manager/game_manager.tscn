@@ -8,13 +8,13 @@
 
 [node name="Game Manager" type="Node" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_q0l4a")
-all_npcs_data = Array[Dictionary]([{
+all_npcs_data = [{
 "background_story": "A wise man from the land of wisdom, died a natural death at the age of 98..",
 "voice": "onyx"
 }, {
 "background_story": "A criminal who always lied in his life, and died in car chase while escaping the police.",
 "voice": "echo"
-}])
+}]
 npc_scene = ExtResource("2_f0bhy")
 world_yama_scene = ExtResource("3_ev07f")
 world_heaven_scene = ExtResource("4_bvngb")

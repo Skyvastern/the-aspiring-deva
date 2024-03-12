@@ -28,7 +28,8 @@ func _ready() -> void:
 
 
 func start(npcs_data: Array) -> void:
-	all_npcs_data = npcs_data
+	all_npcs_data = npcs_data.duplicate(true)
+	all_npcs_data.shuffle()
 	
 	_reset_state()
 	bring_next_npc()
@@ -49,8 +50,7 @@ func bring_next_npc() -> void:
 	index += 1
 	
 	current_npc = npc_scene.instantiate()
-	current_npc.background_story = all_npcs_data[index]["background_story"]
-	current_npc.voice = all_npcs_data[index]["voice"]
+	current_npc.setup(all_npcs_data[index])
 	current_npc.entry_waypoints = entry_waypoints.duplicate(true)
 	current_npc.exit_waypoints = exit_waypoints.duplicate(true)
 	

@@ -5,7 +5,8 @@ var _history: Array
 var is_npc_walking: bool = false
 
 @export_group("Data")
-@export_multiline var background_story: String
+@export_multiline var instruction: String
+@export_multiline var details_format: String
 @export_enum(
 	"alloy",
 	"echo",
@@ -36,15 +37,25 @@ func _ready() -> void:
 	npc_movement.npc_started_walking.connect(func(): is_npc_walking = true)
 	npc_movement.npc_ended_walking.connect(func(): is_npc_walking = false)
 	
-	_setup()
 	go_through_entry_waypoints()
 
 
-func _setup() -> void:
-	_history.append({
-		"role": "system",
-		"content": background_story
-	})
+func setup(data: Dictionary) -> void:
+	voice = data["voice"]
+	
+	var details: String = details_format % [
+		data["name"],
+		data["age"],
+		data["background_story"],
+		data["nature"]["truthfulness"],
+		data["nature"]["friendliness"],
+		data["nature"]["talkative"]
+	]
+	
+	_history.append_array([
+		{"role": "system", "content": instruction},
+		{"role": "system", "content": details}
+	])
 
 
 func go_through_entry_waypoints() -> void:
