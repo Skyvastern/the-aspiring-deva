@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dgcyu7c48xi44" path="res://main/player/hud/hud.tscn" id="6_b3u6r"]
 [ext_resource type="PackedScene" uid="uid://b71imdt2kchb3" path="res://main/menus/pause_menu/pause_menu.tscn" id="7_05rtv"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("pause_menu")]
+[node name="Level" type="Node" node_paths=PackedStringArray("game_manager", "pause_menu")]
 script = ExtResource("1_t7ujc")
+game_manager = NodePath("Game Manager")
 pause_menu = NodePath("Menus/PauseMenu")
 
 [node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints", "world_parent") instance=ExtResource("1_h32pl")]

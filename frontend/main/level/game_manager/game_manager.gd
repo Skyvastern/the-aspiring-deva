@@ -2,7 +2,7 @@ extends Node
 class_name GameManager
 
 @export_group("Data")
-@export var all_npcs_data: Array[Dictionary]
+@export var all_npcs_data: Array
 var index: int = -1
 
 @export_group("References")
@@ -23,12 +23,12 @@ var current_npc: NPC
 var timer_callback: Callable
 
 
-func _enter_tree() -> void:
-	Global.game_manager = self
-
-
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
+
+
+func start(npcs_data: Array) -> void:
+	all_npcs_data = npcs_data
 	
 	_reset_state()
 	bring_next_npc()

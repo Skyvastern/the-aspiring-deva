@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c161a0o607avn"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_8mdjw"]
-[ext_resource type="PackedScene" uid="uid://bjnd35v4sh1vl" path="res://main/level/level.tscn" id="2_upxpq"]
+[ext_resource type="PackedScene" uid="uid://nibq83fmhugb" path="res://main/menus/get_characters_data_menu/get_characters_data_menu.tscn" id="2_y02fd"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_8mdjw")
 
-[node name="Level" parent="." instance=ExtResource("2_upxpq")]
+[node name="Get Characters Data Menu" parent="." instance=ExtResource("2_y02fd")]

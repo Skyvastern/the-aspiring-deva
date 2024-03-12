@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Check for Interactable Nodes
-	if Global.game_manager.can_player_interact():
+	if Global.level.game_manager.can_player_interact():
 		_check_for_interactable_nodes()
 	else:
 		_remove_interaction_prompt()

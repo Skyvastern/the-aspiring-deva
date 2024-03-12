@@ -22,6 +22,6 @@ func _process(_delta: float) -> void:
 		switch.disable_further_interaction()
 		
 		if switch.switch_type == "Yama":
-			Global.game_manager.return_to_yama()
+			Global.level.game_manager.return_to_yama()
 		else:
-			Global.game_manager.decide_fate(switch.switch_type == "Heaven")
+			Global.level.game_manager.decide_fate(switch.switch_type == "Heaven")

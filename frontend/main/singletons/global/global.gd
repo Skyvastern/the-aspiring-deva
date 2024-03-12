@@ -5,7 +5,6 @@ const WAV_PATH: String = "user://audio.wav"
 var main: Main
 var level: Level
 var player: Player
-var game_manager: GameManager
 var flash: Flash
 
 signal active_npc_updated

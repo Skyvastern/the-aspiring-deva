@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nibq83fmhugb"]
+[gd_scene load_steps=4 format=3 uid="uid://nibq83fmhugb"]
 
 [ext_resource type="PackedScene" uid="uid://de3xfgs87413q" path="res://main/api/get_characters_api/get_characters_api.tscn" id="1_13bx6"]
 [ext_resource type="Script" path="res://main/menus/get_characters_data_menu/get_characters_data_menu.gd" id="1_bndo5"]
+[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="2_s4s6h"]
 
 [node name="Get Characters Data Menu" type="Control" node_paths=PackedStringArray("get_characters_api")]
 layout_mode = 3
@@ -36,5 +37,27 @@ Above is the format for each character. So give the final response like this -
 
 {characters: [{}, {}, {} ... ]}"
 get_characters_api = NodePath("GetCharactersAPI")
+level_scene_path = "res://main/level/level.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Status" parent="." instance=ExtResource("2_s4s6h")]
+layout_mode = 1
+anchors_preset = 8
+offset_left = -58.0
+offset_top = -17.0
+offset_right = 58.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Getting Characters Data..."
 
 [node name="GetCharactersAPI" parent="." instance=ExtResource("1_13bx6")]
