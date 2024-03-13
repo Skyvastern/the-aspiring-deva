@@ -31,7 +31,12 @@ func _physics_process(delta: float) -> void:
 	
 	# Current Waypoint Reached
 	if npc.global_position.distance_to(target_pos) < 1:
-		wait_timer.start()
+		if index < waypoints.size() - 1:
+			wait_timer.start()
+		else:
+			# Don't wait for timer, directly finish traversal
+			update_current_waypoint()
+		
 		set_physics_process(false)
 
 
