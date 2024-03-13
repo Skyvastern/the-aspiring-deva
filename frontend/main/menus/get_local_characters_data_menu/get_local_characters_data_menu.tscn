@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh2nd4ekd4w2o"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_agebu"]
+[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="2_683ib"]
+[ext_resource type="Script" path="res://main/menus/get_local_characters_data_menu/get_local_characters_data_menu.gd" id="2_s3kby"]
+
+[node name="Get Local Characters Data Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_agebu")
+script = ExtResource("2_s3kby")
+level_scene_path = "res://main/level/level.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Status" parent="." instance=ExtResource("2_683ib")]
+layout_mode = 1
+anchors_preset = 8
+offset_left = -91.5
+offset_top = -41.5
+offset_right = 91.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Loading Characters Data..."

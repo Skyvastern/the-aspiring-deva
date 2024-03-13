@@ -14,6 +14,7 @@ theme = ExtResource("1_4115e")
 script = ExtResource("2_fd5cs")
 play_btn = NodePath("Buttons/Play Btn")
 play_generate_btn = NodePath("Buttons/Play (Generate) Btn")
+get_local_characters_data_menu_scene_path = "res://main/menus/get_local_characters_data_menu/get_local_characters_data_menu.tscn"
 get_characters_data_menu_scene_path = "res://main/menus/get_characters_data_menu/get_characters_data_menu.tscn"
 
 [node name="BG" type="ColorRect" parent="."]

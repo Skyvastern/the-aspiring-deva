@@ -6,6 +6,7 @@ class_name GameModeMenu
 @export var play_generate_btn: Button
 
 @export_group("References")
+@export_file("*.tscn") var get_local_characters_data_menu_scene_path: String
 @export_file("*.tscn") var get_characters_data_menu_scene_path: String
 
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 
 
 func _on_play_btn_pressed() -> void:
-	pass
+	Global.load_menu(self, get_local_characters_data_menu_scene_path)
 
 
 func _on_play_generate_btn_pressed() -> void:

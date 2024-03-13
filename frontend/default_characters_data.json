@@ -1,0 +1,114 @@
+{
+	"characters": [
+		{
+			"name": "Devika",
+			"age": 26,
+			"background_story": "A skilled herbalist who saved her village from a deadly plague with her knowledge of ancient remedies. Died in a monsoon flood while helping villagers to safety.",
+			"voice": "fable",
+			"nature": {
+				"truthfulness": 9,
+				"friendliness": 10,
+				"talkative": 4
+			}
+		},
+		{
+			"name": "Aaryan",
+			"age": 34,
+			"background_story": "A notorious warlord who sought power at any cost, betraying allies and enemies alike. Met his end in a battle, betrayed by his own commanders.",
+			"voice": "onyx",
+			"nature": {
+				"truthfulness": 2,
+				"friendliness": 3,
+				"talkative": 5
+			}
+		},
+		{
+			"name": "Lykos",
+			"age": 29,
+			"background_story": "A revered philosopher who traveled across lands to spread knowledge and wisdom. Died peacefully after imparting his final words of wisdom.",
+			"voice": "echo",
+			"nature": {
+				"truthfulness": 10,
+				"friendliness": 8,
+				"talkative": 7
+			}
+		},
+		{
+			"name": "Dion",
+			"age": 37,
+			"background_story": "A cunning trader known for manipulating market prices to his advantage, causing famine. Died in a shipwreck off the coast.",
+			"voice": "onyx",
+			"nature": {
+				"truthfulness": 1,
+				"friendliness": 2,
+				"talkative": 8
+			}
+		},
+		{
+			"name": "Meiying",
+			"age": 31,
+			"background_story": "A compassionate caretaker of orphans, teaching them skills and wisdom beyond their years. Died saving children from a burning building.",
+			"voice": "nova",
+			"nature": {
+				"truthfulness": 9,
+				"friendliness": 10,
+				"talkative": 6
+			}
+		},
+		{
+			"name": "Zheng",
+			"age": 42,
+			"background_story": "An ambitious general who betrayed his emperor for power, leading to years of turmoil. Poisoned by a rival.",
+			"voice": "echo",
+			"nature": {
+				"truthfulness": 3,
+				"friendliness": 1,
+				"talkative": 4
+			}
+		},
+		{
+			"name": "Arash",
+			"age": 27,
+			"background_story": "A legendary archer known for his unwavering commitment to justice and fairness. Died heroically in a battle to protect his people from invaders.",
+			"voice": "echo",
+			"nature": {
+				"truthfulness": 8,
+				"friendliness": 7,
+				"talkative": 5
+			}
+		},
+		{
+			"name": "Roshan",
+			"age": 39,
+			"background_story": "A wealthy merchant who exploited the poor, amassing wealth through deceit and exploitation. Died of a mysterious illness that none could diagnose.",
+			"voice": "onyx",
+			"nature": {
+				"truthfulness": 0,
+				"friendliness": 4,
+				"talkative": 6
+			}
+		},
+		{
+			"name": "Neith",
+			"age": 33,
+			"background_story": "A skilled artisan whose creations were dedicated to the gods and used in many ceremonies. Passed away in her sleep, surrounded by her work.",
+			"voice": "fable",
+			"nature": {
+				"truthfulness": 10,
+				"friendliness": 9,
+				"talkative": 3
+			}
+		},
+		{
+			"name": "Sethos",
+			"age": 46,
+			"background_story": "A ruthless governor who imposed harsh taxes on his people, causing widespread suffering. Assassinated by a disgruntled subject.",
+			"voice": "onyx",
+			"nature": {
+				"truthfulness": 2,
+				"friendliness": 3,
+				"talkative": 7
+			}
+		}
+	]
+}
