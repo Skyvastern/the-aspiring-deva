@@ -18,7 +18,6 @@ var is_npc_walking: bool = false
 
 @export_group("References")
 @export var interact_scene: PackedScene
-@export var observation_area: Area3D
 var interact: NPC_Interact
 
 var target: Node3D = null
@@ -32,8 +31,6 @@ var target: Node3D = null
 
 
 func _ready() -> void:
-	observation_area.body_entered.connect(_on_observ_area_body_entered)
-	observation_area.body_exited.connect(_on_observ_area_body_exited)
 	npc_movement.npc_started_walking.connect(func(): is_npc_walking = true)
 	npc_movement.npc_ended_walking.connect(func(): is_npc_walking = false)
 	
@@ -101,46 +98,12 @@ func _set_angle_towards_target() -> void:
 
 
 func _set_angle_at_default_position() -> void:
-	var current_y: float = rad_to_deg(abs(target_y_rotation))
-	
-	# Idea is to have Enemy point straight in either of the 4 directions
-	# I'm sure there's a better way to find this out, but right now going with this approach
-	# BUG: This also hides the jitter issue (will look for solution to this later)
-	if current_y >= 0 and current_y < 45:
-		current_y = 0
-	elif current_y >= 45 and current_y < 90:
-		current_y = 90
-	elif current_y >= 90 and current_y < 135:
-		current_y = 90
-	elif current_y >= 135 and current_y < 180:
-		current_y = 180
-	elif current_y >= 180 and current_y < 225:
-		current_y = 180
-	elif current_y >= 225 and current_y < 270:
-		current_y = 270
-	elif current_y >= 270 and current_y < 315:
-		current_y = 270
-	elif current_y >= 315 and current_y < 360:
-		current_y = 360
-	
-	current_y = deg_to_rad(current_y)
-	current_y *= -1 if target_y_rotation < 0 else 1
-	target_y_rotation = current_y
+	target_y_rotation = 0
 
 
 func _apply_rotation() -> void:
 	var new_basis: Basis = Global.rotate_slerp(global_transform, target_y_rotation, rotate_speed)
 	global_transform.basis = new_basis
-
-
-func _on_observ_area_body_entered(body: Node3D) -> void:
-	if body is Player:
-		target = body
-
-
-func _on_observ_area_body_exited(body: Node3D) -> void:
-	if body is Player:
-		target = null
 
 
 func on_player_interactable() -> void:
