@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c161a0o607avn"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_8mdjw"]
-[ext_resource type="PackedScene" uid="uid://bml7me0fau7sh" path="res://main/menus/main_menu/main_menu.tscn" id="2_xdfya"]
+[ext_resource type="PackedScene" uid="uid://dvvtyhfwc7d3n" path="res://main/menus/setup_menu/setup_menu.tscn" id="2_18ajb"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_8mdjw")
 
-[node name="MainMenu" parent="." instance=ExtResource("2_xdfya")]
+[node name="SetupMenu" parent="." instance=ExtResource("2_18ajb")]

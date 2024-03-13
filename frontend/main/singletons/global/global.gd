@@ -3,6 +3,7 @@ extends Node
 const WAV_PATH: String = "user://audio.wav"
 
 var main: Main
+var player_name: String = "Default"
 var level: Level
 var player: Player
 var flash: Flash

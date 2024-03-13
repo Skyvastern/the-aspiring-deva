@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvvtyhfwc7d3n"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_a2wbq"]
+[ext_resource type="Script" path="res://main/menus/setup_menu/setup_menu.gd" id="2_p0x7m"]
+
+[node name="SetupMenu" type="Control" node_paths=PackedStringArray("player_name_input", "confirm_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a2wbq")
+script = ExtResource("2_p0x7m")
+player_name_input = NodePath("Buttons/Player Name Input")
+confirm_btn = NodePath("Buttons/ConfirmBtn")
+main_menu_scene_path = "res://main/menus/main_menu/main_menu.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Story" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -810.0
+offset_top = -347.0
+offset_right = 810.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "You are an aspiring deva who wishes to prove his worth to the God of Death, Yamraj, by showcasing your ability to judge whether a soul should go to heaven or should it go to hell.
+
+Lord Chitragupta will provide you with the minimum necessary details about the soul.
+
+You will get 10 chances to prove your worth. If you make wrong judgements more than 3 times, then you get the curse of never attaining death!"
+autowrap_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -329.0
+offset_top = 169.0
+offset_right = 329.0
+offset_bottom = 407.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Player Name Input" type="LineEdit" parent="Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+placeholder_text = "Name"
+caret_blink = true
+
+[node name="ConfirmBtn" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Confirm"
