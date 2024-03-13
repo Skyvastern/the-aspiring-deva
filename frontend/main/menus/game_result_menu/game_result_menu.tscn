@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3w25vwxevt53"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_thsnk"]
+[ext_resource type="Script" path="res://main/menus/game_result_menu/game_result_menu.gd" id="2_juk12"]
+
+[node name="GameResultMenu" type="Control" node_paths=PackedStringArray("result_label", "description_label", "main_menu_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_thsnk")
+script = ExtResource("2_juk12")
+won_message = "Your prowess in judging souls has impressed both Yama and Chitragupta. They have thus declared you to be a symbol of dharma and virtue, %s!"
+lost_message = "Your lack of wisdom in judging souls has made Yama and Chitragupta disappointed. As per the rules, you have lost your right to die, %s!"
+result_label = NodePath("Result")
+description_label = NodePath("Description")
+main_menu_btn = NodePath("MainMenuBtn")
+main_menu_scene_path = "res://main/menus/main_menu/main_menu.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Result" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -542.5
+offset_top = -193.0
+offset_right = 542.5
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 62
+text = "%s out of %s judgements were right!"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -810.0
+offset_top = -41.0
+offset_right = 810.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Your prowess in judging souls has impressed both Yama and Chitragupta. They have thus declared you to be a symbol of dharma and virtue, %s!"
+autowrap_mode = 2
+
+[node name="MainMenuBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 189.0
+offset_right = 350.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
