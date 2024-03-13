@@ -19,4 +19,4 @@ func on_player_not_interactable() -> void:
 
 
 func disable_further_interaction() -> void:
-	collision_layer = 1
+	collision_layer = 0
