@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpxhr1x1f7uh1"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_2q0pp"]
+[ext_resource type="Script" path="res://main/npc/npc_details_interact/npc_details_interact.gd" id="2_71x07"]
+[ext_resource type="PackedScene" uid="uid://d33f5gy50w54b" path="res://main/npc/npc_details_panel/npc_details_panel.tscn" id="3_knttn"]
+
+[sub_resource type="Animation" id="Animation_wdavg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact Prompt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wmc4q"]
+resource_name = "invisible"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact Prompt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c816g"]
+resource_name = "notify"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interact Prompt:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehdxb"]
+_data = {
+"RESET": SubResource("Animation_wdavg"),
+"invisible": SubResource("Animation_wmc4q"),
+"notify": SubResource("Animation_c816g")
+}
+
+[node name="NPC Details Interact" type="Control" node_paths=PackedStringArray("animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_2q0pp")
+script = ExtResource("2_71x07")
+animation_player = NodePath("AnimationPlayer")
+npc_details_panel_scene = ExtResource("3_knttn")
+
+[node name="Interact Prompt" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -491.0
+offset_top = 117.0
+offset_right = 491.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="Interact Prompt"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Interact Prompt/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Tab"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Interact Prompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "View the soul's details provided by Chitragupta"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ehdxb")
+}
+autoplay = "invisible"

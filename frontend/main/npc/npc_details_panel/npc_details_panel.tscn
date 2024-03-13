@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://d33f5gy50w54b"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_sfpwy"]
+[ext_resource type="Script" path="res://main/npc/npc_details_panel/npc_details_panel.gd" id="2_d72c2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jd4s"]
+bg_color = Color(0, 0, 0, 0.784314)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.431373, 0.490196, 1)
+
+[node name="NPC Details Panel" type="Control" node_paths=PackedStringArray("name_label", "age_label", "background_story_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sfpwy")
+script = ExtResource("2_d72c2")
+name_label = NodePath("Panel/ScrollContainer/Details/Name")
+age_label = NodePath("Panel/ScrollContainer/Details/Age")
+background_story_label = NodePath("Panel/ScrollContainer/Details/Background Story")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -699.0
+offset_top = -348.0
+offset_right = 699.0
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8jd4s")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.5
+offset_top = 83.0
+offset_right = 400.5
+offset_bottom = 133.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "Chitragupta"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.5
+offset_top = 153.0
+offset_right = 400.5
+offset_bottom = 203.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Here's the details of the soul, make your decision wisely!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = -84.0
+offset_right = 553.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Details" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Name" type="Label" parent="Panel/ScrollContainer/Details"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Name: %s"
+autowrap_mode = 2
+
+[node name="Age" type="Label" parent="Panel/ScrollContainer/Details"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Age: %s"
+autowrap_mode = 2
+
+[node name="Background Story" type="Label" parent="Panel/ScrollContainer/Details"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Background Story: %s"
+autowrap_mode = 2

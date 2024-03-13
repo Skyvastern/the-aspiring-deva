@@ -126,3 +126,7 @@ func start_timer(wait_time: float, callback: Callable) -> void:
 func _on_timer_timeout() -> void:
 	if timer_callback:
 		timer_callback.call()
+
+
+func get_current_npc_data() -> Dictionary:
+	return all_npcs_data[index]

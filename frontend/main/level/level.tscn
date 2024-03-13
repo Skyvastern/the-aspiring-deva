@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjnd35v4sh1vl"]
+[gd_scene load_steps=10 format=3 uid="uid://bjnd35v4sh1vl"]
 
 [ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
 [ext_resource type="PackedScene" uid="uid://c2s0th8kkr57s" path="res://main/level/game_manager/game_manager.tscn" id="1_h32pl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdymwxtxsmk54" path="res://main/common/flash/flash.tscn" id="5_vmgh5"]
 [ext_resource type="PackedScene" uid="uid://dgcyu7c48xi44" path="res://main/player/hud/hud.tscn" id="6_b3u6r"]
 [ext_resource type="PackedScene" uid="uid://b71imdt2kchb3" path="res://main/menus/pause_menu/pause_menu.tscn" id="7_05rtv"]
+[ext_resource type="PackedScene" uid="uid://cpxhr1x1f7uh1" path="res://main/npc/npc_details_interact/npc_details_interact.tscn" id="7_l1mxm"]
 
 [node name="Level" type="Node" node_paths=PackedStringArray("game_manager", "pause_menu")]
 script = ExtResource("1_t7ujc")
@@ -48,6 +49,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5
 [node name="Menus" type="CanvasLayer" parent="."]
 
 [node name="Flash" parent="Menus" instance=ExtResource("5_vmgh5")]
+
+[node name="NPC Details Interact" parent="Menus" instance=ExtResource("7_l1mxm")]
 
 [node name="HUD" parent="Menus" instance=ExtResource("6_b3u6r")]
 
