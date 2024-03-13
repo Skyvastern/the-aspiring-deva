@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw6dg8sok8tkn"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_4115e"]
+[ext_resource type="Script" path="res://main/menus/game_mode_menu/game_mode_menu.gd" id="2_fd5cs"]
+
+[node name="GameModeMenu" type="Control" node_paths=PackedStringArray("play_btn", "play_generate_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4115e")
+script = ExtResource("2_fd5cs")
+play_btn = NodePath("Buttons/Play Btn")
+play_generate_btn = NodePath("Buttons/Play (Generate) Btn")
+get_characters_data_menu_scene_path = "res://main/menus/get_characters_data_menu/get_characters_data_menu.tscn"
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -137.5
+offset_right = 350.0
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Play Btn" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="Play (Generate) Btn" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 60
+text = "Play (Generate)"

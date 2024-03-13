@@ -1,21 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b71imdt2kchb3"]
+[gd_scene load_steps=3 format=3 uid="uid://bml7me0fau7sh"]
 
-[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_euhwi"]
-[ext_resource type="Script" path="res://main/menus/pause_menu/pause_menu.gd" id="1_tlltf"]
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_8flni"]
+[ext_resource type="Script" path="res://main/menus/main_menu/main_menu.gd" id="2_v05iu"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_btn", "exit_btn")]
-process_mode = 3
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_btn", "exit_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_euhwi")
-script = ExtResource("1_tlltf")
-resume_btn = NodePath("Buttons/ResumeBtn")
+theme = ExtResource("1_8flni")
+script = ExtResource("2_v05iu")
+start_btn = NodePath("Buttons/StartBtn")
 exit_btn = NodePath("Buttons/ExitBtn")
-main_menu_scene_path = "res://main/menus/main_menu/main_menu.tscn"
+game_mode_menu_scene_path = "res://main/menus/game_mode_menu/game_mode_menu.tscn"
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.784314)
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,18 +40,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="ResumeBtn" type="Button" parent="Buttons"]
+[node name="StartBtn" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
-size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
-text = "Resume"
+text = "Start"
 
 [node name="ExitBtn" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
-size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
 text = "Exit"
