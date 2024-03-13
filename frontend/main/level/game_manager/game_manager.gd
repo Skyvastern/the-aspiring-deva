@@ -1,6 +1,8 @@
 extends Node
 class_name GameManager
 
+signal next_npc_coming
+
 @export_group("Data")
 @export var all_npcs_data: Array
 var index: int = -1
@@ -53,8 +55,9 @@ func bring_next_npc() -> void:
 	current_npc.setup(all_npcs_data[index])
 	current_npc.entry_waypoints = entry_waypoints.duplicate(true)
 	current_npc.exit_waypoints = exit_waypoints.duplicate(true)
-	
 	npc_parent.add_child(current_npc)
+	
+	next_npc_coming.emit()
 
 
 func can_player_interact() -> bool:

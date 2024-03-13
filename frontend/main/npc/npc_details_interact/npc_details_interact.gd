@@ -8,6 +8,10 @@ class_name NPC_Details_Interact
 var npc_details_panel: NPC_Details_Panel
 
 
+func _ready() -> void:
+	Global.level.game_manager.next_npc_coming.connect(_show_prompt_for_few_seconds)
+
+
 func _process(_delta: float) -> void:
 	if not npc_details_panel and not is_instance_valid(npc_details_panel) and Input.is_action_pressed("npc_details"):
 		npc_details_panel = npc_details_panel_scene.instantiate()
