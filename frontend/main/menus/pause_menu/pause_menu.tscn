@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_euhwi"]
 [ext_resource type="Script" path="res://main/menus/pause_menu/pause_menu.gd" id="1_tlltf"]
 
-[node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_btn", "exit_btn")]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("resume_btn", "main_menu_btn")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +14,7 @@ grow_vertical = 2
 theme = ExtResource("1_euhwi")
 script = ExtResource("1_tlltf")
 resume_btn = NodePath("Buttons/ResumeBtn")
-exit_btn = NodePath("Buttons/ExitBtn")
+main_menu_btn = NodePath("Buttons/MainMenuBtn")
 main_menu_scene_path = "res://main/menus/main_menu/main_menu.tscn"
 
 [node name="BG" type="ColorRect" parent="."]
@@ -49,10 +49,10 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 60
 text = "Resume"
 
-[node name="ExitBtn" type="Button" parent="Buttons"]
+[node name="MainMenuBtn" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
-text = "Exit"
+text = "Main Menu"
