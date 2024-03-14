@@ -8,7 +8,7 @@ albedo_color = Color(0.196078, 1, 0.196078, 1)
 
 [node name="SwitchHeaven" type="CSGCombiner3D"]
 use_collision = true
-collision_layer = 8
+collision_layer = 24
 script = ExtResource("1_bx127")
 switch_interact_scene = ExtResource("2_t4300")
 

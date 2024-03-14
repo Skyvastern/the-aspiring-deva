@@ -64,13 +64,6 @@ func bring_next_npc() -> bool:
 	return true
 
 
-func can_player_interact() -> bool:
-	if current_npc and is_instance_valid(current_npc):
-		return not current_npc.is_npc_walking
-	
-	return false
-
-
 func decide_fate(heaven: bool) -> void:
 	Global.flash.flash_in()
 	

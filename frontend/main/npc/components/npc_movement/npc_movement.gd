@@ -54,14 +54,18 @@ func begin_travel(new_npc: NPC, new_waypoints: Array[Node3D]) -> void:
 	waypoints = new_waypoints
 	update_current_waypoint()
 	
+	if npc.collision_layer > Global.INTERACTABLE_LAYER:
+		npc.collision_layer -= Global.INTERACTABLE_LAYER
+	
 	npc_started_walking.emit()
 
 
 func update_current_waypoint() -> void:
 	if index >= waypoints.size() - 1:
+		npc.collision_layer += Global.INTERACTABLE_LAYER
 		npc_ended_walking.emit()
-		print(npc.name + " : Destination reached!")
 		
+		print(npc.name + " : Destination reached!")
 		return
 	
 	index += 1

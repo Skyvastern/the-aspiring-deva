@@ -7,6 +7,7 @@ var player_name: String = "Default"
 var level: Level
 var player: Player
 var flash: Flash
+const INTERACTABLE_LAYER: int = 16
 
 signal active_npc_updated
 var active_npc: NPC:

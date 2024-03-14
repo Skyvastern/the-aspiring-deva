@@ -20,7 +20,7 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 size = Vector3(1, 2, 1)
 
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_movement")]
-collision_layer = 4
+collision_layer = 20
 collision_mask = 3
 script = ExtResource("1_hyvfc")
 instruction = "I (the user) am a aspiring deva working under Yamaraj (the God of Death).

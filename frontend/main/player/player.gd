@@ -8,7 +8,6 @@ class_name Player
 @export var gravity: float = 100
 @export var npc_detection_range: float = 5
 
-const INTERACTABLE_LAYER = 12 # npc(4) + switch(8)
 var interactable_node: Node
 var prev_interactable_node: Node
 
@@ -58,10 +57,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Check for Interactable Nodes
-	if Global.level.game_manager.can_player_interact():
-		_check_for_interactable_nodes()
-	else:
-		_remove_interaction_prompt()
+	_check_for_interactable_nodes()
 
 
 func _input(event: InputEvent) -> void:
@@ -78,7 +74,7 @@ func _input(event: InputEvent) -> void:
 func _check_for_interactable_nodes() -> void:
 	var from: Vector3 = camera_3d.global_position
 	var to: Vector3 = from + (-camera_3d.global_transform.basis.z * npc_detection_range)
-	var result: Dictionary = Global.create_ray(self, from, to, INTERACTABLE_LAYER)
+	var result: Dictionary = Global.create_ray(self, from, to, Global.INTERACTABLE_LAYER)
 	
 	if result.is_empty() == false:
 		interactable_node = result["collider"]
@@ -93,16 +89,12 @@ func _check_for_interactable_nodes() -> void:
 			
 			prev_interactable_node = interactable_node
 	else:
-		_remove_interaction_prompt()
-
-
-func _remove_interaction_prompt() -> void:
-	if interactable_node and is_instance_valid(interactable_node):
-		if interactable_node.has_method("on_player_not_interactable"):
-			interactable_node.on_player_not_interactable()
-		
-		interactable_node = null
-		prev_interactable_node = null
+		if interactable_node and is_instance_valid(interactable_node):
+			if interactable_node.has_method("on_player_not_interactable"):
+				interactable_node.on_player_not_interactable()
+			
+			interactable_node = null
+			prev_interactable_node = null
 
 
 func _on_game_paused(paused: bool) -> void:
