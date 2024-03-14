@@ -1,22 +1,22 @@
 extends Node
 class_name NPC_Movement
 
+@export var npc: NPC
 @export var speed: float = 10
 @export var wait_timer: Timer
 
-var npc: NPC
 var waypoints: Array[Node3D]
 var current_waypoint: Node3D
 var index: int = -1
-
-signal npc_started_walking
-signal npc_ended_walking
+var on_destination_reached: Callable = func(): pass
 
 
 func _ready() -> void:
 	wait_timer.timeout.connect(_on_wait_timer_timeout)
 	
 	_reset_state()
+	Global.disable_interactability(npc)
+	
 	set_physics_process(false)
 
 
@@ -41,31 +41,23 @@ func _physics_process(delta: float) -> void:
 
 
 func _reset_state() -> void:
-	npc = null
 	waypoints.clear()
 	current_waypoint = null
 	index = -1
+	on_destination_reached = func(): pass
 
 
-func begin_travel(new_npc: NPC, new_waypoints: Array[Node3D]) -> void:
+func begin_travel(new_waypoints: Array[Node3D], on_destination_reached_callable: Callable = func(): pass) -> void:
 	_reset_state()
 	
-	npc = new_npc
 	waypoints = new_waypoints
+	on_destination_reached = on_destination_reached_callable
 	update_current_waypoint()
-	
-	if npc.collision_layer > Global.INTERACTABLE_LAYER:
-		npc.collision_layer -= Global.INTERACTABLE_LAYER
-	
-	npc_started_walking.emit()
 
 
 func update_current_waypoint() -> void:
 	if index >= waypoints.size() - 1:
-		npc.collision_layer += Global.INTERACTABLE_LAYER
-		npc_ended_walking.emit()
-		
-		print(npc.name + " : Destination reached!")
+		on_destination_reached.call()
 		return
 	
 	index += 1

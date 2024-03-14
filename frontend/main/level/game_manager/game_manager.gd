@@ -2,6 +2,9 @@ extends Node
 class_name GameManager
 
 signal next_npc_coming
+signal npc_arrived
+signal npc_fate_decided
+signal npc_preparing_to_jump
 
 @export_group("Data")
 @export var all_npcs_data: Array
@@ -65,6 +68,8 @@ func bring_next_npc() -> bool:
 
 
 func decide_fate(heaven: bool) -> void:
+	npc_fate_decided.emit()
+	
 	Global.flash.flash_in()
 	
 	var player_choice: String = "Heaven" if heaven else "Hell"

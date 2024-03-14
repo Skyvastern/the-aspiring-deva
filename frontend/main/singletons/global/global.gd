@@ -82,3 +82,14 @@ func create_ray(node3d: Node3D, from: Vector3, to: Vector3, collision_mask: int,
 func clear_child_nodes(parent: Node) -> void:
 	for child in parent.get_children():
 		child.queue_free()
+
+
+func enable_interactability(node: Node3D) -> void:
+	node.collision_layer += Global.INTERACTABLE_LAYER
+
+
+func disable_interactability(node: Node3D) -> void:
+	if node.collision_layer > Global.INTERACTABLE_LAYER:
+		node.collision_layer -= Global.INTERACTABLE_LAYER
+	else:
+		push_warning("%s collision layer not set to \"interactable\"" % [node.name])

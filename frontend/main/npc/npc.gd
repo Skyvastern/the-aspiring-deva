@@ -30,6 +30,8 @@ var target: Node3D = null
 
 
 func _ready() -> void:
+	Global.level.game_manager.npc_fate_decided.connect(_on_npc_fate_decided)
+	
 	go_through_entry_waypoints()
 
 
@@ -52,11 +54,16 @@ func setup(data: Dictionary) -> void:
 
 
 func go_through_entry_waypoints() -> void:
-	npc_movement.begin_travel(self, entry_waypoints)
+	npc_movement.begin_travel(
+		entry_waypoints,
+		func():
+			Global.enable_interactability(self)
+			Global.level.game_manager.npc_arrived.emit()
+	)
 
 
 func go_through_exit_waypoints() -> void:
-	npc_movement.begin_travel(self, exit_waypoints)
+	npc_movement.begin_travel(exit_waypoints)
 
 
 func get_history() -> Array:
@@ -111,3 +118,7 @@ func on_player_interactable() -> void:
 func on_player_not_interactable() -> void:
 	if is_instance_valid(interact):
 		interact.queue_free()
+
+
+func _on_npc_fate_decided() -> void:
+	Global.disable_interactability(self)

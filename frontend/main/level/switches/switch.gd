@@ -6,6 +6,13 @@ class_name Switch
 var switch_interact: SwitchInteract
 
 
+func _ready() -> void:
+	Global.level.game_manager.npc_arrived.connect(_on_npc_arrived)
+	
+	if switch_type != "Yama":
+		Global.disable_interactability(self)
+
+
 func on_player_interactable() -> void:
 	switch_interact = switch_interact_scene.instantiate()
 	switch_interact.setup(self)
@@ -21,3 +28,7 @@ func on_player_not_interactable() -> void:
 func disable_further_interaction() -> void:
 	if collision_layer > Global.INTERACTABLE_LAYER:
 		collision_layer -= Global.INTERACTABLE_LAYER
+
+
+func _on_npc_arrived() -> void:
+	Global.enable_interactability(self)

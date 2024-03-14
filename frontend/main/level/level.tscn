@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjnd35v4sh1vl"]
+[gd_scene load_steps=9 format=3 uid="uid://bjnd35v4sh1vl"]
 
 [ext_resource type="PackedScene" uid="uid://c1bb8sp4rf0m5" path="res://main/player/player.tscn" id="1_5vv7m"]
 [ext_resource type="PackedScene" uid="uid://c2s0th8kkr57s" path="res://main/level/game_manager/game_manager.tscn" id="1_h32pl"]
 [ext_resource type="Script" path="res://main/level/level.gd" id="1_t7ujc"]
 [ext_resource type="PackedScene" uid="uid://bbabh0fln5okh" path="res://main/level/worlds/world_yama.tscn" id="2_cqj72"]
-[ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_sa35n"]
 [ext_resource type="PackedScene" uid="uid://bdymwxtxsmk54" path="res://main/common/flash/flash.tscn" id="5_vmgh5"]
 [ext_resource type="PackedScene" uid="uid://dgcyu7c48xi44" path="res://main/player/hud/hud.tscn" id="6_b3u6r"]
 [ext_resource type="PackedScene" uid="uid://b71imdt2kchb3" path="res://main/menus/pause_menu/pause_menu.tscn" id="7_05rtv"]
@@ -30,8 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
 
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0.5, -10)
-
-[node name="NPC 1" parent="NPCs" instance=ExtResource("2_sa35n")]
 
 [node name="NPCs Entry Waypoints" type="Node3D" parent="."]
 

@@ -61,4 +61,5 @@ shape = SubResource("BoxShape3D_5wxcb")
 
 [node name="Components" type="Node" parent="."]
 
-[node name="NPC Movement" parent="Components" instance=ExtResource("3_kafhi")]
+[node name="NPC Movement" parent="Components" node_paths=PackedStringArray("npc") instance=ExtResource("3_kafhi")]
+npc = NodePath("../..")
