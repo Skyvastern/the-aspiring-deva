@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhbbe46duivvr"]
+[gd_scene load_steps=10 format=3 uid="uid://dhbbe46duivvr"]
 
 [ext_resource type="Environment" uid="uid://dthdsl82jr40n" path="res://main/level/worlds/world_heaven_env.tres" id="1_o3eyo"]
 [ext_resource type="PackedScene" uid="uid://b17roqyqpbknf" path="res://main/level/switches/switch_yama.tscn" id="2_ojl2l"]
@@ -7,6 +7,22 @@
 albedo_color = Color(0.392157, 0.588235, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isn1e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wfdld"]
+size = Vector3(12, 40, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8f8e"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.588235)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83u88"]
+size = Vector3(12, 40, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i27oq"]
+size = Vector3(1, 40, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45lui"]
+size = Vector3(1, 40, 60)
 
 [node name="World Heaven" type="Node3D"]
 
@@ -42,3 +58,46 @@ material = SubResource("StandardMaterial3D_isn1e")
 
 [node name="SwitchYama" parent="." instance=ExtResource("2_ojl2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
+
+[node name="Boundary" type="Node3D" parent="."]
+visible = false
+
+[node name="Boundary Front" type="StaticBody3D" parent="Boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Front"]
+mesh = SubResource("BoxMesh_wfdld")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8f8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundary/Boundary Front"]
+shape = SubResource("BoxShape3D_83u88")
+
+[node name="Boundary Left" type="StaticBody3D" parent="Boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Left"]
+mesh = SubResource("BoxMesh_i27oq")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8f8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundary/Boundary Left"]
+shape = SubResource("BoxShape3D_45lui")
+
+[node name="Boundary Back" type="StaticBody3D" parent="Boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Back"]
+mesh = SubResource("BoxMesh_wfdld")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8f8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundary/Boundary Back"]
+shape = SubResource("BoxShape3D_83u88")
+
+[node name="Boundary Right" type="StaticBody3D" parent="Boundary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Right"]
+mesh = SubResource("BoxMesh_i27oq")
+surface_material_override/0 = SubResource("StandardMaterial3D_b8f8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundary/Boundary Right"]
+shape = SubResource("BoxShape3D_45lui")
