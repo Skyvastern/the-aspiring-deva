@@ -6,8 +6,10 @@ signal next_npc_coming
 @export_group("Data")
 @export var all_npcs_data: Array
 var index: int = -1
+var right_judgements: int = 0
 
 @export_group("References")
+@export_file("*.tscn") var game_result_menu_scene_path: String
 @export var npc_scene: PackedScene
 @export var npc_parent: Node3D
 var current_npc: NPC
@@ -43,11 +45,11 @@ func _reset_state() -> void:
 	Global.clear_child_nodes(npc_parent)
 
 
-func bring_next_npc() -> void:
+func bring_next_npc() -> bool:
 	if index >= all_npcs_data.size() - 1:
 		print("No more NPCs left.")
 		index = 0
-		return
+		return false
 	
 	index += 1
 	
@@ -58,6 +60,8 @@ func bring_next_npc() -> void:
 	npc_parent.add_child(current_npc)
 	
 	next_npc_coming.emit()
+	
+	return true
 
 
 func can_player_interact() -> bool:
@@ -69,6 +73,9 @@ func can_player_interact() -> bool:
 
 func decide_fate(heaven: bool) -> void:
 	Global.flash.flash_in()
+	
+	if heaven:
+		right_judgements += 1
 	
 	start_timer(
 		0.5,
@@ -114,7 +121,25 @@ func return_to_yama() -> void:
 				1,
 				func():
 					Global.flash.flash_out()
-					bring_next_npc()
+					
+					if not bring_next_npc():
+						start_timer(
+							2,
+							func():
+								Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+								get_tree().paused = false
+								
+								Global.load_menu(
+									Global.level,
+									game_result_menu_scene_path,
+									[
+										{
+											"name": "update_ui",
+											"args": [right_judgements, all_npcs_data.size()]
+										}
+									]
+								)
+						)
 			)
 	)
 

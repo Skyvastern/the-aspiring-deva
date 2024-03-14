@@ -15,6 +15,7 @@ all_npcs_data = [{
 "background_story": "A criminal who always lied in his life, and died in car chase while escaping the police.",
 "voice": "echo"
 }]
+game_result_menu_scene_path = "res://main/menus/game_result_menu/game_result_menu.tscn"
 npc_scene = ExtResource("2_f0bhy")
 world_yama_scene = ExtResource("3_ev07f")
 world_heaven_scene = ExtResource("4_bvngb")
