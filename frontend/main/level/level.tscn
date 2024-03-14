@@ -14,10 +14,11 @@ script = ExtResource("1_t7ujc")
 game_manager = NodePath("Game Manager")
 pause_menu = NodePath("Menus/PauseMenu")
 
-[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "entry_waypoints", "exit_waypoints", "world_parent") instance=ExtResource("1_h32pl")]
+[node name="Game Manager" parent="." node_paths=PackedStringArray("npc_parent", "yama_waypoints", "heaven_waypoints", "hell_waypoints", "world_parent") instance=ExtResource("1_h32pl")]
 npc_parent = NodePath("../NPCs")
-entry_waypoints = [NodePath("../NPCs Entry Waypoints/W1"), NodePath("../NPCs Entry Waypoints/W2")]
-exit_waypoints = [NodePath("../NPCs Exit Waypoints/W1")]
+yama_waypoints = [NodePath("../NPCs Yama Waypoints/W1"), NodePath("../NPCs Yama Waypoints/W2")]
+heaven_waypoints = [NodePath("../NPCs Heaven Waypoints/W1")]
+hell_waypoints = [NodePath("../NPC Hell Waypoints/W1")]
 world_parent = NodePath("../World Parent")
 
 [node name="World Parent" type="Node3D" parent="."]
@@ -30,18 +31,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.75)
 [node name="NPCs" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0.5, -10)
 
-[node name="NPCs Entry Waypoints" type="Node3D" parent="."]
+[node name="NPCs Yama Waypoints" type="Node3D" parent="."]
 
-[node name="W1" type="Node3D" parent="NPCs Entry Waypoints"]
+[node name="W1" type="Node3D" parent="NPCs Yama Waypoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -10)
 
-[node name="W2" type="Node3D" parent="NPCs Entry Waypoints"]
+[node name="W2" type="Node3D" parent="NPCs Yama Waypoints"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 5)
 
-[node name="NPCs Exit Waypoints" type="Node3D" parent="."]
+[node name="NPCs Heaven Waypoints" type="Node3D" parent="."]
 
-[node name="W1" type="Node3D" parent="NPCs Exit Waypoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -5)
+[node name="W1" type="Node3D" parent="NPCs Heaven Waypoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -500)
+
+[node name="NPC Hell Waypoints" type="Node3D" parent="."]
+
+[node name="W1" type="Node3D" parent="NPC Hell Waypoints"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -13)
 
 [node name="Menus" type="CanvasLayer" parent="."]
 

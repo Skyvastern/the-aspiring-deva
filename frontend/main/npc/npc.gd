@@ -25,14 +25,15 @@ var target: Node3D = null
 
 @export_group("Waypoints")
 @export var npc_movement: NPC_Movement
-@export var entry_waypoints: Array[Node3D]
-@export var exit_waypoints: Array[Node3D]
+var yama_waypoints: Array[Node3D]
+var heaven_waypoints: Array[Node3D]
+var hell_waypoints: Array[Node3D]
 
 
 func _ready() -> void:
 	Global.level.game_manager.npc_fate_decided.connect(_on_npc_fate_decided)
 	
-	go_through_entry_waypoints()
+	go_through_yama_waypoints()
 
 
 func setup(data: Dictionary) -> void:
@@ -53,17 +54,21 @@ func setup(data: Dictionary) -> void:
 	])
 
 
-func go_through_entry_waypoints() -> void:
+func go_through_yama_waypoints() -> void:
 	npc_movement.begin_travel(
-		entry_waypoints,
+		yama_waypoints,
 		func():
 			Global.enable_interactability(self)
 			Global.level.game_manager.npc_arrived.emit()
 	)
 
 
-func go_through_exit_waypoints() -> void:
-	npc_movement.begin_travel(exit_waypoints)
+func go_through_heaven_waypoints() -> void:
+	npc_movement.begin_travel(heaven_waypoints)
+
+
+func go_through_hell_waypoints() -> void:
+	npc_movement.begin_travel(hell_waypoints)
 
 
 func get_history() -> Array:

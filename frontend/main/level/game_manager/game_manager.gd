@@ -18,8 +18,9 @@ var right_judgements: int = 0
 var current_npc: NPC
 
 @export_group("NPC Waypoints")
-@export var entry_waypoints: Array[Node3D]
-@export var exit_waypoints: Array[Node3D]
+@export var yama_waypoints: Array[Node3D]
+@export var heaven_waypoints: Array[Node3D]
+@export var hell_waypoints: Array[Node3D]
 
 @export_group("World Transition")
 @export var world_parent: Node3D
@@ -58,8 +59,9 @@ func bring_next_npc() -> bool:
 	
 	current_npc = npc_scene.instantiate()
 	current_npc.setup(all_npcs_data[index])
-	current_npc.entry_waypoints = entry_waypoints.duplicate(true)
-	current_npc.exit_waypoints = exit_waypoints.duplicate(true)
+	current_npc.yama_waypoints = yama_waypoints.duplicate(true)
+	current_npc.heaven_waypoints = heaven_waypoints.duplicate(true)
+	current_npc.hell_waypoints = hell_waypoints.duplicate(true)
 	npc_parent.add_child(current_npc)
 	
 	next_npc_coming.emit()
@@ -96,7 +98,10 @@ func decide_fate(heaven: bool) -> void:
 					start_timer(
 						1,
 						func():
-							current_npc.go_through_exit_waypoints()
+							if heaven:
+								current_npc.go_through_heaven_waypoints()
+							else:
+								current_npc.go_through_hell_waypoints()
 					)
 			)
 	)
