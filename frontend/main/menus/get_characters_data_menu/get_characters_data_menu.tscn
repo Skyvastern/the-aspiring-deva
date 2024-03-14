@@ -31,6 +31,7 @@ age: int
 background_story: String (0-256 characters, and also mention the cause of your death)
 voice: String (\"onyx\" (male), \"echo\" (male), \"nova\" (female), \"fable\" (female))
 nature: {\"truthfulness\": int (0-10), \"friendliness\": int (0-10), \"talkative\": int (0-10)}
+result: String (Heaven or Hell)
 }
 
 Above is the format for each character. So give the final response like this -

@@ -74,7 +74,8 @@ func can_player_interact() -> bool:
 func decide_fate(heaven: bool) -> void:
 	Global.flash.flash_in()
 	
-	if heaven:
+	var player_choice: String = "Heaven" if heaven else "Hell"
+	if player_choice == get_current_npc_data()["result"]:
 		right_judgements += 1
 	
 	start_timer(

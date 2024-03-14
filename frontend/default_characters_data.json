@@ -9,7 +9,8 @@
 				"truthfulness": 9,
 				"friendliness": 10,
 				"talkative": 4
-			}
+			},
+			"result": "Heaven"
 		},
 		{
 			"name": "Aaryan",
@@ -20,7 +21,8 @@
 				"truthfulness": 2,
 				"friendliness": 3,
 				"talkative": 5
-			}
+			},
+			"result": "Hell"
 		},
 		{
 			"name": "Lykos",
@@ -31,7 +33,8 @@
 				"truthfulness": 10,
 				"friendliness": 8,
 				"talkative": 7
-			}
+			},
+			"result": "Heaven"
 		},
 		{
 			"name": "Dion",
@@ -42,7 +45,8 @@
 				"truthfulness": 1,
 				"friendliness": 2,
 				"talkative": 8
-			}
+			},
+			"result": "Hell"
 		},
 		{
 			"name": "Meiying",
@@ -53,7 +57,8 @@
 				"truthfulness": 9,
 				"friendliness": 10,
 				"talkative": 6
-			}
+			},
+			"result": "Heaven"
 		},
 		{
 			"name": "Zheng",
@@ -64,7 +69,8 @@
 				"truthfulness": 3,
 				"friendliness": 1,
 				"talkative": 4
-			}
+			},
+			"result": "Hell"
 		},
 		{
 			"name": "Arash",
@@ -75,7 +81,8 @@
 				"truthfulness": 8,
 				"friendliness": 7,
 				"talkative": 5
-			}
+			},
+			"result": "Heaven"
 		},
 		{
 			"name": "Roshan",
@@ -86,7 +93,8 @@
 				"truthfulness": 0,
 				"friendliness": 4,
 				"talkative": 6
-			}
+			},
+			"result": "Hell"
 		},
 		{
 			"name": "Neith",
@@ -97,7 +105,8 @@
 				"truthfulness": 10,
 				"friendliness": 9,
 				"talkative": 3
-			}
+			},
+			"result": "Heaven"
 		},
 		{
 			"name": "Sethos",
@@ -108,7 +117,8 @@
 				"truthfulness": 2,
 				"friendliness": 3,
 				"talkative": 7
-			}
+			},
+			"result": "Hell"
 		}
 	]
 }
