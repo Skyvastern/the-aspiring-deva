@@ -127,7 +127,7 @@ func return_to_yama() -> void:
 						start_timer(
 							2,
 							func():
-								Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+								Global.player.is_controllable = false
 								get_tree().paused = false
 								
 								Global.load_menu(
