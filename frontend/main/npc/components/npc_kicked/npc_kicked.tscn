@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw3mahy186qy2"]
+
+[ext_resource type="Script" path="res://main/npc/components/npc_kicked/npc_kicked.gd" id="1_rb26d"]
+
+[node name="NPC Kicked" type="Node" node_paths=PackedStringArray("destroy_timer")]
+script = ExtResource("1_rb26d")
+destroy_timer = NodePath("DestroyTimer")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

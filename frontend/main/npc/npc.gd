@@ -24,17 +24,29 @@ var target: Node3D = null
 @onready var target_y_rotation: float = global_rotation.y
 @onready var rotate_speed: float = 0.1
 
-@export_group("Waypoints")
+@export_group("Movement")
 @export var npc_movement: NPC_Movement
 var yama_waypoints: Array[Node3D]
 var heaven_waypoints: Array[Node3D]
 var hell_waypoints: Array[Node3D]
+
+@export_group("Kicked")
+@export var npc_kicked: NPC_Kicked
 
 
 func _ready() -> void:
 	Global.level.game_manager.npc_fate_decided.connect(_on_npc_fate_decided)
 	
 	go_through_yama_waypoints()
+
+
+func _physics_process(_delta: float) -> void:
+	if target:
+		_set_angle_towards_target()
+	else:
+		_set_angle_at_default_position()
+	
+	_apply_rotation()
 
 
 func setup(data: Dictionary) -> void:
@@ -97,15 +109,6 @@ func add_npc_message(message: String) -> void:
 	})
 
 
-func _physics_process(_delta: float) -> void:
-	if target:
-		_set_angle_towards_target()
-	else:
-		_set_angle_at_default_position()
-	
-	_apply_rotation()
-
-
 func _set_angle_towards_target() -> void:
 	target_y_rotation = Global.get_angle_to_rotate_for_slerp(
 		global_transform,
@@ -135,3 +138,13 @@ func on_player_not_interactable() -> void:
 
 func _on_npc_fate_decided() -> void:
 	Global.disable_interactability(self)
+
+
+func get_kicked() -> void:
+	set_physics_process(false)
+	npc_kicked.get_kicked()
+
+
+func jump() -> void:
+	set_physics_process(false)
+	npc_kicked.jump()

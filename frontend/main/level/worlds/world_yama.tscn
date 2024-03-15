@@ -105,6 +105,8 @@ visible = false
 
 [node name="Boundary Front" type="StaticBody3D" parent="Boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5)
+collision_layer = 32
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Front"]
 mesh = SubResource("BoxMesh_mp3j5")
@@ -115,6 +117,8 @@ shape = SubResource("BoxShape3D_xvkcg")
 
 [node name="Boundary Left" type="StaticBody3D" parent="Boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 0, 0)
+collision_layer = 32
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Left"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
@@ -127,6 +131,8 @@ shape = SubResource("BoxShape3D_78d3v")
 
 [node name="Boundary Back" type="StaticBody3D" parent="Boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.5)
+collision_layer = 32
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Back"]
 mesh = SubResource("BoxMesh_tiap0")
@@ -137,6 +143,8 @@ shape = SubResource("BoxShape3D_ke4q4")
 
 [node name="Boundary Right" type="StaticBody3D" parent="Boundary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 0, 0)
+collision_layer = 32
+collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Boundary/Boundary Right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.5)
