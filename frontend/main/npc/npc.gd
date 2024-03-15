@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name NPC
 
 var _history: Array
+var is_ready_to_jump: bool = false
 
 @export_group("Data")
 @export_multiline var instruction: String
@@ -68,7 +69,14 @@ func go_through_heaven_waypoints() -> void:
 
 
 func go_through_hell_waypoints() -> void:
-	npc_movement.begin_travel(hell_waypoints)
+	npc_movement.begin_travel(
+		hell_waypoints,
+		func():
+			Global.enable_interactability(self)
+			is_ready_to_jump = true
+			
+			Global.level.game_manager.npc_preparing_to_jump.emit()
+	)
 
 
 func get_history() -> Array:
@@ -116,7 +124,7 @@ func _apply_rotation() -> void:
 
 func on_player_interactable() -> void:
 	interact = interact_scene.instantiate()
-	interact.npc = self
+	interact.setup(self, is_ready_to_jump)
 	add_child(interact)
 
 

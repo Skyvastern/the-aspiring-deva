@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b36061vqcjy15" path="res://main/audio_record_auto/audio_record_auto.tscn" id="2_dlpq3"]
 [ext_resource type="PackedScene" uid="uid://ctgeu75p213ew" path="res://main/audio_record/audio_record.tscn" id="2_l4hwy"]
 
-[node name="NPC Interact" type="Control" node_paths=PackedStringArray("screens", "selection_ui")]
+[node name="NPC Interact" type="Control" node_paths=PackedStringArray("screens", "selection_ui", "kick_prompt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ theme = ExtResource("1_5lhsb")
 script = ExtResource("1_fwdf7")
 screens = NodePath("Screens")
 selection_ui = NodePath("Selection")
+kick_prompt = NodePath("Selection/Prompts/Kick Prompt")
 audio_record_scene = ExtResource("2_l4hwy")
 audio_record_auto_scene = ExtResource("2_dlpq3")
 
@@ -100,5 +101,32 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Interact (Keyboard)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Kick Prompt" type="HBoxContainer" parent="Selection/Prompts"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="Selection/Prompts/Kick Prompt"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Selection/Prompts/Kick Prompt/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Selection/Prompts/Kick Prompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Kick"
 horizontal_alignment = 1
 vertical_alignment = 1

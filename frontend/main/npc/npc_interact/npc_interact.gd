@@ -1,9 +1,13 @@
 extends Control
 class_name NPC_Interact
 
-@export var npc: NPC
+@export_group("UI")
 @export var screens: Control
 @export var selection_ui: Control
+@export var kick_prompt: HBoxContainer
+
+@export_group("References")
+@export var npc: NPC
 @export var audio_record_scene: PackedScene
 @export var audio_record_auto_scene: PackedScene
 
@@ -14,8 +18,17 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		open_interaction_screen("quick")
+	
 	elif Input.is_action_just_pressed("interact_detailed"):
 		open_interaction_screen("detailed")
+	
+	elif kick_prompt.visible and Input.is_action_just_pressed("kick"):
+		npc_kicked()
+
+
+func setup(new_npc: NPC, is_ready_to_jump: bool) -> void:
+	npc = new_npc
+	kick_prompt.visible = is_ready_to_jump
 
 
 func open_interaction_screen(choice: String) -> void:
@@ -39,3 +52,8 @@ func open_interaction_screen(choice: String) -> void:
 func close_interaction_screen() -> void:
 	selection_ui.visible = true
 	Global.active_npc = null
+
+
+func npc_kicked() -> void:
+	Global.disable_interactability(npc)
+	print("Kicked!")
