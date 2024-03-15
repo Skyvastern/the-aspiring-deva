@@ -32,21 +32,31 @@ var hell_waypoints: Array[Node3D]
 
 @export_group("Kicked")
 @export var npc_kicked: NPC_Kicked
+@export var ready_timer: Timer
+const READY_MIN_TIME: float = 1
+const READY_MAX_TIME: float = 10
 
 
 func _ready() -> void:
 	Global.level.game_manager.npc_fate_decided.connect(_on_npc_fate_decided)
+	ready_timer.timeout.connect(_on_ready_timer_timeout)
 	
 	go_through_yama_waypoints()
+	ready_timer.wait_time = randf_range(READY_MIN_TIME, READY_MAX_TIME)
 
 
 func _physics_process(_delta: float) -> void:
+	# Rotation
 	if target:
 		_set_angle_towards_target()
 	else:
 		_set_angle_at_default_position()
 	
 	_apply_rotation()
+	
+	# Wait time before NPC jumps in the hell world
+	if interact and is_instance_valid(interact):
+		ready_timer.paused = interact.is_screen_active()
 
 
 func setup(data: Dictionary) -> void:
@@ -86,6 +96,9 @@ func go_through_hell_waypoints() -> void:
 		func():
 			Global.enable_interactability(self)
 			is_ready_to_jump = true
+			
+			print("Ready Time: " + str(ready_timer.wait_time))
+			ready_timer.start()
 			
 			Global.level.game_manager.npc_preparing_to_jump.emit()
 	)
@@ -148,3 +161,7 @@ func get_kicked() -> void:
 func jump() -> void:
 	set_physics_process(false)
 	npc_kicked.jump()
+
+
+func _on_ready_timer_timeout() -> void:
+	jump()

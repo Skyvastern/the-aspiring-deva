@@ -20,7 +20,7 @@ albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
 size = Vector3(1, 2, 1)
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_movement", "npc_kicked")]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_movement", "npc_kicked", "ready_timer")]
 collision_layer = 20
 collision_mask = 3
 script = ExtResource("1_hyvfc")
@@ -44,6 +44,7 @@ Talkative: %s"
 interact_scene = ExtResource("2_sti3o")
 npc_movement = NodePath("Components/NPC Movement")
 npc_kicked = NodePath("Components/NPC Kicked")
+ready_timer = NodePath("ReadyTimer")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -68,3 +69,7 @@ npc = NodePath("../..")
 
 [node name="NPC Kicked" parent="Components" node_paths=PackedStringArray("npc") instance=ExtResource("4_bw3vn")]
 npc = NodePath("../..")
+
+[node name="ReadyTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

@@ -57,3 +57,7 @@ func close_interaction_screen() -> void:
 func npc_kicked() -> void:
 	Global.disable_interactability(npc)
 	npc.get_kicked()
+
+
+func is_screen_active() -> bool:
+	return screens.get_child_count() > 0
