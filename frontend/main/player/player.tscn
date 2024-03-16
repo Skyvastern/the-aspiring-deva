@@ -23,16 +23,21 @@ collision_mask = 37
 script = ExtResource("1_2td4h")
 camera_3d = NodePath("CameraRoot/Camera3D")
 
-[node name="Body" type="MeshInstance3D" parent="."]
+[node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Body" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_8kxog")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mlv56")
 
-[node name="Eyes" type="MeshInstance3D" parent="."]
+[node name="Eyes" type="MeshInstance3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.25)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_nbu6p")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_fp08x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -40,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_lhla1")
 
 [node name="CameraRoot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRoot"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)

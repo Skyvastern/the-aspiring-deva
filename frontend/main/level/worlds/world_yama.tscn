@@ -90,15 +90,15 @@ size = Vector3(2, 3, 6)
 material = SubResource("StandardMaterial3D_brawa")
 
 [node name="Platform" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
-size = Vector3(11, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 10)
+size = Vector3(11, 0.5, 5)
 material = SubResource("StandardMaterial3D_wtiv6")
 
 [node name="SwitchHeaven" parent="." instance=ExtResource("2_yusr2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 8)
 
 [node name="SwitchHell" parent="." instance=ExtResource("3_0s6ij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
 
 [node name="Boundary" type="Node3D" parent="."]
 visible = false

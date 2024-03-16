@@ -1,21 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl6ccnf5ec1qq"]
+[gd_scene load_steps=8 format=3 uid="uid://dl6ccnf5ec1qq"]
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
 [ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_sti3o"]
+[ext_resource type="PackedScene" uid="uid://by3utx87lhu2o" path="res://assets/3d_models/ninja/ninja.tscn" id="3_ap1a5"]
 [ext_resource type="PackedScene" uid="uid://ci42qmw5oetrf" path="res://main/npc/components/npc_movement/npc_movement.tscn" id="3_kafhi"]
 [ext_resource type="PackedScene" uid="uid://dw3mahy186qy2" path="res://main/npc/components/npc_kicked/npc_kicked.tscn" id="4_bw3vn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_kw8wg"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yho2"]
-albedo_color = Color(0.784314, 1, 0.392157, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pfeea"]
-size = Vector3(0.75, 0.25, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6to1v"]
-albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+[ext_resource type="PackedScene" uid="uid://c8gcrtfx74dqg" path="res://assets/3d_models/erika/erika.tscn" id="4_l0wwj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
 size = Vector3(1, 2, 1)
@@ -46,17 +36,13 @@ npc_movement = NodePath("Components/NPC Movement")
 npc_kicked = NodePath("Components/NPC Kicked")
 ready_timer = NodePath("ReadyTimer")
 
-[node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_kw8wg")
-surface_material_override/0 = SubResource("StandardMaterial3D_5yho2")
+[node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
-[node name="Eyes" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.25)
-cast_shadow = 0
-mesh = SubResource("BoxMesh_pfeea")
-surface_material_override/0 = SubResource("StandardMaterial3D_6to1v")
+[node name="Ninja" parent="Visual" instance=ExtResource("3_ap1a5")]
+
+[node name="Erika" parent="Visual" instance=ExtResource("4_l0wwj")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
