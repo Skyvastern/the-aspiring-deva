@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8gcrtfx74dqg" path="res://assets/3d_models/erika/erika.tscn" id="4_l0wwj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
-size = Vector3(1, 2, 1)
+size = Vector3(1, 2.5, 1)
 
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_movement", "npc_kicked", "ready_timer")]
 collision_layer = 20
@@ -45,13 +45,14 @@ transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_5wxcb")
 
 [node name="Components" type="Node" parent="."]
 
-[node name="NPC Movement" parent="Components" node_paths=PackedStringArray("npc") instance=ExtResource("3_kafhi")]
+[node name="NPC Movement" parent="Components" node_paths=PackedStringArray("npc", "character_model") instance=ExtResource("3_kafhi")]
 npc = NodePath("../..")
+character_model = NodePath("../../Visual/Erika")
 
 [node name="NPC Kicked" parent="Components" node_paths=PackedStringArray("npc") instance=ExtResource("4_bw3vn")]
 npc = NodePath("../..")
