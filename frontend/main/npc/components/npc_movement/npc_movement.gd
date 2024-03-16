@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			# Don't wait for timer, directly finish traversal
 			update_current_waypoint()
 		
-		character_model.play_animation("Animations/idle_02", ANIM_BLEND)
+		character_model.play_animation("idle", ANIM_BLEND)
 		set_physics_process(false)
 
 
@@ -66,7 +66,7 @@ func update_current_waypoint() -> void:
 	index += 1
 	current_waypoint = waypoints[index]
 	
-	character_model.play_animation("Animations/walking", ANIM_BLEND, 1)
+	character_model.play_animation("walking", ANIM_BLEND, 1)
 	set_physics_process(true)
 
 

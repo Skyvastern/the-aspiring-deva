@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
 [ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_sti3o"]
-[ext_resource type="PackedScene" uid="uid://by3utx87lhu2o" path="res://assets/3d_models/ninja/ninja.tscn" id="3_ap1a5"]
+[ext_resource type="PackedScene" uid="uid://com21ep7cn3r4" path="res://assets/3d_models/ninja/ninja.tscn" id="3_ap1a5"]
 [ext_resource type="PackedScene" uid="uid://ci42qmw5oetrf" path="res://main/npc/components/npc_movement/npc_movement.tscn" id="3_kafhi"]
 [ext_resource type="PackedScene" uid="uid://dw3mahy186qy2" path="res://main/npc/components/npc_kicked/npc_kicked.tscn" id="4_bw3vn"]
-[ext_resource type="PackedScene" uid="uid://c8gcrtfx74dqg" path="res://assets/3d_models/erika/erika.tscn" id="4_l0wwj"]
+[ext_resource type="PackedScene" uid="uid://c1q1m76u2isj6" path="res://assets/3d_models/erika/erika.tscn" id="4_l0wwj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
 size = Vector3(1, 2.5, 1)
@@ -40,9 +40,9 @@ ready_timer = NodePath("ReadyTimer")
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
 [node name="Ninja" parent="Visual" instance=ExtResource("3_ap1a5")]
+visible = false
 
 [node name="Erika" parent="Visual" instance=ExtResource("4_l0wwj")]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
