@@ -9,9 +9,12 @@ class_name NPC_Kicked
 @export_group("References")
 @export var npc: NPC
 @export var destroy_timer: Timer
+@export var character_model: CharacterModel
+const ANIM_BLEND: float = 0.15
 
 
 func _ready() -> void:
+	Global.level.game_manager.npc_preparing_to_jump.connect(_on_npc_preparing_to_jump)
 	destroy_timer.timeout.connect(_on_destroy_timer_timeout)
 	
 	set_physics_process(false)
@@ -36,6 +39,10 @@ func jump() -> void:
 	set_physics_process(true)
 	npc.velocity.y = jump_speed
 	destroy_timer.start()
+
+
+func _on_npc_preparing_to_jump() -> void:
+	character_model.play_animation("scared", ANIM_BLEND)
 
 
 func _on_destroy_timer_timeout() -> void:

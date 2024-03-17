@@ -33,13 +33,14 @@ func _physics_process(delta: float) -> void:
 	
 	# Current Waypoint Reached
 	if npc.global_position.distance_to(target_pos) < 1:
+		character_model.play_animation("idle", ANIM_BLEND)
+		
 		if index < waypoints.size() - 1:
 			wait_timer.start()
 		else:
 			# Don't wait for timer, directly finish traversal
 			update_current_waypoint()
 		
-		character_model.play_animation("idle", ANIM_BLEND)
 		set_physics_process(false)
 
 
