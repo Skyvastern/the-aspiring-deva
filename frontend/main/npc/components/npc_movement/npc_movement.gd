@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Current Waypoint Reached
 	if npc.global_position.distance_to(target_pos) < 1:
-		character_model.play_animation("idle", ANIM_BLEND)
+		character_model.play_animation("_idle", ANIM_BLEND)
 		
 		if index < waypoints.size() - 1:
 			wait_timer.start()

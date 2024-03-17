@@ -31,6 +31,8 @@ func _physics_process(delta: float) -> void:
 
 
 func get_kicked() -> void:
+	character_model.play_animation("kicked", ANIM_BLEND)
+	
 	set_physics_process(true)
 	destroy_timer.start()
 

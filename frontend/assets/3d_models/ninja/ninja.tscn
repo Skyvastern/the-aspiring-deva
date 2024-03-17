@@ -104,4 +104,4 @@ bones/62/rotation = Quaternion(0.644031, 0.0136107, 0.148295, 0.750365)
 bones/63/rotation = Quaternion(0.313244, -0.00790926, 0.000717074, 0.94964)
 
 [node name="AnimationPlayer" parent="." index="1"]
-autoplay = "idle"
+autoplay = "_idle"
