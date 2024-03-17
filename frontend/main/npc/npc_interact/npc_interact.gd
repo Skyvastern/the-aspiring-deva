@@ -26,9 +26,9 @@ func _process(_delta: float) -> void:
 		npc_kicked()
 
 
-func setup(new_npc: NPC, is_ready_to_jump: bool) -> void:
+func setup(new_npc: NPC, is_ready_to_drop: bool) -> void:
 	npc = new_npc
-	kick_prompt.visible = is_ready_to_jump
+	kick_prompt.visible = is_ready_to_drop
 
 
 func open_interaction_screen(choice: String) -> void:

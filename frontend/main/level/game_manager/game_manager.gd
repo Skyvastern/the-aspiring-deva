@@ -4,7 +4,7 @@ class_name GameManager
 signal next_npc_coming
 signal npc_arrived
 signal npc_fate_decided
-signal npc_preparing_to_jump
+signal npc_preparing_to_drop
 
 @export_group("Data")
 @export var all_npcs_data: Array

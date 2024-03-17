@@ -16,7 +16,7 @@ var timer_callback: Callable
 
 
 func _ready() -> void:
-	Global.level.game_manager.npc_preparing_to_jump.connect(_on_npc_preparing_to_jump)
+	Global.level.game_manager.npc_preparing_to_drop.connect(_on_npc_preparing_to_drop)
 	timer.timeout.connect(_on_timer_timeout)
 	destroy_timer.timeout.connect(_on_destroy_timer_timeout)
 	
@@ -40,8 +40,8 @@ func get_kicked() -> void:
 	destroy_timer.start()
 
 
-func jump() -> void:
-	character_model.play_animation("jump", ANIM_BLEND)
+func drop() -> void:
+	character_model.play_animation("drop", ANIM_BLEND)
 	
 	start_timer(
 		4.5,
@@ -52,7 +52,7 @@ func jump() -> void:
 	)
 
 
-func _on_npc_preparing_to_jump() -> void:
+func _on_npc_preparing_to_drop() -> void:
 	character_model.play_animation("scared", ANIM_BLEND)
 
 

@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name NPC
 
 var _history: Array
-var is_ready_to_jump: bool = false
+var is_ready_to_drop: bool = false
 
 @export_group("Data")
 @export_multiline var instruction: String
@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 	
 	_apply_rotation()
 	
-	# Wait time before NPC jumps in the hell world
+	# Wait time before NPC drops in the hell world
 	if interact and is_instance_valid(interact):
 		ready_timer.paused = interact.is_screen_active()
 
@@ -95,12 +95,12 @@ func go_through_hell_waypoints() -> void:
 		hell_waypoints,
 		func():
 			Global.enable_interactability(self)
-			is_ready_to_jump = true
+			is_ready_to_drop = true
 			
 			print("Ready Time: " + str(ready_timer.wait_time))
 			ready_timer.start()
 			
-			Global.level.game_manager.npc_preparing_to_jump.emit()
+			Global.level.game_manager.npc_preparing_to_drop.emit()
 	)
 
 
@@ -140,7 +140,7 @@ func _apply_rotation() -> void:
 
 func on_player_interactable() -> void:
 	interact = interact_scene.instantiate()
-	interact.setup(self, is_ready_to_jump)
+	interact.setup(self, is_ready_to_drop)
 	add_child(interact)
 
 
@@ -158,10 +158,10 @@ func get_kicked() -> void:
 	npc_kicked.get_kicked()
 
 
-func jump() -> void:
+func drop() -> void:
 	set_physics_process(false)
-	npc_kicked.jump()
+	npc_kicked.drop()
 
 
 func _on_ready_timer_timeout() -> void:
-	jump()
+	drop()
