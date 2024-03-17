@@ -47,7 +47,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5
 [node name="NPC Hell Waypoints" type="Node3D" parent="."]
 
 [node name="W1" type="Node3D" parent="NPC Hell Waypoints"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -14.5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -14.75)
 
 [node name="Menus" type="CanvasLayer" parent="."]
 

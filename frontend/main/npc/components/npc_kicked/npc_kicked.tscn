@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" path="res://main/npc/components/npc_kicked/npc_kicked.gd" id="1_rb26d"]
 
-[node name="NPC Kicked" type="Node" node_paths=PackedStringArray("destroy_timer")]
+[node name="NPC Kicked" type="Node" node_paths=PackedStringArray("destroy_timer", "timer")]
 script = ExtResource("1_rb26d")
 destroy_timer = NodePath("DestroyTimer")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 5.0

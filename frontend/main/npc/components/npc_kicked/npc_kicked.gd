@@ -3,7 +3,6 @@ class_name NPC_Kicked
 
 @export_group("Data")
 @export var speed: float = 10
-@export var jump_speed: float = 20
 @export var gravity: float = 100
 
 @export_group("References")
@@ -12,9 +11,13 @@ class_name NPC_Kicked
 @export var character_model: CharacterModel
 const ANIM_BLEND: float = 0.15
 
+@export var timer: Timer
+var timer_callback: Callable
+
 
 func _ready() -> void:
 	Global.level.game_manager.npc_preparing_to_jump.connect(_on_npc_preparing_to_jump)
+	timer.timeout.connect(_on_timer_timeout)
 	destroy_timer.timeout.connect(_on_destroy_timer_timeout)
 	
 	set_physics_process(false)
@@ -38,9 +41,15 @@ func get_kicked() -> void:
 
 
 func jump() -> void:
-	set_physics_process(true)
-	npc.velocity.y = jump_speed
-	destroy_timer.start()
+	character_model.play_animation("jump", ANIM_BLEND)
+	
+	start_timer(
+		4.5,
+		func():
+			speed = 4
+			set_physics_process(true)
+			destroy_timer.start()
+	)
 
 
 func _on_npc_preparing_to_jump() -> void:
@@ -49,3 +58,15 @@ func _on_npc_preparing_to_jump() -> void:
 
 func _on_destroy_timer_timeout() -> void:
 	npc.queue_free()
+
+
+# NOTE: Not using get_tree().create_timer().timeout as it keeps running when tree is paused
+func start_timer(wait_time: float, callback: Callable) -> void:
+	timer.wait_time = wait_time
+	timer_callback = callback
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	if timer_callback:
+		timer_callback.call()
