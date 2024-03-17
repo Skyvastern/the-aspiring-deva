@@ -22,7 +22,9 @@ My (the user) job is to assess you on your life by asking questions. In the end,
 
 You (AI) give responses in less than or equal to 100 words.
 
-You (AI) only give conversation's response (nothing else)."
+You (AI) only give conversation's response (nothing else).
+
+And remember I will be the aspiring deva asking you questions."
 details_format = "Here is your character details -
 
 Name: %s
