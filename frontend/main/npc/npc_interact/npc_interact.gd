@@ -55,7 +55,6 @@ func close_interaction_screen() -> void:
 
 
 func npc_kicked() -> void:
-	Global.disable_interactability(npc)
 	npc.get_kicked()
 
 

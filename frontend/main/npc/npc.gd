@@ -154,12 +154,17 @@ func _on_npc_fate_decided() -> void:
 
 
 func get_kicked() -> void:
+	Global.disable_interactability(self)
 	set_physics_process(false)
+	ready_timer.stop()
+	
 	npc_kicked.get_kicked()
 
 
 func drop() -> void:
+	Global.disable_interactability(self)
 	set_physics_process(false)
+	
 	npc_kicked.drop()
 
 
