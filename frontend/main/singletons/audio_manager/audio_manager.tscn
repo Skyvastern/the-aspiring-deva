@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3h82xqidr174"]
+[gd_scene load_steps=4 format=3 uid="uid://d3h82xqidr174"]
 
 [ext_resource type="Script" path="res://main/singletons/audio_manager/audio_manager.gd" id="1_ruobt"]
 [ext_resource type="PackedScene" uid="uid://jxj15vbiok3x" path="res://main/singletons/audio_manager/audio_one_shot/audio_one_shot.tscn" id="2_88qi6"]
+[ext_resource type="AudioStream" uid="uid://b761kelns0e8b" path="res://assets/audio/music/Royal Coupling/Royal Coupling.mp3" id="3_rk3d4"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("clips", "one_shots")]
+process_mode = 3
 script = ExtResource("1_ruobt")
 audio_one_shot_scene = ExtResource("2_88qi6")
 clips = NodePath("Clips")
 one_shots = NodePath("OneShots")
 
 [node name="Clips" type="Node" parent="."]
+
+[node name="Main" type="AudioStreamPlayer" parent="Clips"]
+stream = ExtResource("3_rk3d4")
+volume_db = -15.0
 
 [node name="OneShots" type="Node" parent="."]

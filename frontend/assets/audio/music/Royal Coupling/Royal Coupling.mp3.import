@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b761kelns0e8b"
+path="res://.godot/imported/Royal Coupling.mp3-78cf1db55832280b9e1ed98ddf162e9b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Royal Coupling/Royal Coupling.mp3"
+dest_files=["res://.godot/imported/Royal Coupling.mp3-78cf1db55832280b9e1ed98ddf162e9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
