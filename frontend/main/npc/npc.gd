@@ -117,10 +117,17 @@ func go_through_hell_waypoints() -> void:
 	npc_movement.begin_travel(
 		hell_waypoints,
 		func():
-			Global.enable_interactability(self)
-			is_ready_to_drop = true
+			# Update history
+			_history.append_array([
+				{"role": "system", "content": "Your judgement is to go to the hell world!"},
+				{"role": "system", "content": "You are very scared and anxious to jump into the hell world."}
+			])
 			
-			print("Ready Time: " + str(ready_timer.wait_time))
+			# Enable interaction
+			Global.enable_interactability(self)
+			
+			# Set ready time after which NPC drops by themself
+			is_ready_to_drop = true
 			ready_timer.start()
 			
 			Global.level.game_manager.npc_preparing_to_drop.emit()
