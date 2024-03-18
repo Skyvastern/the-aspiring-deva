@@ -22,11 +22,12 @@ func _ready() -> void:
 	set_physics_process(false)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Movement
 	var target_pos: Vector3 = current_waypoint.global_position
 	var dir: Vector3 = npc.global_position.direction_to(target_pos)
-	npc.global_position += dir * speed * delta
+	npc.velocity = dir * speed
+	npc.move_and_slide()
 	
 	# Rotation
 	npc.target = current_waypoint
