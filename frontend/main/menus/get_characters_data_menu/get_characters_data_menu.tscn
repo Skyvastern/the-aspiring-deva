@@ -37,7 +37,27 @@ result: String (Heaven or Hell)
 
 Above is the format for each character. So give the final response like this -
 
-{characters: [{}, {}, {} ... ]}"
+{characters: [{}, {}, {} ... ]}
+
+Pick characters from the time period of ancient era.
+
+Out of 10 characters, have stories from these places -
+
+India: Good person
+India: Bad person
+Greece: Good person
+Greece: Bad person
+China: Good person
+China: Bad person
+Persia: Good person
+Persia: Bad person
+Egypt: Good person
+Egypt: Bad person
+
+Notes:
+- Have 5 male and 5 female characters.
+- In their stories, no need to explicity mention that they are from that country.
+- Also, use character names that are not widely used these days."
 get_characters_api = NodePath("GetCharactersAPI")
 level_scene_path = "res://main/level/level.tscn"
 
