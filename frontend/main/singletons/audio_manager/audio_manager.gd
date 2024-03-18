@@ -26,3 +26,21 @@ func play_audio_one_shot(audio_stream: AudioStream, volume_db: float = 0.0) -> A
 	
 	one_shots.add_child(audio_one_shot)
 	return audio_one_shot
+
+
+func reduce_volume() -> void:
+	_change_volume(-30, 1)
+
+
+func reset_volume() -> void:
+	_change_volume(-15, 1)
+
+
+func _change_volume(
+					to: float,
+					duration: float = 1.0,
+					callback: Callable = func(): pass) -> void:
+	
+	var tween: Tween = create_tween()
+	tween.tween_property(active_music_stream, "volume_db", to, duration)
+	tween.tween_callback(callback)

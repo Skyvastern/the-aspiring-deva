@@ -32,6 +32,8 @@ func setup(new_npc: NPC, is_ready_to_drop: bool) -> void:
 
 
 func open_interaction_screen(choice: String) -> void:
+	AudioManager.reduce_volume()
+	
 	if choice == "quick":
 		selection_ui.visible = false
 		
@@ -50,6 +52,8 @@ func open_interaction_screen(choice: String) -> void:
 
 
 func close_interaction_screen() -> void:
+	AudioManager.reset_volume()
+	
 	selection_ui.visible = true
 	Global.active_npc = null
 
