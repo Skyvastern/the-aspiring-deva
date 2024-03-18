@@ -42,17 +42,17 @@ size = Vector3(10, 1, 653.667)
 material = SubResource("StandardMaterial3D_55e0l")
 
 [node name="Pillar1" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2)
-size = Vector3(1, 3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
+size = Vector3(1, 4, 1)
 material = SubResource("StandardMaterial3D_isn1e")
 
 [node name="Pillar2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -2)
-size = Vector3(1, 3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
+size = Vector3(1, 4, 1)
 material = SubResource("StandardMaterial3D_isn1e")
 
 [node name="Roof" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3.5, -2)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 4.5, -2)
 size = Vector3(1, 7, 1)
 material = SubResource("StandardMaterial3D_isn1e")
 
