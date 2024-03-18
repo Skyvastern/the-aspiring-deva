@@ -16,7 +16,12 @@ var is_ready_to_drop: bool = false
 	"shimmer"
 ) var voice: String = "onyx"
 
-@export_group("References")
+@export_group("Visual")
+@export var visual: Node3D
+@export var character_model_scenes: Array[PackedScene]
+var character_model: CharacterModel
+
+@export_group("Interaction")
 @export var interact_scene: PackedScene
 var interact: NPC_Interact
 
@@ -60,11 +65,13 @@ func _physics_process(_delta: float) -> void:
 
 
 func setup(data: Dictionary) -> void:
+	# Setup history
 	voice = data["voice"]
 	
 	var details: String = details_format % [
 		data["name"],
 		data["age"],
+		data["gender"],
 		data["background_story"],
 		data["nature"]["truthfulness"],
 		data["nature"]["friendliness"],
@@ -75,6 +82,22 @@ func setup(data: Dictionary) -> void:
 		{"role": "system", "content": instruction},
 		{"role": "system", "content": details}
 	])
+	
+	# Instantiate character
+	Global.clear_child_nodes(visual)
+	
+	var character_scene: PackedScene
+	if data["gender"] == "male":
+		character_scene = character_model_scenes[0]
+	else:
+		character_scene = character_model_scenes[1]
+	
+	character_model = character_scene.instantiate()
+	visual.add_child(character_model)
+	
+	# Update references
+	npc_movement.character_model = character_model
+	npc_kicked.character_model = character_model
 
 
 func go_through_yama_waypoints() -> void:

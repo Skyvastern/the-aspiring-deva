@@ -10,7 +10,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wxcb"]
 size = Vector3(1, 2.5, 1)
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_movement", "npc_kicked", "ready_timer")]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("visual", "npc_movement", "npc_kicked", "ready_timer")]
 collision_layer = 20
 collision_mask = 3
 script = ExtResource("1_hyvfc")
@@ -29,10 +29,13 @@ details_format = "Here is your character details -
 
 Name: %s
 Age: %s
+Gender: %s
 Background Story: %s
 Truthfulness: %s
 Friendliness: %s
 Talkative: %s"
+visual = NodePath("Visual")
+character_model_scenes = Array[PackedScene]([ExtResource("3_ap1a5"), ExtResource("4_l0wwj")])
 interact_scene = ExtResource("2_sti3o")
 npc_movement = NodePath("Components/NPC Movement")
 npc_kicked = NodePath("Components/NPC Kicked")
@@ -42,9 +45,6 @@ ready_timer = NodePath("ReadyTimer")
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
 
 [node name="Ninja" parent="Visual" instance=ExtResource("3_ap1a5")]
-visible = false
-
-[node name="Erika" parent="Visual" instance=ExtResource("4_l0wwj")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
@@ -54,11 +54,11 @@ shape = SubResource("BoxShape3D_5wxcb")
 
 [node name="NPC Movement" parent="Components" node_paths=PackedStringArray("npc", "character_model") instance=ExtResource("3_kafhi")]
 npc = NodePath("../..")
-character_model = NodePath("../../Visual/Erika")
+character_model = NodePath("../../Visual/Ninja")
 
 [node name="NPC Kicked" parent="Components" node_paths=PackedStringArray("npc", "character_model") instance=ExtResource("4_bw3vn")]
 npc = NodePath("../..")
-character_model = NodePath("../../Visual/Erika")
+character_model = NodePath("../../Visual/Ninja")
 
 [node name="ReadyTimer" type="Timer" parent="."]
 wait_time = 10.0

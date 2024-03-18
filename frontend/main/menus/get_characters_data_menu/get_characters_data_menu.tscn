@@ -28,6 +28,7 @@ You have to generate details of 10 individuals (5 good people and 5 bad people) 
 {
 name: String
 age: int
+gender: String (\"male\" or \"female\")
 background_story: String (0-256 characters, and also mention the cause of your death)
 voice: String (\"onyx\" (male), \"echo\" (male), \"nova\" (female), \"fable\" (female))
 nature: {\"truthfulness\": int (0-10), \"friendliness\": int (0-10), \"talkative\": int (0-10)}

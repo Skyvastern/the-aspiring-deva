@@ -3,6 +3,7 @@
 		{
 			"name": "Devika",
 			"age": 26,
+			"gender": "female",
 			"background_story": "A skilled herbalist who saved her village from a deadly plague with her knowledge of ancient remedies. Died in a monsoon flood while helping villagers to safety.",
 			"voice": "fable",
 			"nature": {
@@ -15,6 +16,7 @@
 		{
 			"name": "Aaryan",
 			"age": 34,
+			"gender": "male",
 			"background_story": "A notorious warlord who sought power at any cost, betraying allies and enemies alike. Met his end in a battle, betrayed by his own commanders.",
 			"voice": "onyx",
 			"nature": {
@@ -27,6 +29,7 @@
 		{
 			"name": "Lykos",
 			"age": 29,
+			"gender": "male",
 			"background_story": "A revered philosopher who traveled across lands to spread knowledge and wisdom. Died peacefully after imparting his final words of wisdom.",
 			"voice": "echo",
 			"nature": {
@@ -39,6 +42,7 @@
 		{
 			"name": "Dion",
 			"age": 37,
+			"gender": "male",
 			"background_story": "A cunning trader known for manipulating market prices to his advantage, causing famine. Died in a shipwreck off the coast.",
 			"voice": "onyx",
 			"nature": {
@@ -51,6 +55,7 @@
 		{
 			"name": "Meiying",
 			"age": 31,
+			"gender": "female",
 			"background_story": "A compassionate caretaker of orphans, teaching them skills and wisdom beyond their years. Died saving children from a burning building.",
 			"voice": "nova",
 			"nature": {
@@ -63,6 +68,7 @@
 		{
 			"name": "Zheng",
 			"age": 42,
+			"gender": "male",
 			"background_story": "An ambitious general who betrayed his emperor for power, leading to years of turmoil. Poisoned by a rival.",
 			"voice": "echo",
 			"nature": {
@@ -75,6 +81,7 @@
 		{
 			"name": "Arash",
 			"age": 27,
+			"gender": "male",
 			"background_story": "A legendary archer known for his unwavering commitment to justice and fairness. Died heroically in a battle to protect his people from invaders.",
 			"voice": "echo",
 			"nature": {
@@ -87,6 +94,7 @@
 		{
 			"name": "Roshan",
 			"age": 39,
+			"gender": "male",
 			"background_story": "A wealthy merchant who exploited the poor, amassing wealth through deceit and exploitation. Died of a mysterious illness that none could diagnose.",
 			"voice": "onyx",
 			"nature": {
@@ -99,6 +107,7 @@
 		{
 			"name": "Neith",
 			"age": 33,
+			"gender": "female",
 			"background_story": "A skilled artisan whose creations were dedicated to the gods and used in many ceremonies. Passed away in her sleep, surrounded by her work.",
 			"voice": "fable",
 			"nature": {
@@ -111,6 +120,7 @@
 		{
 			"name": "Sethos",
 			"age": 46,
+			"gender": "male",
 			"background_story": "A ruthless governor who imposed harsh taxes on his people, causing widespread suffering. Assassinated by a disgruntled subject.",
 			"voice": "onyx",
 			"nature": {
