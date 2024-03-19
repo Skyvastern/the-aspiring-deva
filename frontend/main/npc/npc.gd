@@ -80,7 +80,8 @@ func setup(data: Dictionary) -> void:
 	
 	_history.append_array([
 		{"role": "system", "content": instruction},
-		{"role": "system", "content": details}
+		{"role": "system", "content": details},
+		{"role": "assistant", "content": "I am ready to be judged by you %s deva" % Global.player_name}
 	])
 	
 	# Instantiate character
