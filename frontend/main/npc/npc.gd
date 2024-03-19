@@ -99,6 +99,7 @@ func setup(data: Dictionary) -> void:
 	# Update references
 	npc_movement.character_model = character_model
 	npc_kicked.character_model = character_model
+	npc_kicked.gender = data["gender"]
 
 
 func go_through_yama_waypoints() -> void:
