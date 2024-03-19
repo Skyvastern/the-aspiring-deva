@@ -9,6 +9,7 @@ var active_music_stream: AudioStreamPlayer
 
 @export_group("Extras")
 @export var mouse_click_stream: AudioStream
+@export var window_stream: AudioStream
 
 
 func play(audio_name: String, from_position: float = 0.0) -> void:
@@ -52,3 +53,7 @@ func _change_volume(
 
 func play_mouse_click_sound() -> void:
 	play_audio_one_shot(mouse_click_stream)
+
+
+func play_window_sound() -> void:
+	play_audio_one_shot(window_stream, -5)

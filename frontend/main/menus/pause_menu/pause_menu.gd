@@ -25,6 +25,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_visibility_changed() -> void:
+	if visible:
+		AudioManager.play_window_sound()
+	
 	get_tree().paused = visible
 	game_paused.emit(visible)
 

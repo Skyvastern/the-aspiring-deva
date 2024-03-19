@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3h82xqidr174"]
+[gd_scene load_steps=6 format=3 uid="uid://d3h82xqidr174"]
 
 [ext_resource type="Script" path="res://main/singletons/audio_manager/audio_manager.gd" id="1_ruobt"]
 [ext_resource type="PackedScene" uid="uid://jxj15vbiok3x" path="res://main/singletons/audio_manager/audio_one_shot/audio_one_shot.tscn" id="2_88qi6"]
 [ext_resource type="AudioStream" uid="uid://dg4wewc08usaf" path="res://assets/audio/effects/ui/click3.ogg" id="3_ecsep"]
 [ext_resource type="AudioStream" uid="uid://b761kelns0e8b" path="res://assets/audio/music/Royal Coupling/Royal Coupling.mp3" id="3_rk3d4"]
+[ext_resource type="AudioStream" uid="uid://bjuji606vu5sw" path="res://assets/audio/effects/ui/rollover5.ogg" id="4_ka43q"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("clips", "one_shots")]
 process_mode = 3
@@ -12,6 +13,7 @@ audio_one_shot_scene = ExtResource("2_88qi6")
 clips = NodePath("Clips")
 one_shots = NodePath("OneShots")
 mouse_click_stream = ExtResource("3_ecsep")
+window_stream = ExtResource("4_ka43q")
 
 [node name="Clips" type="Node" parent="."]
 
