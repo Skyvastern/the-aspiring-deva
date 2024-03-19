@@ -1,9 +1,13 @@
 extends CSGCombiner3D
 class_name Switch
 
+@export_group("Main")
 @export_enum("Yama", "Heaven", "Hell") var switch_type: String = "Heaven"
 @export var switch_interact_scene: PackedScene
 var switch_interact: SwitchInteract
+
+@export_group("Audio")
+@export var switch_activate_stream: AudioStream
 
 
 func _ready() -> void:
@@ -15,7 +19,7 @@ func _ready() -> void:
 
 func on_player_interactable() -> void:
 	switch_interact = switch_interact_scene.instantiate()
-	switch_interact.setup(self)
+	switch_interact.setup(self, switch_activate_stream)
 	
 	add_child(switch_interact)
 

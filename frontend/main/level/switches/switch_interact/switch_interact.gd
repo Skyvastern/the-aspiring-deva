@@ -3,10 +3,12 @@ class_name SwitchInteract
 
 @export var description: Label
 var switch: Switch
+var activate_stream: AudioStream
 
 
-func setup(new_switch: Switch) -> void:
+func setup(new_switch: Switch, stream: AudioStream) -> void:
 	switch = new_switch
+	activate_stream = stream
 	
 	match switch.switch_type:
 		"Yama":
@@ -25,3 +27,5 @@ func _process(_delta: float) -> void:
 			Global.level.game_manager.return_to_yama()
 		else:
 			Global.level.game_manager.decide_fate(switch.switch_type == "Heaven")
+		
+		AudioManager.play_audio_one_shot(activate_stream)
