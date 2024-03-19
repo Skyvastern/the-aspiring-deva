@@ -16,8 +16,10 @@ func _ready() -> void:
 
 
 func _on_play_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
 	Global.load_menu(self, get_local_characters_data_menu_scene_path)
 
 
 func _on_play_generate_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
 	Global.load_menu(self, get_characters_data_menu_scene_path)

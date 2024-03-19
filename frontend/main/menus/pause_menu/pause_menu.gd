@@ -30,10 +30,13 @@ func _on_visibility_changed() -> void:
 
 
 func _on_resume_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
 	visible = false
 
 
 func _on_main_menu_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
+	
 	get_tree().paused = false
 	Global.load_menu(
 		Global.level,

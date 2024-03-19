@@ -2,9 +2,13 @@ extends Node
 
 var active_music_stream: AudioStreamPlayer
 
+@export_group("Main")
 @export var audio_one_shot_scene: PackedScene
 @export var clips: Node
 @export var one_shots: Node
+
+@export_group("Extras")
+@export var mouse_click_stream: AudioStream
 
 
 func play(audio_name: String, from_position: float = 0.0) -> void:
@@ -44,3 +48,7 @@ func _change_volume(
 	var tween: Tween = create_tween()
 	tween.tween_property(active_music_stream, "volume_db", to, duration)
 	tween.tween_callback(callback)
+
+
+func play_mouse_click_sound() -> void:
+	play_audio_one_shot(mouse_click_stream)

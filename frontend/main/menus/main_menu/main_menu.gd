@@ -22,8 +22,10 @@ func _set_player_name_label() -> void:
 
 
 func _on_start_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
 	Global.load_menu(self, game_mode_menu_scene_path)
 
 
 func _on_exit_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
 	get_tree().quit()

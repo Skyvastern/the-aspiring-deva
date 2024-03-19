@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func _on_confirm_btn_pressed() -> void:
+	AudioManager.play_mouse_click_sound()
+	
 	var player_name: String = player_name_input.text.strip_escapes().strip_edges()
 	if player_name != "":
 		Global.player_name = player_name
