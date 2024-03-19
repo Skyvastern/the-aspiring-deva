@@ -14,6 +14,9 @@ const ANIM_BLEND: float = 0.15
 @export var timer: Timer
 var timer_callback: Callable
 
+@export_group("Audio")
+@export var kick_stream: AudioStream
+
 
 func _ready() -> void:
 	Global.level.game_manager.npc_preparing_to_drop.connect(_on_npc_preparing_to_drop)
@@ -34,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 
 func get_kicked() -> void:
+	AudioManager.play_audio_one_shot(kick_stream, 0.0, 0.1)
 	character_model.play_animation("kicked", ANIM_BLEND)
 	
 	set_physics_process(true)

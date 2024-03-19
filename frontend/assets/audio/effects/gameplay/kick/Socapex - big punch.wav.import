@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co75vwhks1xxu"
+path="res://.godot/imported/Socapex - big punch.wav-fb9dd6d379a566b9c1dc45c1bc2acc3a.sample"
+
+[deps]
+
+source_file="res://assets/audio/effects/gameplay/kick/Socapex - big punch.wav"
+dest_files=["res://.godot/imported/Socapex - big punch.wav-fb9dd6d379a566b9c1dc45c1bc2acc3a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw3mahy186qy2"]
+[gd_scene load_steps=3 format=3 uid="uid://dw3mahy186qy2"]
 
 [ext_resource type="Script" path="res://main/npc/components/npc_kicked/npc_kicked.gd" id="1_rb26d"]
+[ext_resource type="AudioStream" uid="uid://co75vwhks1xxu" path="res://assets/audio/effects/gameplay/kick/Socapex - big punch.wav" id="2_6ky5q"]
 
 [node name="NPC Kicked" type="Node" node_paths=PackedStringArray("destroy_timer", "timer")]
 script = ExtResource("1_rb26d")
 destroy_timer = NodePath("DestroyTimer")
 timer = NodePath("Timer")
+kick_stream = ExtResource("2_6ky5q")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
