@@ -17,10 +17,10 @@ switch_activate_stream = ExtResource("3_i1ed7")
 
 [node name="Base" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-size = Vector3(0.2, 1, 0.2)
+size = Vector3(0.25, 1, 0.25)
 material = SubResource("StandardMaterial3D_n21w0")
 
 [node name="Top" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-size = Vector3(0.3, 0.3, 0.3)
+size = Vector3(0.4, 0.3, 0.4)
 material = SubResource("StandardMaterial3D_n21w0")
