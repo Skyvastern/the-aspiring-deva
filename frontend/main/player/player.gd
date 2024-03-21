@@ -120,5 +120,9 @@ func _on_active_npc_updated(npc: NPC) -> void:
 
 func reset_position_and_look_direction() -> void:
 	position = player_default_pos
+	reset_look_direction()
+
+
+func reset_look_direction() -> void:
 	rotation.y = player_default_rot_y
 	camera_3d.rotation.x = camera_default_rot_x

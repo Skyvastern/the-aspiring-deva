@@ -82,6 +82,7 @@ func decide_fate(heaven: bool) -> void:
 		0.5,
 		func():
 			Global.clear_child_nodes(world_parent)
+			Global.player.reset_look_direction()
 			
 			if heaven:
 				var world_heaven: Node3D = world_heaven_scene.instantiate()
