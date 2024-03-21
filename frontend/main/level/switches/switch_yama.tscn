@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://00y7fa0lx6dn" path="res://assets/audio/effects/gameplay/switch/yama/sergequadrado__miracle-harp.wav" id="3_0h2wc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayyj"]
-albedo_color = Color(0.294118, 0.392157, 1, 1)
 
 [node name="SwitchYama" type="CSGCombiner3D"]
 use_collision = true

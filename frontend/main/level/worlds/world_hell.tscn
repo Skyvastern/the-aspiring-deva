@@ -2,9 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://d1dxk2ewkcarq" path="res://main/level/worlds/world_hell_env.tres" id="1_4xppp"]
 [ext_resource type="PackedScene" uid="uid://b17roqyqpbknf" path="res://main/level/switches/switch_yama.tscn" id="2_jpci2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4v0em"]
-albedo_color = Color(1, 0.392157, 0.392157, 1)
+[ext_resource type="PackedScene" uid="uid://cg3umbrqyob0t" path="res://assets/3d_models/world_hell_terrain/world_hell_terrain.tscn" id="2_ytm3e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nc76f"]
 size = Vector3(12, 40, 1)
@@ -40,30 +38,10 @@ light_energy = 0.75
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_4xppp")
 
-[node name="Terrain" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="Ground" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 156)
-size = Vector3(10, 1, 340)
-
-[node name="Pillar1" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
-size = Vector3(1, 4, 1)
-material = SubResource("StandardMaterial3D_4v0em")
-
-[node name="Pillar2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
-size = Vector3(1, 4, 1)
-material = SubResource("StandardMaterial3D_4v0em")
-
-[node name="Roof" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 4.5, -2)
-size = Vector3(1, 7, 1)
-material = SubResource("StandardMaterial3D_4v0em")
+[node name="WorldHellTerrain" parent="." instance=ExtResource("2_ytm3e")]
 
 [node name="SwitchYama" parent="." instance=ExtResource("2_jpci2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 13)
 
 [node name="Boundary" type="Node3D" parent="."]
 visible = false
