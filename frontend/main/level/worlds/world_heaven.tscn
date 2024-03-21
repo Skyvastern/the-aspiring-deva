@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhbbe46duivvr"]
+[gd_scene load_steps=9 format=3 uid="uid://dhbbe46duivvr"]
 
 [ext_resource type="Environment" uid="uid://dthdsl82jr40n" path="res://main/level/worlds/world_heaven_env.tres" id="1_o3eyo"]
 [ext_resource type="PackedScene" uid="uid://b17roqyqpbknf" path="res://main/level/switches/switch_yama.tscn" id="2_ojl2l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55e0l"]
-albedo_color = Color(0.392157, 0.588235, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isn1e"]
+[ext_resource type="PackedScene" uid="uid://cuxuwa27bvcuv" path="res://assets/3d_models/world_heaven_terrain/world_heaven_terrain.tscn" id="3_htbom"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wfdld"]
 size = Vector3(12, 40, 1)
@@ -33,31 +29,10 @@ light_energy = 0.75
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_o3eyo")
 
-[node name="Terrain" type="CSGCombiner3D" parent="."]
-use_collision = true
-
-[node name="Ground" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.83374)
-size = Vector3(10, 1, 653.667)
-material = SubResource("StandardMaterial3D_55e0l")
-
-[node name="Pillar1" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.5, -2)
-size = Vector3(1, 4, 1)
-material = SubResource("StandardMaterial3D_isn1e")
-
-[node name="Pillar2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -2)
-size = Vector3(1, 4, 1)
-material = SubResource("StandardMaterial3D_isn1e")
-
-[node name="Roof" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 4.5, -2)
-size = Vector3(1, 7, 1)
-material = SubResource("StandardMaterial3D_isn1e")
+[node name="WorldHeavenTerrain" parent="." instance=ExtResource("3_htbom")]
 
 [node name="SwitchYama" parent="." instance=ExtResource("2_ojl2l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 13)
 
 [node name="Boundary" type="Node3D" parent="."]
 visible = false
