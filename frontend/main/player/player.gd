@@ -11,6 +11,11 @@ class_name Player
 var interactable_node: Node
 var prev_interactable_node: Node
 
+@onready var player_default_pos: Vector3 = position
+@onready var player_default_rot_y: float = rotation.y
+@onready var camera_default_rot_x: float = camera_3d.rotation.x
+
+
 var is_controllable: bool = false:
 	get:
 		return is_controllable
@@ -114,6 +119,6 @@ func _on_active_npc_updated(npc: NPC) -> void:
 
 
 func reset_position_and_look_direction() -> void:
-	position = Vector3(0, 1.5, 8.75)
-	rotation.y = 0
-	camera_3d.rotation.x = 0
+	position = player_default_pos
+	rotation.y = player_default_rot_y
+	camera_3d.rotation.x = camera_default_rot_x
