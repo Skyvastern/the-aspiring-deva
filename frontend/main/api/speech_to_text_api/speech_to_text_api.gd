@@ -2,7 +2,7 @@ extends HTTPRequest
 class_name SpeechToTextAPI
 
 signal processed
-const URL: String = "http://127.0.0.1:8000/speech-to-text/"
+var URL: String = ENV.BASE_URL + "/speech-to-text"
 
 
 func _ready() -> void:

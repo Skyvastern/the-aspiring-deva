@@ -2,7 +2,7 @@ extends HTTPRequest
 class_name GetCharactersAPI
 
 signal processed
-const URL: String = "http://127.0.0.1:8000/get-characters/"
+var URL: String = ENV.BASE_URL + "/get-characters"
 
 
 func _ready() -> void:

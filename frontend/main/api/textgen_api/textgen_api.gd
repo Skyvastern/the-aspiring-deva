@@ -2,7 +2,7 @@ extends HTTPRequest
 class_name TextgenAPI
 
 signal processed
-const URL: String = "http://127.0.0.1:8000/textgen/"
+var URL: String = ENV.BASE_URL + "/textgen"
 
 
 func _ready() -> void:
