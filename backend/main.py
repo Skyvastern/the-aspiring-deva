@@ -7,10 +7,12 @@ from fastapi import FastAPI, HTTPException, Response
 from models import TextToSpeechInput, AudioInput, ChatInput, CharactersInstruction
 from openai import OpenAI
 from dotenv import load_dotenv
+from mangum import Mangum
 
 load_dotenv()
 
 app = FastAPI()
+handler = Mangum(app)
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
@@ -21,7 +23,7 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/text-to-speech/")
+@app.post("/text-to-speech")
 async def text_to_speech(tts_input: TextToSpeechInput):    
     try:
         response = client.audio.speech.create(
@@ -53,7 +55,7 @@ async def text_to_speech(tts_input: TextToSpeechInput):
 
 
 
-@app.post("/speech-to-text/")
+@app.post("/speech-to-text")
 async def speech_to_text(audio_input: AudioInput):
     try:
         audio_bytes = base64.b64decode(audio_input.audio_base64)
@@ -80,7 +82,7 @@ async def speech_to_text(audio_input: AudioInput):
 
 
 
-@app.post("/textgen/")
+@app.post("/textgen")
 async def textgen(chat_input: ChatInput):
     try:
         chat_input.history.append({
@@ -101,7 +103,7 @@ async def textgen(chat_input: ChatInput):
 
 
 
-@app.post("/speech-to-speech/")
+@app.post("/speech-to-speech")
 async def speech_to_speech(audio_input: AudioInput):
     try:
         input_audio_bytes = base64.b64decode(audio_input.audio_base64)
@@ -176,7 +178,7 @@ async def speech_to_speech(audio_input: AudioInput):
 
 
 
-@app.post("/get-characters/")
+@app.post("/get-characters")
 async def get_characters(characters_instruction: CharactersInstruction):
     try:
         response = client.chat.completions.create(
