@@ -34,19 +34,19 @@ async def text_to_speech(tts_input: TextToSpeechInput):
         )
 
         # Save mp3 to a file
-        with open("audio.mp3", "wb") as mp3_file:
+        with open("/tmp/audio.mp3", "wb") as mp3_file:
             mp3_file.write(response.content)
         
         # Convert mp3 to ogg
-        ffmpeg.input("audio.mp3").output("audio.ogg", acodec="libvorbis").run()
+        ffmpeg.input("/tmp/audio.mp3").output("/tmp/audio.ogg", acodec="libvorbis").run()
 
         # Read ogg file and return it in response
-        with open("audio.ogg", "rb") as ogg_file:
+        with open("/tmp/audio.ogg", "rb") as ogg_file:
             ogg_audio = ogg_file.read()
         
         # Clean the audio files
-        os.remove("audio.mp3")
-        os.remove("audio.ogg")
+        os.remove("/tmp/audio.mp3")
+        os.remove("/tmp/audio.ogg")
 
         return Response(content=ogg_audio, media_type="audio/ogg")
         
@@ -61,18 +61,18 @@ async def speech_to_text(audio_input: AudioInput):
         audio_bytes = base64.b64decode(audio_input.audio_base64)
         
         # Save wav to file
-        with open("received_audio.wav", "wb") as save_wav_file:
+        with open("/tmp/received_audio.wav", "wb") as save_wav_file:
             save_wav_file.write(audio_bytes)
         
         # Read and send wav file to OpenAI's speech to text API
-        with open("received_audio.wav", "rb") as read_wav_file:
+        with open("/tmp/received_audio.wav", "rb") as read_wav_file:
             transcript = client.audio.translations.create(
                 model="whisper-1",
                 file=read_wav_file
             )
         
         # Remove file
-        os.remove("received_audio.wav")
+        os.remove("/tmp/received_audio.wav")
 
         # Return the transcript
         return transcript
@@ -110,18 +110,18 @@ async def speech_to_speech(audio_input: AudioInput):
 
         # -------------------------SPEECH-TO-TEXT-------------------------
         # Save wav to file
-        with open("input_audio.wav", "wb") as save_wav_file:
+        with open("/tmp/input_audio.wav", "wb") as save_wav_file:
             save_wav_file.write(input_audio_bytes)
         
         # Read and send wav file to OpenAI's speech to text API
-        with open("input_audio.wav", "rb") as read_wav_file:
+        with open("/tmp/input_audio.wav", "rb") as read_wav_file:
             transcript = client.audio.translations.create(
                 model="whisper-1",
                 file=read_wav_file
             )
         
         # Remove file
-        os.remove("input_audio.wav")
+        os.remove("/tmp/input_audio.wav")
         # ----------------------------------------------------------------
 
         # -------------------------TEXT-TO-TEXT-------------------------
@@ -148,21 +148,21 @@ async def speech_to_speech(audio_input: AudioInput):
         )
 
         # Save mp3 to a file
-        with open("output_audio.mp3", "wb") as save_mp3_file:
+        with open("/tmp/output_audio.mp3", "wb") as save_mp3_file:
             save_mp3_file.write(response.content)
         
         # Convert mp3 to ogg
-        ffmpeg.input("output_audio.mp3").output("output_audio.ogg", acodec="libvorbis").run()
+        ffmpeg.input("/tmp/output_audio.mp3").output("/tmp/output_audio.ogg", acodec="libvorbis").run()
 
         # Read ogg file and encode it in base64
-        with open("output_audio.ogg", "rb") as read_ogg_file:
+        with open("/tmp/output_audio.ogg", "rb") as read_ogg_file:
             ogg_data = read_ogg_file.read()
         
         ogg_base64 = base64.b64encode(ogg_data).decode("utf-8")
 
         # Remove files
-        os.remove("output_audio.mp3")
-        os.remove("output_audio.ogg")
+        os.remove("/tmp/output_audio.mp3")
+        os.remove("/tmp/output_audio.ogg")
         
         # Return the base64 audio data and the subtitle
         return {
