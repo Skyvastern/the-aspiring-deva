@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://main/menus/get_characters_data_menu/get_characters_data_menu.gd" id="1_bndo5"]
 [ext_resource type="PackedScene" uid="uid://djsx1xmo7svq" path="res://main/common/status/status.tscn" id="2_15exy"]
 
-[node name="Get Characters Data Menu" type="Control" node_paths=PackedStringArray("get_characters_api")]
+[node name="Get Characters Data Menu" type="Control" node_paths=PackedStringArray("status", "get_characters_api")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,6 +58,7 @@ Notes:
 - Have 5 male and 5 female characters.
 - In their stories, no need to explicity mention that they are from that country.
 - Also, use character names that are not widely used these days."
+status = NodePath("Status")
 get_characters_api = NodePath("GetCharactersAPI")
 level_scene_path = "res://main/level/level.tscn"
 
