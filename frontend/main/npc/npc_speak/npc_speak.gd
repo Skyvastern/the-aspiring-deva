@@ -48,7 +48,11 @@ func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> voi
 	Global.active_npc.add_npc_message(npc_message)
 
 
-func _on_textgen_api_processed(json: Dictionary) -> void:
+func _on_textgen_api_processed(result: int, response_code: int, json: Dictionary) -> void:
+	if result != 0 or response_code != 200:
+		status.show_error("Error processing NPC response.")
+		return
+	
 	npc_message = json["npc_message"]
 	
 	text_to_speech_api.make_request(
