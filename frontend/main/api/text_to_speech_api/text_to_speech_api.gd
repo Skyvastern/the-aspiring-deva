@@ -19,6 +19,10 @@ func make_request(npc_message: String, voice: String) -> void:
 	request(URL, headers, HTTPClient.METHOD_POST, request_payload)
 
 
-func _on_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	var audio_stream: AudioStreamOggVorbis = AudioStreamOggVorbis.load_from_buffer(body)
-	processed.emit(audio_stream)
+func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	var audio_stream: AudioStreamOggVorbis = null
+	
+	if result == 0 and response_code == 200:
+		audio_stream = AudioStreamOggVorbis.load_from_buffer(body)
+	
+	processed.emit(result, response_code, audio_stream)

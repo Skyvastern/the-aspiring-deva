@@ -35,7 +35,11 @@ func interpret(new_player_message: String) -> void:
 	)
 
 
-func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> void:
+func _on_text_to_speech_api_processed(result: int, response_code: int, audio_stream: AudioStreamOggVorbis) -> void:
+	if result != 0 or response_code != 200:
+		status.show_error("Error processing NPC response.")
+		return
+	
 	audio_player.stream = audio_stream
 	audio_player.play()
 	
