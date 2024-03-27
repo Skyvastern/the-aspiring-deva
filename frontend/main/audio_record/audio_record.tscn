@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctgeu75p213ew"]
+[gd_scene load_steps=8 format=3 uid="uid://ctgeu75p213ew"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_tjsc4"]
 [ext_resource type="Script" path="res://main/audio_record/audio_record.gd" id="1_w3vpf"]
 [ext_resource type="PackedScene" uid="uid://dbo40ic8y6d5i" path="res://main/api/speech_to_text_api/speech_to_text_api.tscn" id="2_e1hex"]
 [ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="4_x7n5e"]
 [ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="5_quc1n"]
+[ext_resource type="PackedScene" uid="uid://dov4gl0kwwvpx" path="res://main/common/error_message/error_message.tscn" id="6_af8d3"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_rgdxj"]
 
-[node name="AudioRecord" type="Control" node_paths=PackedStringArray("text_edit", "record_btn", "ask_btn", "close_btn", "loader", "status", "audio_record", "audio_player", "speech_to_text_api")]
+[node name="AudioRecord" type="Control" node_paths=PackedStringArray("text_edit", "record_btn", "ask_btn", "close_btn", "loader", "status", "error_message", "audio_record", "audio_player", "speech_to_text_api")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ ask_btn = NodePath("Panel/InputBtns/AskBtn")
 close_btn = NodePath("Panel/CloseBtn")
 loader = NodePath("Panel/Loader")
 status = NodePath("Panel/Status")
+error_message = NodePath("Panel/ErrorMessage")
 audio_record = NodePath("AudioRecord")
 audio_player = NodePath("AudioPlayer")
 speech_to_text_api = NodePath("SpeechToTextAPI")
@@ -133,3 +135,13 @@ offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Recording"
+
+[node name="ErrorMessage" parent="Panel" instance=ExtResource("6_af8d3")]
+visible = false
+layout_mode = 1
+offset_left = -115.0
+offset_top = 107.0
+offset_right = 50.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2

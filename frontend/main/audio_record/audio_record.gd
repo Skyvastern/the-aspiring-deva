@@ -8,6 +8,7 @@ class_name AudioRecord
 @export var close_btn: Button
 @export var loader: TextureRect
 @export var status: Label
+@export var error_message: Label
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -83,15 +84,22 @@ func _get_audio_base64() -> String:
 	return Marshalls.raw_to_base64(audio_data)
 
 
-func _on_speech_to_text_processed(json: Dictionary) -> void:
-	var transcript: String = json["text"]
-	text_edit.text = transcript
+func _on_speech_to_text_processed(result: int, response_code: int, json: Dictionary) -> void:
+	_hide_status()
 	
+	text_edit.text = ""
 	text_edit.editable = true
 	record_btn.disabled = false
 	record_btn.text = "Record"
 	
-	_hide_status()
+	if result != 0 or response_code != 200:
+		error_message.text = "Error processing the audio."
+		error_message.visible = true
+		
+		return
+	
+	var transcript: String = json["text"]
+	text_edit.text = transcript
 
 
 func _on_ask_btn_pressed() -> void:
