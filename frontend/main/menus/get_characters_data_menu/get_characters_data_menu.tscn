@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://de3xfgs87413q" path="res://main/api/get_characters_api/get_characters_api.tscn" id="1_13bx6"]
 [ext_resource type="Script" path="res://main/menus/get_characters_data_menu/get_characters_data_menu.gd" id="1_bndo5"]
-[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="2_s4s6h"]
+[ext_resource type="PackedScene" uid="uid://djsx1xmo7svq" path="res://main/common/status/status.tscn" id="2_15exy"]
 
 [node name="Get Characters Data Menu" type="Control" node_paths=PackedStringArray("get_characters_api")]
 layout_mode = 3
@@ -70,16 +70,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
-[node name="Status" parent="." instance=ExtResource("2_s4s6h")]
+[node name="Status" parent="." instance=ExtResource("2_15exy")]
 layout_mode = 1
 anchors_preset = 8
-offset_left = -58.0
-offset_top = -17.0
-offset_right = 58.0
-offset_bottom = 17.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -477.5
+offset_top = -48.0
+offset_right = 477.5
+offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 60
-text = "Getting Characters Data..."
+starting_status_message = "Generating Characters Data"
 
 [node name="GetCharactersAPI" parent="." instance=ExtResource("1_13bx6")]

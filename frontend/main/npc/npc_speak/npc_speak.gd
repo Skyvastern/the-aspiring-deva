@@ -2,8 +2,7 @@ extends Node
 class_name NPC_Speak
 
 @export_group("UI")
-@export var status: Label
-@export var loader: TextureRect
+@export var status: Status
 @export var subtitles_label: Label
 @export var continue_btn: Button
 @export var close_btn: Button
@@ -42,8 +41,7 @@ func _on_text_to_speech_api_processed(audio_stream: AudioStreamOggVorbis) -> voi
 	
 	subtitles_label.text = npc_message
 	
-	status.visible = false
-	loader.visible = false
+	status.hide_status()
 	continue_btn.visible = true
 	
 	Global.active_npc.add_player_message(player_message)

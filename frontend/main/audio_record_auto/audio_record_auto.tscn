@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b36061vqcjy15"]
+[gd_scene load_steps=5 format=3 uid="uid://b36061vqcjy15"]
 
 [ext_resource type="Script" path="res://main/audio_record_auto/audio_record_auto.gd" id="1_n35vx"]
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="2_6i6lb"]
-[ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="3_o1e45"]
-[ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="4_pwipj"]
+[ext_resource type="PackedScene" uid="uid://djsx1xmo7svq" path="res://main/common/status/status.tscn" id="5_6jicy"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_lrvel"]
 
@@ -69,28 +68,17 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 36
 text = "STOP"
 
-[node name="Loader" parent="Panel" instance=ExtResource("3_o1e45")]
+[node name="Status" parent="Panel" instance=ExtResource("5_6jicy")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -61.0
-offset_right = 50.0
-offset_bottom = 39.0
+offset_left = -477.5
+offset_top = -144.0
+offset_right = 477.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
-
-[node name="Status" parent="Panel" instance=ExtResource("4_pwipj")]
-layout_mode = 1
-anchors_preset = 8
-offset_left = -58.0
-offset_top = -97.0
-offset_right = 58.0
-offset_bottom = -63.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Recording"
+starting_status_message = "Recording"

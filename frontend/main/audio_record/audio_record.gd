@@ -6,9 +6,7 @@ class_name AudioRecord
 @export var record_btn: Button
 @export var ask_btn: Button
 @export var close_btn: Button
-@export var loader: TextureRect
-@export var status: Label
-@export var error_message: Label
+@export var status: Status
 
 @export_group("References")
 @export var audio_record: AudioStreamPlayer
@@ -26,7 +24,7 @@ func _ready() -> void:
 	ask_btn.pressed.connect(_on_ask_btn_pressed)
 	speech_to_text_api.processed.connect(_on_speech_to_text_processed)
 	
-	_hide_status()
+	status.hide_status()
 	
 	var index: int = AudioServer.get_bus_index("Record")
 	effect = AudioServer.get_bus_effect(index, 0)
@@ -41,7 +39,7 @@ func _on_record_btn_pressed() -> void:
 		record_btn.text = "Processing"
 		record_btn.disabled = true
 		
-		_show_status("Processing")
+		status.show_status("Processing")
 		
 		var base64: String = _get_audio_base64()
 		speech_to_text_api.make_request(
@@ -55,7 +53,7 @@ func _on_record_btn_pressed() -> void:
 		text_edit.text = "Processing..."
 		record_btn.text = "Stop"
 		
-		_show_status("Recording")
+		status.show_status("Recording")
 
 
 func _on_play_btn_pressed() -> void:
@@ -85,7 +83,7 @@ func _get_audio_base64() -> String:
 
 
 func _on_speech_to_text_processed(result: int, response_code: int, json: Dictionary) -> void:
-	_hide_status()
+	status.hide_status()
 	
 	text_edit.text = ""
 	text_edit.editable = true
@@ -93,9 +91,7 @@ func _on_speech_to_text_processed(result: int, response_code: int, json: Diction
 	record_btn.text = "Record"
 	
 	if result != 0 or response_code != 200:
-		error_message.text = "Error processing the audio."
-		error_message.visible = true
-		
+		status.show_error("Error processing the audio.")
 		return
 	
 	var transcript: String = json["text"]
@@ -121,13 +117,3 @@ func _on_closed_btn_pressed() -> void:
 	
 	effect.set_recording_active(false)
 	queue_free()
-
-
-func _show_status(message: String) -> void:
-	status.text = message
-	loader.visible = true
-
-
-func _hide_status() -> void:
-	status.text = ""
-	loader.visible = false
