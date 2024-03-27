@@ -2,7 +2,7 @@ extends HTTPRequest
 class_name SpeechToSpeechAPI
 
 signal processed
-var URL: String = ENV.BASE_URL + "/speech-to-speech"
+var URL: String = ENV.BASE_URL + "/speech-to-speechh"
 
 
 func _ready() -> void:
@@ -20,6 +20,10 @@ func make_request(voice: String, audio_base64: String, history: Array) -> void:
 	request(URL, headers, HTTPClient.METHOD_POST, request_payload)
 
 
-func _on_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
-	var json: Dictionary = JSON.parse_string(body.get_string_from_utf8())
-	processed.emit(json)
+func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	var json: Dictionary = {}
+	
+	if result == 0 and response_code == 200:
+		json = JSON.parse_string(body.get_string_from_utf8())
+	
+	processed.emit(result, response_code, json)

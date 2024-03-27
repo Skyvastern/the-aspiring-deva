@@ -4,6 +4,7 @@ class_name NPC_Speak_Auto
 @export_group("UI")
 @export var status: Label
 @export var loader: TextureRect
+@export var error_message: Label
 @export var audio_player: AudioStreamPlayer
 @export var subtitles_label: Label
 @export var continue_btn: Button
@@ -28,7 +29,16 @@ func interpret(audio_base64: String) -> void:
 	)
 
 
-func _on_speech_to_speech_api_processed(json: Dictionary) -> void:
+func _on_speech_to_speech_api_processed(result: int, response_code: int, json: Dictionary) -> void:
+	if result != 0 or response_code != 200:
+		status.visible = false
+		loader.visible = false
+		
+		error_message.text = "Error processing the audio."
+		error_message.visible = true
+		
+		return
+	
 	var audio_base64: String = json["audio_base64"]
 	var player_message: String = json["player_message"]
 	var npc_message: String = json["npc_message"]

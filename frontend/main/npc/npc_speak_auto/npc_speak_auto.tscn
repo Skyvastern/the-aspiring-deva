@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://df3uq6eo0a66j"]
+[gd_scene load_steps=7 format=3 uid="uid://df3uq6eo0a66j"]
 
 [ext_resource type="Script" path="res://main/npc/npc_speak_auto/npc_speak_auto.gd" id="1_quxc4"]
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_uegw7"]
 [ext_resource type="PackedScene" uid="uid://bp020r0i1tv8m" path="res://main/api/speech_to_speech_api/speech_to_speech_api.tscn" id="2_4gpr3"]
 [ext_resource type="PackedScene" uid="uid://cfvvgmagjl0md" path="res://main/common/status/status.tscn" id="4_20nxj"]
 [ext_resource type="PackedScene" uid="uid://b6yk6bqumplb1" path="res://main/common/loader/loader.tscn" id="5_r5iro"]
+[ext_resource type="PackedScene" uid="uid://dov4gl0kwwvpx" path="res://main/common/error_message/error_message.tscn" id="6_775br"]
 
-[node name="NPC Speak Auto" type="Control" node_paths=PackedStringArray("status", "loader", "audio_player", "subtitles_label", "continue_btn", "close_btn", "speech_to_speech_api")]
+[node name="NPC Speak Auto" type="Control" node_paths=PackedStringArray("status", "loader", "error_message", "audio_player", "subtitles_label", "continue_btn", "close_btn", "speech_to_speech_api")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,7 @@ theme = ExtResource("1_uegw7")
 script = ExtResource("1_quxc4")
 status = NodePath("Panel/Status")
 loader = NodePath("Panel/Loader")
+error_message = NodePath("Panel/ErrorMessage")
 audio_player = NodePath("AudioPlayer")
 subtitles_label = NodePath("Panel/ScrollContainer/Subtitles")
 continue_btn = NodePath("Panel/ContinueBtn")
@@ -117,3 +119,13 @@ offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
+
+[node name="ErrorMessage" parent="Panel" instance=ExtResource("6_775br")]
+visible = false
+layout_mode = 1
+offset_left = -82.5
+offset_top = -17.0
+offset_right = 82.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
