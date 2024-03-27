@@ -2,7 +2,7 @@ extends HTTPRequest
 class_name SpeechToSpeechAPI
 
 signal processed
-var URL: String = ENV.BASE_URL + "/speech-to-speechh"
+var URL: String = ENV.BASE_URL + "/speech-to-speech"
 
 
 func _ready() -> void:
