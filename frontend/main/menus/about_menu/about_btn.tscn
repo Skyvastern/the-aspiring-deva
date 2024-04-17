@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3bb2yguanisg"]
+
+[ext_resource type="Texture2D" uid="uid://um2stweley5x" path="res://assets/textures/about_btn_normal.svg" id="1_hbcpf"]
+[ext_resource type="Texture2D" uid="uid://u3pkobcpnpm7" path="res://assets/textures/about_btn_pressed.svg" id="2_trqgn"]
+[ext_resource type="Texture2D" uid="uid://cvt3w2u2ddv3o" path="res://assets/textures/about_btn_highlighted.svg" id="3_dc7ma"]
+[ext_resource type="Script" path="res://main/menus/about_menu/about_btn.gd" id="4_6qvek"]
+
+[node name="AboutBtn" type="TextureButton"]
+offset_right = 100.0
+offset_bottom = 100.0
+focus_mode = 0
+texture_normal = ExtResource("1_hbcpf")
+texture_pressed = ExtResource("2_trqgn")
+texture_hover = ExtResource("3_dc7ma")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_6qvek")
+about_menu_path = "res://main/menus/about_menu/about_menu.tscn"

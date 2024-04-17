@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr06g8xcj7qja"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_wahpv"]
+[ext_resource type="PackedScene" uid="uid://cjl0hx70pvyty" path="res://main/menus/back_btn/back_btn.tscn" id="1_xmys5"]
+
+[node name="AboutMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wahpv")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.5
+offset_top = 155.0
+offset_right = 170.5
+offset_bottom = 271.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 85
+text = "About"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.0
+offset_top = -202.0
+offset_right = 773.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Description" type="Label" parent="Content/VBoxContainer"]
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Hey hi, I'm Skyvastern. This game is a small project I made as a fun experiment to have generative AI drive the core gameplay."
+autowrap_mode = 2
+
+[node name="BackBtn" parent="." node_paths=PackedStringArray("current_menu") instance=ExtResource("1_xmys5")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 50.0
+offset_right = 207.0
+offset_bottom = 169.0
+prev_menu_path = "res://main/menus/main_menu/main_menu.tscn"
+current_menu = NodePath("..")

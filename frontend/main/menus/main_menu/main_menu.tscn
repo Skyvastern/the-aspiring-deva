@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bml7me0fau7sh"]
+[gd_scene load_steps=4 format=3 uid="uid://bml7me0fau7sh"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_8flni"]
 [ext_resource type="Script" path="res://main/menus/main_menu/main_menu.gd" id="2_v05iu"]
+[ext_resource type="PackedScene" uid="uid://c3bb2yguanisg" path="res://main/menus/about_menu/about_btn.tscn" id="3_fw14h"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("player_name_label", "start_btn", "exit_btn")]
 layout_mode = 3
@@ -69,3 +70,18 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 60
 text = "Exit"
+
+[node name="AboutBtn" parent="." node_paths=PackedStringArray("current_menu") instance=ExtResource("3_fw14h")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -140.0
+offset_right = -60.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+current_menu = NodePath("..")
