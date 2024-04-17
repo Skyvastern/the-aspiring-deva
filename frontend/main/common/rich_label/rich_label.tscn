@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhe5vsbd6s5bt"]
+
+[ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_4gwhl"]
+[ext_resource type="Script" path="res://main/common/rich_label/rich_label.gd" id="2_ifriq"]
+
+[node name="RichLabel" type="RichTextLabel"]
+offset_right = 399.0
+offset_bottom = 50.0
+theme = ExtResource("1_4gwhl")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/mono_font_size = 36
+bbcode_enabled = true
+text = "This is Rich Text Label."
+fit_content = true
+script = ExtResource("2_ifriq")
