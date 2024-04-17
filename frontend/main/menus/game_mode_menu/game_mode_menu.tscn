@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw6dg8sok8tkn"]
+[gd_scene load_steps=4 format=3 uid="uid://bw6dg8sok8tkn"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_4115e"]
 [ext_resource type="Script" path="res://main/menus/game_mode_menu/game_mode_menu.gd" id="2_fd5cs"]
+[ext_resource type="PackedScene" uid="uid://cjl0hx70pvyty" path="res://main/menus/back_btn/back_btn.tscn" id="3_oxci4"]
 
 [node name="GameModeMenu" type="Control" node_paths=PackedStringArray("play_btn", "play_generate_btn")]
 layout_mode = 3
@@ -25,6 +26,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="BackBtn" parent="." node_paths=PackedStringArray("current_menu") instance=ExtResource("3_oxci4")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 50.0
+offset_right = 207.0
+offset_bottom = 169.0
+prev_menu_path = "res://main/menus/main_menu/main_menu.tscn"
+current_menu = NodePath("..")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
