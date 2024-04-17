@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main/level/switches/switch.gd" id="1_fqdxl"]
 [ext_resource type="PackedScene" uid="uid://cq708wlcphg8j" path="res://main/level/switches/switch_interact/switch_interact.tscn" id="2_5ndm4"]
-[ext_resource type="AudioStream" uid="uid://00y7fa0lx6dn" path="res://assets/audio/effects/gameplay/switch/yama/sergequadrado__miracle-harp.wav" id="3_0h2wc"]
+[ext_resource type="AudioStream" uid="uid://y5xco30jbrj3" path="res://assets/audio/effects/gameplay/switch/yama/magical_4.ogg" id="3_iqe0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wayyj"]
 
@@ -12,7 +12,7 @@ collision_layer = 24
 script = ExtResource("1_fqdxl")
 switch_type = "Yama"
 switch_interact_scene = ExtResource("2_5ndm4")
-switch_activate_stream = ExtResource("3_0h2wc")
+switch_activate_stream = ExtResource("3_iqe0i")
 
 [node name="Base" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

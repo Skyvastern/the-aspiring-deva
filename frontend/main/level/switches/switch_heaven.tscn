@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main/level/switches/switch.gd" id="1_bx127"]
 [ext_resource type="PackedScene" uid="uid://cq708wlcphg8j" path="res://main/level/switches/switch_interact/switch_interact.tscn" id="2_t4300"]
-[ext_resource type="AudioStream" uid="uid://d1wk71mt5goij" path="res://assets/audio/effects/gameplay/switch/heaven/sergequadrado__harp-glissando-descending-short.wav" id="3_mxmoy"]
+[ext_resource type="AudioStream" uid="uid://bhphrlirsrk04" path="res://assets/audio/effects/gameplay/switch/heaven/magical_1.ogg" id="3_b4hy4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dp5y"]
 albedo_color = Color(0.196078, 1, 0.196078, 1)
@@ -12,7 +12,7 @@ use_collision = true
 collision_layer = 24
 script = ExtResource("1_bx127")
 switch_interact_scene = ExtResource("2_t4300")
-switch_activate_stream = ExtResource("3_mxmoy")
+switch_activate_stream = ExtResource("3_b4hy4")
 
 [node name="Base" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

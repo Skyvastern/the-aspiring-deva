@@ -1,1 +1,3 @@
-Harp Glissando Descending Short by SergeQuadrado -- https://freesound.org/s/476710/ -- License: Attribution NonCommercial 3.0
+Author: jaggedstone
+Downloaded from: https://opengameart.org/content/magic-spell-sfx
+License: https://creativecommons.org/publicdomain/zero/1.0/
