@@ -1,6 +1,8 @@
 # The Aspiring Deva
 This game is a small project I made as a fun experiment to have generative AI drive the core gameplay.
 
+You can check out the [video devlog here](https://www.youtube.com/watch?v=3ewOax-F45g), and the [written devlog here](https://skyvastern.com/i-created-a-game-that-uses-generative-ai-to-drive-the-main-gameplay/).
+
 
 ## Setup
 - The backend folder contains the Python FastAPI server.
