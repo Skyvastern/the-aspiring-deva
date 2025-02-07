@@ -3,6 +3,7 @@ import ffmpeg
 import os
 import base64
 import json
+import tempfile
 from fastapi import FastAPI, HTTPException, Response
 from models import TextToSpeechInput, AudioInput, ChatInput, CharactersInstruction
 from openai import OpenAI
@@ -33,20 +34,24 @@ async def text_to_speech(tts_input: TextToSpeechInput):
             response_format="mp3"
         )
 
+        temp_dir = tempfile.gettempdir()
+        mp3_path = os.path.join(temp_dir, "audio.mp3")
+        ogg_path = os.path.join(temp_dir, "audio.ogg")
+
         # Save mp3 to a file
-        with open("/tmp/audio.mp3", "wb") as mp3_file:
+        with open(mp3_path, "wb") as mp3_file:
             mp3_file.write(response.content)
         
         # Convert mp3 to ogg
-        ffmpeg.input("/tmp/audio.mp3").output("/tmp/audio.ogg", acodec="libvorbis").run()
+        ffmpeg.input(mp3_path).output(ogg_path, acodec="libvorbis").run()
 
         # Read ogg file and return it in response
-        with open("/tmp/audio.ogg", "rb") as ogg_file:
+        with open(ogg_path, "rb") as ogg_file:
             ogg_audio = ogg_file.read()
         
         # Clean the audio files
-        os.remove("/tmp/audio.mp3")
-        os.remove("/tmp/audio.ogg")
+        os.remove(mp3_path)
+        os.remove(ogg_path)
 
         return Response(content=ogg_audio, media_type="audio/ogg")
         
@@ -60,19 +65,22 @@ async def speech_to_text(audio_input: AudioInput):
     try:
         audio_bytes = base64.b64decode(audio_input.audio_base64)
         
+        temp_dir = tempfile.gettempdir()
+        wav_path = os.path.join(temp_dir, "received_audio.wav")
+
         # Save wav to file
-        with open("/tmp/received_audio.wav", "wb") as save_wav_file:
+        with open(wav_path, "wb") as save_wav_file:
             save_wav_file.write(audio_bytes)
         
         # Read and send wav file to OpenAI's speech to text API
-        with open("/tmp/received_audio.wav", "rb") as read_wav_file:
+        with open(wav_path, "rb") as read_wav_file:
             transcript = client.audio.translations.create(
                 model="whisper-1",
                 file=read_wav_file
             )
         
         # Remove file
-        os.remove("/tmp/received_audio.wav")
+        os.remove(wav_path)
 
         # Return the transcript
         return transcript
@@ -107,21 +115,24 @@ async def textgen(chat_input: ChatInput):
 async def speech_to_speech(audio_input: AudioInput):
     try:
         input_audio_bytes = base64.b64decode(audio_input.audio_base64)
+        temp_dir = tempfile.gettempdir()
 
         # -------------------------SPEECH-TO-TEXT-------------------------
+        input_wav_path = os.path.join(temp_dir, "input_audio.wav")
+        
         # Save wav to file
-        with open("/tmp/input_audio.wav", "wb") as save_wav_file:
+        with open(input_wav_path, "wb") as save_wav_file:
             save_wav_file.write(input_audio_bytes)
         
         # Read and send wav file to OpenAI's speech to text API
-        with open("/tmp/input_audio.wav", "rb") as read_wav_file:
+        with open(input_wav_path, "rb") as read_wav_file:
             transcript = client.audio.translations.create(
                 model="whisper-1",
                 file=read_wav_file
             )
         
         # Remove file
-        os.remove("/tmp/input_audio.wav")
+        os.remove(input_wav_path)
         # ----------------------------------------------------------------
 
         # -------------------------TEXT-TO-TEXT-------------------------
@@ -146,23 +157,26 @@ async def speech_to_speech(audio_input: AudioInput):
             input=response_message,
             response_format="mp3"
         )
+        
+        output_mp3_path = os.path.join(temp_dir, "output_audio.mp3")
+        output_ogg_path = os.path.join(temp_dir, "output_audio.ogg")
 
         # Save mp3 to a file
-        with open("/tmp/output_audio.mp3", "wb") as save_mp3_file:
+        with open(output_mp3_path, "wb") as save_mp3_file:
             save_mp3_file.write(response.content)
         
         # Convert mp3 to ogg
-        ffmpeg.input("/tmp/output_audio.mp3").output("/tmp/output_audio.ogg", acodec="libvorbis").run()
+        ffmpeg.input(output_mp3_path).output(output_ogg_path, acodec="libvorbis").run()
 
         # Read ogg file and encode it in base64
-        with open("/tmp/output_audio.ogg", "rb") as read_ogg_file:
+        with open(output_ogg_path, "rb") as read_ogg_file:
             ogg_data = read_ogg_file.read()
         
         ogg_base64 = base64.b64encode(ogg_data).decode("utf-8")
 
         # Remove files
-        os.remove("/tmp/output_audio.mp3")
-        os.remove("/tmp/output_audio.ogg")
+        os.remove(output_mp3_path)
+        os.remove(output_ogg_path)
         
         # Return the base64 audio data and the subtitle
         return {
