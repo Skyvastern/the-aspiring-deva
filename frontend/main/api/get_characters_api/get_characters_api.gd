@@ -2,20 +2,15 @@ extends HTTPRequest
 class_name GetCharactersAPI
 
 signal processed
-var URL: String = ENV.BASE_URL + "/get-characters"
+var URL: String = ENV.BASE_URL + "/get-random-characters"
 
 
 func _ready() -> void:
 	request_completed.connect(_on_request_completed)
 
 
-func make_request(instructions: String) -> void:
-	var headers: PackedStringArray = ["Content-Type: application/json"]
-	var request_payload: String = JSON.stringify({
-		"instructions": instructions
-	})
-	
-	request(URL, headers, HTTPClient.METHOD_POST, request_payload)
+func make_request() -> void:
+	request(URL)
 
 
 func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:

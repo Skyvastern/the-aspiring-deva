@@ -1,9 +1,6 @@
 extends Control
 class_name GetCharactersDataMenu
 
-@export_group("Data")
-@export_multiline var instructions: String
-
 @export_group("UI")
 @export var status: Status
 
@@ -14,7 +11,7 @@ class_name GetCharactersDataMenu
 
 func _ready() -> void:
 	get_characters_api.processed.connect(_on_get_characters_processed)
-	get_characters_api.make_request(instructions)
+	get_characters_api.make_request()
 
 
 func _on_get_characters_processed(result: int, response_code: int, json: Dictionary) -> void:

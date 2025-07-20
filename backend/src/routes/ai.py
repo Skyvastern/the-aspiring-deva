@@ -60,7 +60,7 @@ def textgen(chat_input: ChatInput):
 
 
 
-@router.post("/get-random-characters")
+@router.get("/get-random-characters")
 def get_random_characters():
     try:
         return generate_random_characters_data()
