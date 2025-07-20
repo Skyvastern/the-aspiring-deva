@@ -5,7 +5,7 @@ import base64
 import json
 import tempfile
 from fastapi import FastAPI, HTTPException, Response
-from models import TextToSpeechInput, AudioInput, ChatInput, CharactersInstruction
+from src.models import TextToSpeechInput, AudioInput, ChatInput, CharactersInstruction
 from openai import OpenAI
 from dotenv import load_dotenv
 from mangum import Mangum
