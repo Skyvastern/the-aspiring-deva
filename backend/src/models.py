@@ -9,13 +9,12 @@ class TextToSpeechInput(BaseModel):
 class AudioInput(BaseModel):
     voice: str = "echo"
     audio_base64: str
+    
+
+class AudioInputWithHistory(AudioInput):
     history: list[dict]
 
 
 class ChatInput(BaseModel):
     player_message: str
     history: list[dict]
-
-
-class CharactersInstruction(BaseModel):
-    instructions: str
