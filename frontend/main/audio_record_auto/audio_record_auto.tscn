@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b36061vqcjy15"]
 
-[ext_resource type="Script" path="res://main/audio_record_auto/audio_record_auto.gd" id="1_n35vx"]
+[ext_resource type="Script" uid="uid://cpkmh02vht2y5" path="res://main/audio_record_auto/audio_record_auto.gd" id="1_n35vx"]
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="2_6i6lb"]
 [ext_resource type="PackedScene" uid="uid://djsx1xmo7svq" path="res://main/common/status/status.tscn" id="5_6jicy"]
 

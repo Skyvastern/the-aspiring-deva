@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://com21ep7cn3r4"]
 
 [ext_resource type="PackedScene" uid="uid://df0ugiqmgqu5s" path="res://assets/3d_models/ninja/Ninja.glb" id="1_6556m"]
-[ext_resource type="Script" path="res://assets/3d_models/character_model.gd" id="2_d64w8"]
+[ext_resource type="Script" uid="uid://bi7jftpmcg8m5" path="res://assets/3d_models/character_model.gd" id="2_d64w8"]
 
 [node name="Ninja" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_6556m")]
 script = ExtResource("2_d64w8")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d33f5gy50w54b"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_sfpwy"]
-[ext_resource type="Script" path="res://main/npc/npc_details_panel/npc_details_panel.gd" id="2_d72c2"]
+[ext_resource type="Script" uid="uid://cgpy0vrh3hvwj" path="res://main/npc/npc_details_panel/npc_details_panel.gd" id="2_d72c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jd4s"]
 bg_color = Color(0, 0, 0, 0.784314)

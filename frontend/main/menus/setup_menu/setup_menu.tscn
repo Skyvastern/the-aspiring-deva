@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvvtyhfwc7d3n"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_a2wbq"]
-[ext_resource type="Script" path="res://main/menus/setup_menu/setup_menu.gd" id="2_p0x7m"]
+[ext_resource type="Script" uid="uid://dhudmxlt7ynuo" path="res://main/menus/setup_menu/setup_menu.gd" id="2_p0x7m"]
 
 [node name="SetupMenu" type="Control" node_paths=PackedStringArray("player_name_input", "confirm_btn")]
 layout_mode = 3

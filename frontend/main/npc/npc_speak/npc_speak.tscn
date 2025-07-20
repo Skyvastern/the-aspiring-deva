@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3shry0lb6gwu"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_bp2vg"]
-[ext_resource type="Script" path="res://main/npc/npc_speak/npc_speak.gd" id="1_w7314"]
+[ext_resource type="Script" uid="uid://cf4c4qy22l3mt" path="res://main/npc/npc_speak/npc_speak.gd" id="1_w7314"]
 [ext_resource type="PackedScene" uid="uid://xyj3kxdu8csw" path="res://main/api/textgen_api/textgen_api.tscn" id="2_t7ijx"]
 [ext_resource type="PackedScene" uid="uid://cksg3viktx8p" path="res://main/api/text_to_speech_api/text_to_speech_api.tscn" id="2_wrdns"]
 [ext_resource type="PackedScene" uid="uid://djsx1xmo7svq" path="res://main/common/status/status.tscn" id="7_qmfd1"]

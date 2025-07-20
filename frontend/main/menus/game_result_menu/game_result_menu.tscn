@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3w25vwxevt53"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_thsnk"]
-[ext_resource type="Script" path="res://main/menus/game_result_menu/game_result_menu.gd" id="2_juk12"]
+[ext_resource type="Script" uid="uid://ck20q3kr0c8j4" path="res://main/menus/game_result_menu/game_result_menu.gd" id="2_juk12"]
 
 [node name="GameResultMenu" type="Control" node_paths=PackedStringArray("result_label", "description_label", "main_menu_btn")]
 layout_mode = 3

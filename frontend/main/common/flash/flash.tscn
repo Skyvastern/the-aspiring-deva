@@ -1,21 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bdymwxtxsmk54"]
 
-[ext_resource type="Script" path="res://main/common/flash/flash.gd" id="1_sagli"]
-
-[sub_resource type="Animation" id="Animation_nnn0p"]
-resource_name = "default"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
+[ext_resource type="Script" uid="uid://b5bgofyirqbux" path="res://main/common/flash/flash.gd" id="1_sagli"]
 
 [sub_resource type="Animation" id="Animation_0ygrd"]
 length = 0.001
@@ -64,12 +49,27 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_nnn0p"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ymuem"]
 _data = {
-"RESET": SubResource("Animation_0ygrd"),
-"flash_in": SubResource("Animation_bcogv"),
-"flash_out": SubResource("Animation_c2ei5"),
-"inactive": SubResource("Animation_nnn0p")
+&"RESET": SubResource("Animation_0ygrd"),
+&"flash_in": SubResource("Animation_bcogv"),
+&"flash_out": SubResource("Animation_c2ei5"),
+&"inactive": SubResource("Animation_nnn0p")
 }
 
 [node name="Flash" type="ColorRect" node_paths=PackedStringArray("animation_player")]

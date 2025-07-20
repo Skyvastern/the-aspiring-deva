@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b17roqyqpbknf"]
 
-[ext_resource type="Script" path="res://main/level/switches/switch.gd" id="1_fqdxl"]
+[ext_resource type="Script" uid="uid://4hbpg25q5fch" path="res://main/level/switches/switch.gd" id="1_fqdxl"]
 [ext_resource type="PackedScene" uid="uid://cq708wlcphg8j" path="res://main/level/switches/switch_interact/switch_interact.tscn" id="2_5ndm4"]
 [ext_resource type="AudioStream" uid="uid://y5xco30jbrj3" path="res://assets/audio/effects/gameplay/switch/yama/magical_4.ogg" id="3_iqe0i"]
 

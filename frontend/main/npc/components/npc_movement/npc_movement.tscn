@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci42qmw5oetrf"]
 
-[ext_resource type="Script" path="res://main/npc/components/npc_movement/npc_movement.gd" id="1_bstfi"]
+[ext_resource type="Script" uid="uid://bt866i286tcoi" path="res://main/npc/components/npc_movement/npc_movement.gd" id="1_bstfi"]
 
 [node name="NPC Movement" type="Node" node_paths=PackedStringArray("wait_timer")]
 script = ExtResource("1_bstfi")

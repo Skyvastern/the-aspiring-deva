@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c2s0th8kkr57s"]
 
-[ext_resource type="Script" path="res://main/level/game_manager/game_manager.gd" id="1_q0l4a"]
+[ext_resource type="Script" uid="uid://bnrp6co5smptj" path="res://main/level/game_manager/game_manager.gd" id="1_q0l4a"]
 [ext_resource type="PackedScene" uid="uid://dl6ccnf5ec1qq" path="res://main/npc/npc.tscn" id="2_f0bhy"]
 [ext_resource type="PackedScene" uid="uid://bbabh0fln5okh" path="res://main/level/worlds/world_yama.tscn" id="3_ev07f"]
 [ext_resource type="PackedScene" uid="uid://dhbbe46duivvr" path="res://main/level/worlds/world_heaven.tscn" id="4_bvngb"]

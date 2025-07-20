@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3h82xqidr174"]
 
-[ext_resource type="Script" path="res://main/singletons/audio_manager/audio_manager.gd" id="1_ruobt"]
+[ext_resource type="Script" uid="uid://i5hlm5pk35xq" path="res://main/singletons/audio_manager/audio_manager.gd" id="1_ruobt"]
 [ext_resource type="PackedScene" uid="uid://jxj15vbiok3x" path="res://main/singletons/audio_manager/audio_one_shot/audio_one_shot.tscn" id="2_88qi6"]
 [ext_resource type="AudioStream" uid="uid://dg4wewc08usaf" path="res://assets/audio/effects/ui/click3.ogg" id="3_ecsep"]
 [ext_resource type="AudioStream" uid="uid://b761kelns0e8b" path="res://assets/audio/music/Royal Coupling/Royal Coupling.mp3" id="3_rk3d4"]

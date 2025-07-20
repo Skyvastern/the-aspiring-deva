@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpxhr1x1f7uh1"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_2q0pp"]
-[ext_resource type="Script" path="res://main/npc/npc_details_interact/npc_details_interact.gd" id="2_71x07"]
+[ext_resource type="Script" uid="uid://dky7b0upwfgqd" path="res://main/npc/npc_details_interact/npc_details_interact.gd" id="2_71x07"]
 [ext_resource type="PackedScene" uid="uid://d33f5gy50w54b" path="res://main/npc/npc_details_panel/npc_details_panel.tscn" id="3_knttn"]
 
 [sub_resource type="Animation" id="Animation_wdavg"]
@@ -52,9 +52,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ehdxb"]
 _data = {
-"RESET": SubResource("Animation_wdavg"),
-"invisible": SubResource("Animation_wmc4q"),
-"notify": SubResource("Animation_c816g")
+&"RESET": SubResource("Animation_wdavg"),
+&"invisible": SubResource("Animation_wmc4q"),
+&"notify": SubResource("Animation_c816g")
 }
 
 [node name="NPC Details Interact" type="Control" node_paths=PackedStringArray("animation_player")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dl6ccnf5ec1qq"]
 
-[ext_resource type="Script" path="res://main/npc/npc.gd" id="1_hyvfc"]
+[ext_resource type="Script" uid="uid://beskoxg4qi5si" path="res://main/npc/npc.gd" id="1_hyvfc"]
 [ext_resource type="PackedScene" uid="uid://dcqh0x5sbp7oq" path="res://main/npc/npc_interact/npc_interact.tscn" id="2_sti3o"]
 [ext_resource type="PackedScene" uid="uid://com21ep7cn3r4" path="res://assets/3d_models/ninja/ninja.tscn" id="3_ap1a5"]
 [ext_resource type="PackedScene" uid="uid://ci42qmw5oetrf" path="res://main/npc/components/npc_movement/npc_movement.tscn" id="3_kafhi"]

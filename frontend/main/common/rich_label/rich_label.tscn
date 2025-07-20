@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhe5vsbd6s5bt"]
 
 [ext_resource type="Theme" uid="uid://15ielt17md1r" path="res://main/common/main_theme.tres" id="1_4gwhl"]
-[ext_resource type="Script" path="res://main/common/rich_label/rich_label.gd" id="2_ifriq"]
+[ext_resource type="Script" uid="uid://bfkplir2uo2vo" path="res://main/common/rich_label/rich_label.gd" id="2_ifriq"]
 
 [node name="RichLabel" type="RichTextLabel"]
 offset_right = 399.0

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dv0wenye3aufy" path="res://assets/textures/back_btn_normal.svg" id="1_psmnd"]
 [ext_resource type="Texture2D" uid="uid://ce0xkvob6h463" path="res://assets/textures/back_btn_pressed.svg" id="2_2e05j"]
 [ext_resource type="Texture2D" uid="uid://bvokwiyfyjygd" path="res://assets/textures/back_btn_highlighted.svg" id="3_dexdu"]
-[ext_resource type="Script" path="res://main/menus/back_btn/back_btn.gd" id="4_ly4mo"]
+[ext_resource type="Script" uid="uid://becy6uc32348p" path="res://main/menus/back_btn/back_btn.gd" id="4_ly4mo"]
 
 [node name="BackBtn" type="TextureButton"]
 offset_right = 147.0
